@@ -66,16 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // 인증 화면 뷰
     function authView() {
         document.querySelector('.container').innerHTML = `
+            <button class="back-button" onclick="navigateTo('/')">
+                <span class="back-arrow">←</span> 뒤로가기
+            </button>
             <header>
-                <button class="back-button" onclick="navigateTo('/')">
-                    <span class="back-arrow">←</span> 뒤로가기
-                </button>
                 <h1>본인인증</h1>
             </header>
             <main>
                 <div class="auth-container">
                     <p class="auth-description">카카오톡으로 간편하게 본인인증을 진행해주세요.</p>
-                    <p class="auth-sub-description">인증에 실패한 경우 뒤로가기를 눌러 홈으로 돌아갈 수 있습니다.</p>
+                    <p class="auth-sub-description">인증에 실패한 경우 뒤로가기를 눌러,<br>홈으로 돌아갈 수 있습니다.</p>
                     <button class="kakao-button" onclick="kakaoAuth()">
                         <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png" alt="카카오톡 로고">
                         카카오톡으로 시작하기
