@@ -21,7 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
         '/auth': authView,
         '/education': educationView,
         '/certification': certificationView,
-        '/teachers': teachersView
+        '/teachers': teachersView,
+        '/video-lessons': videoLessonsView,
+        '/curriculum': curriculumView
     };
 
     // 현재 URL에 따른 뷰 렌더링
@@ -72,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function authView() {
         document.querySelector('.container').innerHTML = `
             <button class="back-button" onclick="navigateTo('/')">
-                <span class="back-arrow">←</span> 뒤로가기
+                <span class="back-arrow">←</span>
             </button>
             <header>
                 <h1>본인인증</h1>
@@ -93,22 +95,47 @@ document.addEventListener('DOMContentLoaded', () => {
     // 교육자료 화면 뷰
     function educationView() {
         document.querySelector('.container').innerHTML = `
+            <button class="back-button" onclick="navigateTo('/')">
+                <span class="back-arrow">←</span>
+            </button>
             <header>
-                <button class="back-button" onclick="navigateTo('/')">
-                    <span class="back-arrow">←</span> 뒤로가기
-                </button>
                 <h1>교육자료</h1>
             </header>
             <main>
                 <div class="button-container">
-                    <button class="main-button" onclick="location.href='#'">
+                    <button class="main-button" onclick="navigateTo('/curriculum')">
                         커리큘럼
                     </button>
-                    <button class="main-button" onclick="location.href='#'">
-                        동영상 자료
+                    <button class="main-button" onclick="navigateTo('/video-lessons')">
+                        동영상 레슨
                     </button>
                     <button class="main-button" onclick="location.href='#'">
                         스케일 사전
+                    </button>
+                </div>
+            </main>
+        `;
+    }
+
+    // 동영상 레슨 페이지 뷰
+    function videoLessonsView() {
+        document.querySelector('.container').innerHTML = `
+            <button class="back-button" onclick="navigateTo('/education')">
+                <span class="back-arrow">←</span>
+            </button>
+            <header>
+                <h1>동영상 레슨</h1>
+            </header>
+            <main>
+                <div class="button-container">
+                    <button class="main-button" onclick="window.open('https://youtube.com/playlist?list=PL4WnUbNHhe60m0lavGl2sKGMfrinGza-Q&si=_I-nwawj0y7_CAlU', '_blank')">
+                        리듬
+                    </button>
+                    <button class="main-button" onclick="window.open('https://youtube.com/playlist?list=PL4WnUbNHhe61QgyJ7JCQTfOwKwZrRkkQ8&si=T-p68Ojum96sB2TL', '_blank')">
+                        테크닉
+                    </button>
+                    <button class="main-button" onclick="window.open('https://youtube.com/playlist?list=PLdbxiPn7dguQMlImDKdgGTyLutnvUOx-V&si=KGAxs74E37nmFcSJ', '_blank')">
+                        핸드팬음악 라이브러리
                     </button>
                 </div>
             </main>
@@ -119,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function certificationView() {
         document.querySelector('.container').innerHTML = `
             <button class="back-button" onclick="navigateTo('/')">
-                <span class="back-arrow">←</span> 뒤로가기
+                <span class="back-arrow">←</span>
             </button>
             <main>
                 <div class="certification-container">
@@ -149,22 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function teachersView() {
         document.querySelector('.container').innerHTML = `
             <button class="back-button" onclick="navigateTo('/')">
-                <span class="back-arrow">←</span> 뒤로가기
+                <span class="back-arrow">←</span>
             </button>
             <main>
                 <div class="teachers-container">
-                    <div class="teacher-card">
-                        <div class="teacher-grid">
-                            <div class="grid-item name">이지은</div>
-                            <div class="grid-item age">30대 여성</div>
-                            <div class="grid-item target">아이, 학생, 성인</div>
-                            <div class="grid-item job">음악치료사</div>
-                            <div class="grid-item location">서울 서대문구</div>
-                            <div class="grid-item class-type">1:1, 소그룹</div>
-                            <div class="grid-item social">인스타그램</div>
-                            <div class="grid-item contact">전화연결</div>
-                        </div>
-                    </div>
                     <div class="teacher-card">
                         <div class="teacher-grid">
                             <div class="grid-item name">이헌국</div>
@@ -173,8 +188,111 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item job">원장</div>
                             <div class="grid-item location">서울 홍대</div>
                             <div class="grid-item class-type">대중강연, 세미나</div>
-                            <div class="grid-item social">인스타그램</div>
-                            <div class="grid-item contact">전화연결</div>
+                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                        </div>
+                    </div>
+                    <div class="teacher-card">
+                        <div class="teacher-grid">
+                            <div class="grid-item name">김문겸</div>
+                            <div class="grid-item age">40대 남성</div>
+                            <div class="grid-item target">학생, 성인</div>
+                            <div class="grid-item job">국악 연주자</div>
+                            <div class="grid-item location">강원도 강릉</div>
+                            <div class="grid-item class-type">1:1, 소그룹</div>
+                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                        </div>
+                    </div>
+                    <div class="teacher-card">
+                        <div class="teacher-grid">
+                            <div class="grid-item name">미지수</div>
+                            <div class="grid-item age">30대 여성</div>
+                            <div class="grid-item target">학생, 성인</div>
+                            <div class="grid-item job">아티스트</div>
+                            <div class="grid-item location">서울 연남동</div>
+                            <div class="grid-item class-type">1:1, 소그룹</div>
+                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                        </div>
+                    </div>
+                    <div class="teacher-card">
+                        <div class="teacher-grid">
+                            <div class="grid-item name">안재민</div>
+                            <div class="grid-item age">30대 남성</div>
+                            <div class="grid-item target">학생, 성인</div>
+                            <div class="grid-item job">배우 겸 연주자</div>
+                            <div class="grid-item location">서울 성북</div>
+                            <div class="grid-item class-type">1:1</div>
+                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                        </div>
+                    </div>
+                    <div class="teacher-card">
+                        <div class="teacher-grid">
+                            <div class="grid-item name">이시온</div>
+                            <div class="grid-item age">40대 남성</div>
+                            <div class="grid-item target">학생, 성인</div>
+                            <div class="grid-item job">명상 음악가</div>
+                            <div class="grid-item location">서울 건대입구</div>
+                            <div class="grid-item class-type">1:1, 소그룹</div>
+                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                        </div>
+                    </div>
+                    <div class="teacher-card">
+                        <div class="teacher-grid">
+                            <div class="grid-item name">이지은</div>
+                            <div class="grid-item age">30대 여성</div>
+                            <div class="grid-item target">아이, 학생, 성인</div>
+                            <div class="grid-item job">음악치료사</div>
+                            <div class="grid-item location">서울 서대문구</div>
+                            <div class="grid-item class-type">1:1, 소그룹</div>
+                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                        </div>
+                    </div>
+                    <div class="teacher-card">
+                        <div class="teacher-grid">
+                            <div class="grid-item name">조진희</div>
+                            <div class="grid-item age">40대 여성</div>
+                            <div class="grid-item target">성인</div>
+                            <div class="grid-item job">암환우 연주자</div>
+                            <div class="grid-item location">서울 성수</div>
+                            <div class="grid-item class-type">1:1</div>
+                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        `;
+    }
+
+    // 커리큘럼 페이지 뷰
+    function curriculumView() {
+        document.querySelector('.container').innerHTML = `
+            <button class="back-button" onclick="navigateTo('/education')">
+                <span class="back-arrow">←</span>
+            </button>
+            <header>
+                <h1>커리큘럼</h1>
+            </header>
+            <main>
+                <div class="curriculum-container">
+                    <div class="curriculum-card">
+                        <h2 class="level-title">입문자</h2>
+                        <div class="level-content">
+                            <div class="level-section">
+                                <h3>필요 역량</h3>
+                                <p>핸드팬에 대한 호기심과 열정</p>
+                                <p>기본적인 리듬감과 음악성</p>
+                            </div>
+                            <div class="level-section">
+                                <h3>가능한 역할</h3>
+                                <p>개인 연습 및 취미 연주</p>
+                                <p>기초 리듬 패턴 습득</p>
+                            </div>
                         </div>
                     </div>
                 </div>

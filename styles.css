@@ -100,14 +100,37 @@ h1 {
     gap: 15px;
     margin-top: 10px;
     align-items: center;
+    position: relative;
 }
 
 .divider {
     width: 75%;
     height: 1px;
     background: linear-gradient(to right, transparent, var(--primary-color), transparent);
-    margin: 20px 0;
+    margin: 15px 0;
     box-shadow: var(--neon-glow);
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    left: 12.5%;
+    width: 75%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    box-shadow: var(--neon-glow);
+    top: 0;
+}
+
+.divider::after {
+    content: '';
+    position: absolute;
+    left: 12.5%;
+    width: 75%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    box-shadow: var(--neon-glow);
+    bottom: 0;
 }
 
 .horizontal-buttons {
@@ -115,6 +138,7 @@ h1 {
     gap: 20px;
     width: 75%;
     justify-content: center;
+    margin: 15px 0;
 }
 
 .horizontal-buttons .main-button {
@@ -179,30 +203,30 @@ h1 {
 }
 
 .back-button {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    background: none;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--primary-color);
-    font-size: 16px;
-    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 20px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 5px;
-    padding: 8px 16px;
-    border-radius: 15px;
+    padding: 8px;
+    border-radius: 50%;
     transition: all 0.3s ease;
     box-shadow: var(--neon-glow);
+    width: 40px;
+    height: 40px;
+    margin: 10px;
 }
 
 .back-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: var(--border-glow);
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-2px);
 }
 
 .back-arrow {
-    font-size: 20px;
+    font-size: 24px;
     line-height: 1;
 }
 
@@ -367,6 +391,26 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    overflow-y: auto;
+    height: calc(95vh - 100px);
+}
+
+.teachers-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.teachers-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.teachers-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.teachers-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .teacher-card {
@@ -375,6 +419,7 @@ h1 {
     padding: 15px;
     overflow: hidden;
     box-shadow: var(--neon-glow);
+    flex-shrink: 0;
 }
 
 .teacher-grid {
@@ -392,6 +437,7 @@ h1 {
     text-overflow: ellipsis;
     display: flex;
     align-items: center;
+    justify-content: center;
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid #e0e0e0;
     border-radius: 8px;
@@ -421,6 +467,7 @@ h1 {
 
 .social {
     grid-column: 1 / 2;
+    background: white;
 }
 
 .contact {
@@ -488,6 +535,78 @@ h1 {
 
 .phone-icon {
     font-size: 20px;
+}
+
+/* 커리큘럼 스타일 */
+.curriculum-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.curriculum-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.curriculum-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.curriculum-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.curriculum-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.curriculum-card {
+    background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: var(--neon-glow);
+}
+
+.level-title {
+    color: #333;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.level-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.level-section {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.level-section h3 {
+    color: #444;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.level-section p {
+    color: #666;
+    font-size: 14px;
+    margin: 5px 0;
+    line-height: 1.4;
 }
 
 @media (max-width: 480px) {
@@ -566,5 +685,32 @@ h1 {
 
     .social, .contact {
         font-size: 11px;
+    }
+
+    .curriculum-container {
+        padding: 15px;
+        max-height: calc(100vh - 150px);
+    }
+
+    .level-content {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .level-section {
+        padding: 12px;
+    }
+
+    .level-section h3 {
+        font-size: 15px;
+    }
+
+    .level-section p {
+        font-size: 13px;
+    }
+
+    .teachers-container {
+        padding: 15px;
+        height: calc(100vh - 80px);
     }
 } 
