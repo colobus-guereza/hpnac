@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 라우팅 처리
     const routes = {
         '/': homeView,
-        '/auth': authView
+        '/auth': authView,
+        '/education': educationView
     };
 
     // 현재 URL에 따른 뷰 렌더링
@@ -36,12 +37,27 @@ document.addEventListener('DOMContentLoaded', () => {
             </header>
             <main>
                 <div class="button-container">
+                    <button class="main-button" onclick="window.open('https://forms.gle/4Fcb5S3KtwKYYejA9', '_blank')">
+                        [홍대] 4/6, 4/20 핸드팬 그룹수업 신청
+                    </button>
+                    <button class="main-button" onclick="location.href='#'">
+                        강사 라인업
+                    </button>
                     <button class="main-button" onclick="navigateTo('/auth')">
                         핸드팬강사 필기시험 접수
                     </button>
-                    <button class="main-button" onclick="location.href='#'">
+                    <button class="main-button" onclick="navigateTo('/education')">
                         교육자료
                     </button>
+                    <div class="divider"></div>
+                    <div class="horizontal-buttons">
+                        <button class="main-button" onclick="window.open('http://qr.kakao.com/talk/eaCVDVzuz5Z7kqRWulpewF1ix7M-', '_blank')">
+                            카톡문의
+                        </button>
+                        <button class="main-button" onclick="window.location.href='tel:+821089679204'">
+                            전화상담
+                        </button>
+                    </div>
                 </div>
             </main>
         `;
@@ -63,6 +79,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="kakao-button" onclick="kakaoAuth()">
                         <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png" alt="카카오톡 로고">
                         카카오톡으로 시작하기
+                    </button>
+                </div>
+            </main>
+        `;
+    }
+
+    // 교육자료 화면 뷰
+    function educationView() {
+        document.querySelector('.container').innerHTML = `
+            <header>
+                <button class="back-button" onclick="navigateTo('/')">
+                    <span class="back-arrow">←</span> 뒤로가기
+                </button>
+                <h1>교육자료</h1>
+            </header>
+            <main>
+                <div class="button-container">
+                    <button class="main-button" onclick="location.href='#'">
+                        커리큘럼
+                    </button>
+                    <button class="main-button" onclick="location.href='#'">
+                        동영상 자료
+                    </button>
+                    <button class="main-button" onclick="location.href='#'">
+                        스케일 사전
                     </button>
                 </div>
             </main>

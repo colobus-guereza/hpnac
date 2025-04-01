@@ -8,6 +8,10 @@
     --container-bg: #2A2A2A;
     --kakao-color: #FEE500;
     --kakao-text: #000000;
+    --button-gradient-start: #F5F5DC;
+    --button-gradient-end: #E8E8D0;
+    --button-hover-gradient-start: #E8E8D0;
+    --button-hover-gradient-end: #D2D2B4;
 }
 
 * {
@@ -79,8 +83,27 @@ h1 {
     align-items: center;
 }
 
+.divider {
+    width: 75%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    margin: 20px 0;
+}
+
+.horizontal-buttons {
+    display: flex;
+    gap: 20px;
+    width: 75%;
+    justify-content: center;
+}
+
+.horizontal-buttons .main-button {
+    flex: 1;
+    width: auto;
+}
+
 .main-button {
-    background-color: var(--secondary-color);
+    background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
     color: #333;
     border: none;
     border-radius: 20px;
@@ -96,7 +119,7 @@ h1 {
 .main-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-    background-color: var(--button-hover-color);
+    background: linear-gradient(135deg, var(--button-hover-gradient-start), var(--button-hover-gradient-end));
 }
 
 .main-button:active {
@@ -187,6 +210,23 @@ h1 {
     transform: translateY(0);
 }
 
+/* 교육자료 페이지 스타일 */
+.education-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.education-description {
+    color: var(--primary-color);
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
 @media (max-width: 480px) {
     body {
         padding: 0;
@@ -225,5 +265,9 @@ h1 {
     .kakao-button {
         padding: 12px 20px;
         font-size: 16px;
+    }
+    
+    .education-description {
+        font-size: 14px;
     }
 } 
