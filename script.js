@@ -2,7 +2,7 @@
 function initializeKakao() {
     try {
         if (!Kakao.isInitialized()) {
-            Kakao.init('YOUR_KAKAO_APP_KEY');
+            Kakao.init('e0cd06a9e0719d0c2a6fcf2bdb9906c2');
             console.log('카카오 SDK 초기화 성공');
         }
     } catch (error) {
