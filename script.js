@@ -62,11 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             전화상담
                         </button>
                     </div>
-                    <button class="main-button empty-button">
+                    <button class="main-button empty-button" onclick="toggleAppDownloadPopup()">
                         앱 다운로드
                     </button>
                 </div>
             </main>
+            <div class="popup-overlay" onclick="toggleAppDownloadPopup()">
+                <img src="images/appdown.png" alt="앱 다운로드 QR코드" class="popup-image" onclick="event.stopPropagation()">
+            </div>
         `;
     }
 
@@ -148,28 +151,92 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="back-button" onclick="navigateTo('/')">
                 <span class="back-arrow">←</span>
             </button>
-            <main>
-                <div class="certification-container">
-                    <div class="certification-info">
-                        <p class="certification-title">자격명: 핸드팬강사</p>
-                        <p class="certification-number">민간자격등록번호: 2025-001474</p>
-                        <div class="certification-levels">
-                            <div class="level-item">
-                                <h3>2급</h3>
-                                <p>일반인 및 학생들을 대상으로 핸드팬을 활용한 즉흥연주 기초과정을 가르치는 직무를 수행</p>
-                            </div>
-                            <div class="level-item">
-                                <h3>1급</h3>
-                                <p>자신만의 수업기법을 개발하여 1급 및 2급 핸드팬강사를 양성하고 일반인 및 학생들을 대상으로 핸드팬 연주를 가르치는 직무를 수행</p>
+            <div class="certification-container">
+                <div class="certification-slider">
+                    <div class="slide">
+                        <div class="certification-info">
+                            <p class="certification-title">자격명: 핸드팬강사</p>
+                            <p class="certification-number">민간자격등록번호: 2025-001474</p>
+                            <div class="certification-levels">
+                                <div class="level-item">
+                                    <h3>2급</h3>
+                                    <p>일반인 및 학생들을 대상으로 핸드팬을 활용한 즉흥연주 기초과정을 가르치는 직무를 수행</p>
+                                </div>
+                                <div class="level-item">
+                                    <h3>1급</h3>
+                                    <p>자신만의 수업기법을 개발하여 1급 및 2급 핸드팬강사를 양성하고 일반인 및 학생들을 대상으로 핸드팬 연주를 가르치는 직무를 수행</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <button class="main-button" onclick="navigateTo('/auth')">
-                        필기시험 접수
-                    </button>
+                    <div class="slide">
+                        <img src="images/certi.png" alt="자격증" class="certification-image">
+                    </div>
                 </div>
-            </main>
+                <div class="slider-controls">
+                    <button class="slider-button prev" onclick="showSlide(currentSlide - 1)">←</button>
+                    <button class="slider-button next" onclick="showSlide(currentSlide + 1)">→</button>
+                </div>
+                <button class="certification-exam-button" onclick="navigateTo('/auth')">
+                    필기시험 접수
+                </button>
+            </div>
         `;
+        initializeSlider();
+    }
+
+    // 슬라이더 초기화 함수
+    function initializeSlider() {
+        window.currentSlide = 0;
+        const slider = document.querySelector('.certification-slider');
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.nav-dot');
+        const prevButton = document.querySelector('.slider-button.prev');
+        const nextButton = document.querySelector('.slider-button.next');
+
+        if (!slider || !slides.length) return;
+
+        window.showSlide = function (index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+
+            currentSlide = index;
+            const offset = -100 * index;
+            slider.style.transform = `translateX(${offset}%)`;
+
+            // 네비게이션 닷 업데이트
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            // 버튼 상태 업데이트
+            if (prevButton) prevButton.style.opacity = index === 0 ? '0.5' : '1';
+            if (nextButton) nextButton.style.opacity = index === slides.length - 1 ? '0.5' : '1';
+        };
+
+        // 터치/스와이프 이벤트 처리
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slider.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        slider.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > 50) { // 최소 스와이프 거리
+                if (diff > 0) {
+                    showSlide(currentSlide + 1);
+                } else {
+                    showSlide(currentSlide - 1);
+                }
+            }
+        });
+
+        // 초기 슬라이드 표시
+        showSlide(0);
     }
 
     // 강사 라인업 화면 뷰
@@ -188,8 +255,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item job">원장</div>
                             <div class="grid-item location">서울 홍대</div>
                             <div class="grid-item class-type">대중강연, 세미나</div>
-                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/snd_handpan_academy/', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+821089679204'">전화연결</button>
                         </div>
                     </div>
                     <div class="teacher-card">
@@ -200,8 +267,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item job">국악 연주자</div>
                             <div class="grid-item location">강원도 강릉</div>
                             <div class="grid-item class-type">1:1, 소그룹</div>
-                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/ansrua84/', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+821029388815'">전화연결</button>
                         </div>
                     </div>
                     <div class="teacher-card">
@@ -212,8 +279,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item job">아티스트</div>
                             <div class="grid-item location">서울 연남동</div>
                             <div class="grid-item class-type">1:1, 소그룹</div>
-                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/bambispring_/', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+821090830022'">전화연결</button>
                         </div>
                     </div>
                     <div class="teacher-card">
@@ -224,8 +291,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item job">배우 겸 연주자</div>
                             <div class="grid-item location">서울 성북</div>
                             <div class="grid-item class-type">1:1</div>
-                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/artist__jmin/', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+821072297450'">전화연결</button>
                         </div>
                     </div>
                     <div class="teacher-card">
@@ -236,8 +303,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item job">명상 음악가</div>
                             <div class="grid-item location">서울 건대입구</div>
                             <div class="grid-item class-type">1:1, 소그룹</div>
-                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/sion.handpan/', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+821044454689'">전화연결</button>
                         </div>
                     </div>
                     <div class="teacher-card">
@@ -248,8 +315,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item job">음악치료사</div>
                             <div class="grid-item location">서울 서대문구</div>
                             <div class="grid-item class-type">1:1, 소그룹</div>
-                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/warmwaves_therapy/', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+821045299038'">전화연결</button>
                         </div>
                     </div>
                     <div class="teacher-card">
@@ -260,8 +327,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item job">암환우 연주자</div>
                             <div class="grid-item location">서울 성수</div>
                             <div class="grid-item class-type">1:1</div>
-                            <button class="grid-item social" onclick="window.open('https://instagram.com', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+'">전화연결</button>
+                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/designjinhee/', '_blank')">인스타그램</button>
+                            <button class="grid-item contact" onclick="window.location.href='tel:+821031270691'">전화연결</button>
                         </div>
                     </div>
                 </div>
@@ -356,4 +423,17 @@ function kakaoAuth() {
             }
         }
     });
+}
+
+// 앱 다운로드 팝업 토글 함수
+window.toggleAppDownloadPopup = function () {
+    const overlay = document.querySelector('.popup-overlay');
+    overlay.classList.toggle('active');
+
+    // 팝업이 열릴 때 스크롤 방지
+    if (overlay.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
 } 
