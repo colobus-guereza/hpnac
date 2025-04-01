@@ -19,7 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const routes = {
         '/': homeView,
         '/auth': authView,
-        '/education': educationView
+        '/education': educationView,
+        '/certification': certificationView,
+        '/teachers': teachersView
     };
 
     // 현재 URL에 따른 뷰 렌더링
@@ -33,18 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function homeView() {
         document.querySelector('.container').innerHTML = `
             <header>
-                <h1>아카데미 라이브러리</h1>
+                <h1>아카데미 서비스</h1>
             </header>
             <main>
                 <div class="button-container">
                     <button class="main-button" onclick="window.open('https://forms.gle/4Fcb5S3KtwKYYejA9', '_blank')">
                         [홍대] 4/6, 4/20 핸드팬 그룹수업 신청
                     </button>
-                    <button class="main-button" onclick="location.href='#'">
+                    <button class="main-button" onclick="navigateTo('/teachers')">
                         강사 라인업
                     </button>
-                    <button class="main-button" onclick="navigateTo('/auth')">
-                        핸드팬강사 필기시험 접수
+                    <button class="main-button" onclick="navigateTo('/certification')">
+                        핸드팬강사 자격증
                     </button>
                     <button class="main-button" onclick="navigateTo('/education')">
                         교육자료
@@ -58,6 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             전화상담
                         </button>
                     </div>
+                    <button class="main-button empty-button">
+                        앱 다운로드
+                    </button>
                 </div>
             </main>
         `;
@@ -105,6 +110,73 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="main-button" onclick="location.href='#'">
                         스케일 사전
                     </button>
+                </div>
+            </main>
+        `;
+    }
+
+    // 자격증 정보 페이지
+    function certificationView() {
+        document.querySelector('.container').innerHTML = `
+            <button class="back-button" onclick="navigateTo('/')">
+                <span class="back-arrow">←</span> 뒤로가기
+            </button>
+            <main>
+                <div class="certification-container">
+                    <div class="certification-info">
+                        <p class="certification-title">자격명: 핸드팬강사</p>
+                        <p class="certification-number">민간자격등록번호: 2025-001474</p>
+                        <div class="certification-levels">
+                            <div class="level-item">
+                                <h3>2급</h3>
+                                <p>일반인 및 학생들을 대상으로 핸드팬을 활용한 즉흥연주 기초과정을 가르치는 직무를 수행</p>
+                            </div>
+                            <div class="level-item">
+                                <h3>1급</h3>
+                                <p>자신만의 수업기법을 개발하여 1급 및 2급 핸드팬강사를 양성하고 일반인 및 학생들을 대상으로 핸드팬 연주를 가르치는 직무를 수행</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="main-button" onclick="navigateTo('/auth')">
+                        필기시험 접수
+                    </button>
+                </div>
+            </main>
+        `;
+    }
+
+    // 강사 라인업 화면 뷰
+    function teachersView() {
+        document.querySelector('.container').innerHTML = `
+            <button class="back-button" onclick="navigateTo('/')">
+                <span class="back-arrow">←</span> 뒤로가기
+            </button>
+            <main>
+                <div class="teachers-container">
+                    <div class="teacher-card">
+                        <div class="teacher-grid">
+                            <div class="grid-item name">이지은</div>
+                            <div class="grid-item age">30대 여성</div>
+                            <div class="grid-item target">아이, 학생, 성인</div>
+                            <div class="grid-item job">음악치료사</div>
+                            <div class="grid-item location">서울 서대문구</div>
+                            <div class="grid-item class-type">1:1, 소그룹</div>
+                            <div class="grid-item social">인스타그램</div>
+                            <div class="grid-item contact">전화연결</div>
+                        </div>
+                    </div>
+                    <div class="teacher-card">
+                        <div class="teacher-grid">
+                            <div class="grid-item name">이헌국</div>
+                            <div class="grid-item age">30대 남성</div>
+                            <div class="grid-item target">성인</div>
+                            <div class="grid-item job">원장</div>
+                            <div class="grid-item location">서울 홍대</div>
+                            <div class="grid-item class-type">대중강연, 세미나</div>
+                            <div class="grid-item social">인스타그램</div>
+                            <div class="grid-item contact">전화연결</div>
+                        </div>
+                    </div>
                 </div>
             </main>
         `;
