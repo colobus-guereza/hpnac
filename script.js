@@ -171,6 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <p>자신만의 수업기법을 개발하여 1급 및 2급 핸드팬강사를 양성하고 일반인 및 학생들을 대상으로 핸드팬 연주를 가르치는 직무를 수행</p>
                                 </div>
                             </div>
+                            <div class="exam-button-container">
+                                <button class="exam-button" onclick="navigateTo('/auth')">필기시험 접수</button>
+                            </div>
                         </div>
                     </div>
                     <div class="slide">
@@ -181,9 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="slider-button prev" onclick="showSlide(currentSlide - 1)">←</button>
                     <button class="slider-button next" onclick="showSlide(currentSlide + 1)">→</button>
                 </div>
-                <button class="certification-exam-button" onclick="navigateTo('/auth')">
-                    필기시험 접수
-                </button>
             </div>
         `;
         initializeSlider();
@@ -543,4 +543,23 @@ function handleKakaoCertificationCallback(response) {
     } else {
         alert('본인인증에 실패했습니다. 다시 시도해주세요.');
     }
+}
+
+function teacherCardView() {
+    const container = document.getElementById('container');
+    container.innerHTML = `
+        <div class="teacher-card">
+            <div class="teacher-name">핸드팬강사 자격</div>
+            <div class="teacher-title">Handpan Instructor Certification</div>
+            <div class="teacher-details">
+                <p>핸드팬강사 자격은 핸드팬의 전문성을 인정받는 국제 자격증입니다.</p>
+                <p>1급: 핸드팬의 모든 스케일과 테크닉을 완벽하게 마스터한 전문가</p>
+                <p>2급: 핸드팬의 주요 스케일과 테크닉을 숙달한 전문가</p>
+                <p>3급: 핸드팬의 기본 스케일과 테크닉을 이해한 전문가</p>
+                <div class="exam-button-container">
+                    <button class="exam-button" onclick="examView()">필기시험 접수</button>
+                </div>
+            </div>
+        </div>
+    `;
 } 
