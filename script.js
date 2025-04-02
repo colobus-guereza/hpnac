@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '/teachers': teachersView,
         '/video-lessons': videoLessonsView,
         '/curriculum': curriculumView,
-        '/scale-dictionary': scaleDictionaryView
+        // '/scale-dictionary': scaleDictionaryView  // 임시 비활성화
     };
 
     // 현재 URL에 따른 뷰 렌더링
@@ -113,9 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="main-button" onclick="navigateTo('/video-lessons')">
                         동영상 레슨
                     </button>
+                    <!-- 스케일 사전 임시 비활성화
                     <button class="main-button" onclick="navigateTo('/scale-dictionary')">
                         스케일 사전
                     </button>
+                    -->
                 </div>
             </main>
         `;
@@ -172,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="images/certi.png" alt="자격증" class="certification-image">
+                        <img src="images/certi2.png" alt="자격증" class="certification-image">
                     </div>
                 </div>
                 <div class="slider-controls">
@@ -344,25 +346,42 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="back-button" onclick="navigateTo('/education')">
                 <span class="back-arrow">←</span>
             </button>
-            <header>
-                <h1>커리큘럼</h1>
-            </header>
             <main>
                 <div class="curriculum-container">
+                    <p class="curriculum-subtitle">기초과정 학습과목</p>
                     <div class="curriculum-card">
-                        <h2 class="level-title">입문자</h2>
-                        <div class="level-content">
-                            <div class="level-section">
-                                <h3>필요 역량</h3>
-                                <p>핸드팬에 대한 호기심과 열정</p>
-                                <p>기본적인 리듬감과 음악성</p>
-                            </div>
-                            <div class="level-section">
-                                <h3>가능한 역할</h3>
-                                <p>개인 연습 및 취미 연주</p>
-                                <p>기초 리듬 패턴 습득</p>
-                            </div>
-                        </div>
+                        <h2 class="level-title">1. 이론</h2>
+                        <ul class="curriculum-list">
+                            <li>핸드팬 구조와 명칭</li>
+                            <li>하모닉스 원리</li>
+                            <li>튜닝과 리튠</li>
+                            <li>스케일 개론</li>
+                            <li>작곡</li>
+                            <li>교수법</li>
+                            <li>악기 보관/관리법</li>
+                        </ul>
+                    </div>
+                    <div class="curriculum-card">
+                        <h2 class="level-title">2. 리듬</h2>
+                        <ul class="curriculum-list">
+                            <li>4박자 기본리듬</li>
+                            <li>6박자 기본리듬</li>
+                            <li>리듬 쪼개기</li>
+                            <li>하이햇으로 그루브 만들기</li>
+                            <li>Odd Meter 확장</li>
+                            <li>나만의 리듬 만들기</li>
+                        </ul>
+                    </div>
+                    <div class="curriculum-card">
+                        <h2 class="level-title">3. 테크닉</h2>
+                        <ul class="curriculum-list">
+                            <li>손가락 트레이닝</li>
+                            <li>아르페지오</li>
+                            <li>리듬화음멜로디 동시연주</li>
+                            <li>롤 Roll</li>
+                            <li>음색 확장</li>
+                            <li>핸드팬 듀오 플레이: 캐슬링</li>
+                        </ul>
                     </div>
                 </div>
             </main>
