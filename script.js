@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="images/certi2.png" alt="자격증" class="certification-image">
+                        <img src="images/certi.png" alt="자격증" class="certification-image">
                     </div>
                 </div>
                 <div class="slider-controls">
