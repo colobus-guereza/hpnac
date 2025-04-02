@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
         '/certification': certificationView,
         '/teachers': teachersView,
         '/video-lessons': videoLessonsView,
-        '/curriculum': curriculumView
+        '/curriculum': curriculumView,
+        '/scale-dictionary': scaleDictionaryView
     };
 
     // 현재 URL에 따른 뷰 렌더링
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function homeView() {
         document.querySelector('.container').innerHTML = `
             <header>
-                <h1>아카데미 서비스</h1>
+                <h1>Handpan 아카데미</h1>
             </header>
             <main>
                 <div class="button-container">
@@ -112,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="main-button" onclick="navigateTo('/video-lessons')">
                         동영상 레슨
                     </button>
-                    <button class="main-button" onclick="location.href='#'">
+                    <button class="main-button" onclick="navigateTo('/scale-dictionary')">
                         스케일 사전
                     </button>
                 </div>
@@ -156,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="slide">
                         <div class="certification-info">
                             <p class="certification-title">자격명: 핸드팬강사</p>
+                            <p class="certification-issuer">발급: 사운드앤디자인(SND)</p>
                             <p class="certification-number">민간자격등록번호: 2025-001474</p>
                             <div class="certification-levels">
                                 <div class="level-item">
@@ -256,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item location">서울 홍대</div>
                             <div class="grid-item class-type">대중강연, 세미나</div>
                             <button class="grid-item social" onclick="window.open('https://www.instagram.com/snd_handpan_academy/', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+821089679204'">전화연결</button>
+                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821089679204'">전화연결</button> -->
                         </div>
                     </div>
                     <div class="teacher-card">
@@ -268,19 +270,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item location">강원도 강릉</div>
                             <div class="grid-item class-type">1:1, 소그룹</div>
                             <button class="grid-item social" onclick="window.open('https://www.instagram.com/ansrua84/', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+821029388815'">전화연결</button>
+                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821029388815'">전화연결</button> -->
                         </div>
                     </div>
                     <div class="teacher-card">
                         <div class="teacher-grid">
                             <div class="grid-item name">미지수</div>
                             <div class="grid-item age">30대 여성</div>
-                            <div class="grid-item target">학생, 성인</div>
-                            <div class="grid-item job">아티스트</div>
-                            <div class="grid-item location">서울 연남동</div>
+                            <div class="grid-item target">아동, 청소년, 성인</div>
+                            <div class="grid-item job">배우 & 연주자</div>
+                            <div class="grid-item location">서울 서대문구</div>
                             <div class="grid-item class-type">1:1, 소그룹</div>
-                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/bambispring_/', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+821090830022'">전화연결</button>
+                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/warmwaves_therapy/', '_blank')">인스타그램</button>
+                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821045299038'">전화연결</button> -->
                         </div>
                     </div>
                     <div class="teacher-card">
@@ -288,11 +290,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item name">안재민</div>
                             <div class="grid-item age">30대 남성</div>
                             <div class="grid-item target">학생, 성인</div>
-                            <div class="grid-item job">배우 겸 연주자</div>
+                            <div class="grid-item job">배우 & 연주자</div>
                             <div class="grid-item location">서울 성북</div>
                             <div class="grid-item class-type">1:1</div>
                             <button class="grid-item social" onclick="window.open('https://www.instagram.com/artist__jmin/', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+821072297450'">전화연결</button>
+                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821072297450'">전화연결</button> -->
                         </div>
                     </div>
                     <div class="teacher-card">
@@ -304,19 +306,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item location">서울 건대입구</div>
                             <div class="grid-item class-type">1:1, 소그룹</div>
                             <button class="grid-item social" onclick="window.open('https://www.instagram.com/sion.handpan/', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+821044454689'">전화연결</button>
+                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821044454689'">전화연결</button> -->
                         </div>
                     </div>
                     <div class="teacher-card">
                         <div class="teacher-grid">
                             <div class="grid-item name">이지은</div>
                             <div class="grid-item age">30대 여성</div>
-                            <div class="grid-item target">아이, 학생, 성인</div>
-                            <div class="grid-item job">음악치료사</div>
+                            <div class="grid-item target">아동, 청소년, 성인</div>
+                            <div class="grid-item job">음악치료, 명상상담</div>
                             <div class="grid-item location">서울 서대문구</div>
                             <div class="grid-item class-type">1:1, 소그룹</div>
                             <button class="grid-item social" onclick="window.open('https://www.instagram.com/warmwaves_therapy/', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+821045299038'">전화연결</button>
+                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821045299038'">전화연결</button> -->
                         </div>
                     </div>
                     <div class="teacher-card">
@@ -328,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item location">서울 성수</div>
                             <div class="grid-item class-type">1:1</div>
                             <button class="grid-item social" onclick="window.open('https://www.instagram.com/designjinhee/', '_blank')">인스타그램</button>
-                            <button class="grid-item contact" onclick="window.location.href='tel:+821031270691'">전화연결</button>
+                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821031270691'">전화연결</button> -->
                         </div>
                     </div>
                 </div>
@@ -364,6 +366,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             </main>
+        `;
+    }
+
+    // 스케일 사전 페이지 뷰
+    function scaleDictionaryView() {
+        document.querySelector('.container').innerHTML = `
+            <div class="scale-dictionary-container">
+                <button class="back-button" onclick="navigateTo('/education')">
+                    <span class="back-arrow">←</span>
+                </button>
+                <header>
+                    <h1>Scale Index</h1>
+                </header>
+                <div class="scale-card">
+                    <div class="scale-grid">
+                        <div class="grid-item name">D Kurd 10</div>
+                        <div class="grid-item notes">D / A Bb C D E F G A C</div>
+                        <div class="grid-item">Popular/minor</div>
+                        <div class="grid-item">Steady-Seller</div>
+                        <div class="grid-item">초보자 추천</div>
+                        <div class="grid-item video" onclick="window.open('https://youtube.com/playlist?list=PLdbxiPn7dguQMlImDKdgGTyLutnvUOx-V&si=KGAxs74E37nmFcSJ', '_blank')">동영상 보기</div>
+                    </div>
+                </div>
+            </div>
         `;
     }
 
@@ -436,4 +462,19 @@ window.toggleAppDownloadPopup = function () {
     } else {
         document.body.style.overflow = '';
     }
+}
+
+function createTeacherCard(teacher) {
+    return `
+        <div class="teacher-card">
+            <div class="teacher-grid">
+                <div class="grid-item name">${teacher.name}</div>
+                <div class="grid-item job">${teacher.job}</div>
+                <div class="grid-item target">${teacher.target}</div>
+                <div class="grid-item social" onclick="window.open('${teacher.social}', '_blank')">SNS</div>
+                <div class="grid-item contact" onclick="window.open('${teacher.contact}', '_blank')">문의하기</div>
+                <!-- <div class="grid-item call" onclick="window.location.href='tel:${teacher.phone}'">전화연결</div> -->
+            </div>
+        </div>
+    `;
 } 

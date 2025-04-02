@@ -1,19 +1,19 @@
 :root {
-    --primary-color: #E0E0E0;
-    --secondary-color: #F5F5DC;
-    --accent-color: #FF6B6B;
-    --background-color: #1A1A1A;
-    --text-color: #E0E0E0;
-    --button-hover-color: #E8E8D0;
-    --container-bg: #2A2A2A;
+    --primary-color: #E6E6D1;
+    --secondary-color: #FFFACD;
+    --accent-color: #F0E68C;
+    --background-color: #F5F5DC;
+    --text-color: #8B8B5A;
+    --button-hover-color: #FFF8DC;
+    --container-bg: #FAFAD2;
     --kakao-color: #FEE500;
     --kakao-text: #000000;
-    --button-gradient-start: #F5F5DC;
-    --button-gradient-end: #E8E8D0;
-    --button-hover-gradient-start: #E8E8D0;
-    --button-hover-gradient-end: #D2D2B4;
-    --neon-glow: 0 0 10px rgba(255, 255, 255, 0.3);
-    --border-glow: 0 0 15px rgba(255, 255, 255, 0.2);
+    --button-gradient-start: #FFFACD;
+    --button-gradient-end: #F0E68C;
+    --button-hover-gradient-start: #FFF8DC;
+    --button-hover-gradient-end: #F5F5DC;
+    --neon-glow: 0 0 10px rgba(240, 230, 140, 0.3);
+    --border-glow: 0 0 15px rgba(240, 230, 140, 0.2);
 }
 
 * {
@@ -48,7 +48,7 @@ body {
     box-shadow: var(--neon-glow);
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(240, 230, 140, 0.3);
 }
 
 .container::before {
@@ -88,7 +88,7 @@ header::after {
 h1 {
     font-size: 28px;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--text-color);
     margin-bottom: 20px;
     text-shadow: var(--neon-glow);
     letter-spacing: 1px;
@@ -148,8 +148,8 @@ h1 {
 
 .main-button {
     background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
-    color: #333;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    border: 1px solid rgba(240, 230, 140, 0.3);
     border-radius: 15px;
     padding: 15px;
     font-size: 18px;
@@ -193,19 +193,19 @@ h1 {
 .empty-button {
     background: transparent;
     border: 2px dashed var(--button-gradient-end);
-    color: var(--button-gradient-end);
+    color: var(--text-color);
 }
 
 .empty-button:hover {
     background: transparent;
     border-color: var(--button-hover-gradient-end);
-    color: var(--button-hover-gradient-end);
+    color: var(--text-color);
 }
 
 .back-button {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background: rgba(240, 230, 140, 0.1);
+    border: 1px solid rgba(240, 230, 140, 0.3);
+    color: var(--text-color);
     font-size: 20px;
     display: flex;
     align-items: center;
@@ -221,7 +221,7 @@ h1 {
 }
 
 .back-button:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(240, 230, 140, 0.2);
     transform: translateX(-2px);
 }
 
@@ -315,7 +315,7 @@ h1 {
 }
 
 .education-description {
-    color: var(--primary-color);
+    color: var(--text-color);
     font-size: 16px;
     text-align: center;
     line-height: 1.6;
@@ -355,26 +355,39 @@ h1 {
     width: 100%;
     max-width: 420px;
     height: 594px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(250, 250, 210, 0.8);
     border-radius: 10px;
-    padding: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: var(--neon-glow);
+    padding: 40px 30px;
+    border: 2px solid var(--text-color);
+    box-shadow: 0 0 10px rgba(139, 139, 90, 0.2);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 20px;
+    justify-content: flex-start;
+    gap: 30px;
     overflow-y: auto;
+    position: relative;
+}
+
+.certification-info::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid var(--text-color);
+    border-radius: 8px;
+    pointer-events: none;
 }
 
 .certification-image {
-    width: 420px; /* Same as certification-info */
-    height: 594px; /* A4 ratio */
+    width: 420px;
+    height: 594px;
     object-fit: contain;
     border-radius: 10px;
-    box-shadow: var(--neon-glow);
+    box-shadow: 0 0 10px rgba(139, 139, 90, 0.2);
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--text-color);
 }
 
 .slider-controls {
@@ -415,40 +428,47 @@ h1 {
 }
 
 .certification-title {
-    color: var(--primary-color);
-    font-size: 18px;
-    font-weight: 600;
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 700;
     text-shadow: var(--neon-glow);
     text-align: left;
     padding-left: 10px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--text-color);
+    padding-bottom: 10px;
 }
 
-.certification-number {
+.certification-issuer, .certification-number {
     color: var(--text-color);
     font-size: 16px;
     opacity: 0.9;
     text-align: left;
     padding-left: 10px;
+    margin-bottom: 10px;
+    line-height: 1.6;
 }
 
 .certification-levels {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 25px;
     padding-left: 10px;
+    margin-top: 20px;
 }
 
 .level-item {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .level-item h3 {
-    color: var(--primary-color);
+    color: var(--text-color);
     font-size: 16px;
     font-weight: 600;
     text-align: left;
+    margin-bottom: 5px;
 }
 
 .level-item p {
@@ -457,10 +477,11 @@ h1 {
     line-height: 1.6;
     text-align: left;
     opacity: 0.9;
+    padding-left: 10px;
 }
 
 .certification-exam-button {
-    margin-top: 5px;
+    margin-top: 30px;
     width: 200px;
     background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
     color: #333;
@@ -475,6 +496,7 @@ h1 {
     text-align: center;
     position: relative;
     z-index: 200;
+    align-self: center;
 }
 
 .certification-exam-button:hover {
@@ -536,10 +558,10 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid #e0e0e0;
+    background: rgba(250, 250, 210, 0.9);
+    border: 1px solid rgba(240, 230, 140, 0.3);
     border-radius: 8px;
-    color: #333;
+    color: var(--text-color);
     min-height: 35px;
 }
 
@@ -556,33 +578,16 @@ h1 {
 
 .social, .contact {
     justify-content: center;
-    background: white;
-    border: 1px solid #e0e0e0;
+    background: rgba(250, 250, 210, 0.9);
+    border: 1px solid rgba(240, 230, 140, 0.3);
     cursor: pointer;
     font-size: 13px;
     grid-row: 3;
+    color: var(--text-color);
 }
 
-.social {
-    grid-column: 1 / 2;
-    background: linear-gradient(135deg, #F5E6D3, #A2B9A2);
-    border: none;
-    color: #555;
-}
-
-.social:hover {
-    background: linear-gradient(135deg, #F8EDE3, #B2C9B2);
-}
-
-.contact {
-    grid-column: 2 / 3;
-    background: linear-gradient(135deg, #F5E6D3, #A2B9A2);
-    border: none;
-    color: #555;
-}
-
-.contact:hover {
-    background: linear-gradient(135deg, #F8EDE3, #B2C9B2);
+.social:hover, .contact:hover {
+    background: rgba(240, 240, 224, 0.9);
 }
 
 .teacher-info {
@@ -761,6 +766,7 @@ h1 {
         font-size: 16px;
     }
     
+    .certification-issuer,
     .certification-number {
         font-size: 14px;
     }
@@ -857,7 +863,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(240, 230, 140, 0.7);
     display: none;
     justify-content: center;
     align-items: center;
@@ -886,4 +892,84 @@ h1 {
         opacity: 1;
         transform: scale(1);
     }
+}
+
+.scale-dictionary-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    height: calc(100vh - 140px);
+}
+
+.scale-card {
+    background: var(--container-bg);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(240, 230, 140, 0.3);
+    box-shadow: var(--neon-glow);
+}
+
+.scale-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.scale-grid .grid-item {
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--button-gradient-start);
+    color: #333;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: var(--neon-glow);
+}
+
+.scale-grid .grid-item.name {
+    grid-column: 1 / -1;
+    font-size: 18px;
+    font-weight: 700;
+    background: var(--button-gradient-end);
+    color: var(--text-color);
+}
+
+.scale-grid .grid-item.notes {
+    grid-column: 1 / -1;
+    font-size: 16px;
+    background: var(--button-gradient-start);
+    color: #333;
+}
+
+.scale-grid .grid-item.video {
+    grid-column: 1 / -1;
+    background: var(--button-gradient-end);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scale-grid .grid-item.video:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(240, 230, 140, 0.5);
+}
+
+.scale-dictionary-container header {
+    text-align: center;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.scale-dictionary-container h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+    text-shadow: var(--neon-glow);
+    letter-spacing: 1px;
 } 
