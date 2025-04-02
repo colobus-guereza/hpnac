@@ -85,11 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </header>
             <main>
                 <div class="auth-container">
-                    <p class="auth-description">카카오톡으로 간편하게 본인인증을 진행해주세요.</p>
-                    <p class="auth-sub-description">인증에 실패한 경우 뒤로가기를 눌러,<br>홈으로 돌아갈 수 있습니다.</p>
-                    <button class="kakao-button" onclick="kakaoAuth()">
-                        <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png" alt="카카오톡 로고">
-                        카카오톡으로 시작하기
+                    <p class="auth-description">필기시험 접수를 위해 본인인증이 필요합니다.</p>
+                    <p class="auth-sub-description">카카오톡으로 간편하게 본인인증을 진행해주세요.</p>
+                    <button class="kakao-button" onclick="startKakaoCertification()">
+                        <img src="images/kakao.png" alt="카카오톡">
+                        카카오톡 본인인증
                     </button>
                 </div>
             </main>
@@ -477,4 +477,41 @@ function createTeacherCard(teacher) {
             </div>
         </div>
     `;
+}
+
+function showCertificationExam() {
+    const content = `
+        <div class="auth-container">
+            <p class="auth-description">필기시험 접수를 위해 본인인증이 필요합니다.</p>
+            <p class="auth-sub-description">카카오톡으로 간편하게 본인인증을 진행해주세요.</p>
+            <button class="kakao-button" onclick="startKakaoCertification()">
+                <img src="images/kakao.png" alt="카카오톡">
+                카카오톡 본인인증
+            </button>
+        </div>
+    `;
+    showContent(content);
+}
+
+function startKakaoCertification() {
+    // 카카오톡 본인인증 서비스 초기화
+    Kakao.init('YOUR_KAKAO_APP_KEY');
+
+    // 본인인증 요청
+    Kakao.Auth.authorize({
+        redirectUri: 'YOUR_REDIRECT_URI',
+        scope: 'account_ci',
+        prompt: 'select_account',
+        serviceTerms: ['account_ci']
+    });
+}
+
+// 카카오톡 본인인증 콜백 처리
+function handleKakaoCertificationCallback(response) {
+    if (response.ci) {
+        // 본인인증 성공 시 필기시험 링크로 이동
+        window.location.href = 'https://forms.gle/8QJ9QJ9QJ9QJ9QJ9Q';
+    } else {
+        alert('본인인증에 실패했습니다. 다시 시도해주세요.');
+    }
 } 
