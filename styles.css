@@ -892,9 +892,89 @@ h1 {
 .scale-card {
     background: var(--container-bg);
     border-radius: 15px;
-    padding: 20px;
+    padding: 25px;
     border: 1px solid rgba(240, 230, 140, 0.3);
     box-shadow: var(--neon-glow);
+    margin: 20px;
+}
+
+.scale-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.scale-header h2 {
+    color: var(--text-color);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.scale-notes {
+    color: var(--text-color);
+    font-size: 20px;
+    font-family: monospace;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin: 15px 0;
+}
+
+.scale-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background: rgba(240, 230, 140, 0.1);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.feature-item:hover {
+    background: rgba(240, 230, 140, 0.2);
+    transform: translateY(-2px);
+}
+
+.feature-icon {
+    font-size: 20px;
+}
+
+.feature-text {
+    color: var(--text-color);
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+
+.video-button {
+    width: 100%;
+    padding: 15px;
+    background: var(--secondary-color);
+    border: none;
+    border-radius: 10px;
+    color: var(--text-color);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.video-button:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.video-icon {
+    font-size: 20px;
 }
 
 .scale-grid {
@@ -986,4 +1066,41 @@ h1 {
         font-size: 12px;
         letter-spacing: -0.5px;
     }
+
+    .scale-card {
+        padding: 20px;
+        margin: 15px;
+    }
+
+    .scale-header h2 {
+        font-size: 20px;
+    }
+
+    .scale-notes {
+        font-size: 18px;
+    }
+
+    .feature-text {
+        font-size: 13px;
+    }
+
+    .video-button {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+.video-container {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--neon-glow);
+}
+
+.video-container iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: none;
 } 

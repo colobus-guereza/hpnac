@@ -376,18 +376,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="back-button" onclick="navigateTo('/education')">
                     <span class="back-arrow">←</span>
                 </button>
-                <header>
-                    <h1>Scale Index</h1>
-                </header>
                 <div class="scale-card">
-                    <div class="scale-grid">
-                        <div class="grid-item name">D Kurd 10</div>
-                        <div class="grid-item notes">D / A Bb C D E F G A C</div>
-                        <div class="grid-item">Popular/minor</div>
-                        <div class="grid-item">Steady-Seller</div>
-                        <div class="grid-item">초보자 추천</div>
-                        <div class="grid-item video" onclick="window.open('https://youtube.com/playlist?list=PLdbxiPn7dguQMlImDKdgGTyLutnvUOx-V&si=KGAxs74E37nmFcSJ', '_blank')">동영상 보기</div>
+                    <div class="scale-header">
+                        <h2>D Kurd 10</h2>
+                        <p class="scale-notes">D / A Bb C D E F G A C</p>
                     </div>
+                    <div class="scale-features">
+                        <div class="feature-item">
+                            <span class="feature-text">오리지널 디자인</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-text">대중적인 마이너</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-text">스테디셀러</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-text">초보자 추천</span>
+                        </div>
+                    </div>
+                    <button class="video-button" onclick="window.open('https://www.youtube.com/watch?v=uL40C1bqKik', '_blank')">
+                        동영상 보기
+                    </button>
                 </div>
             </div>
         `;
