@@ -164,26 +164,6 @@ h1 {
     position: relative;
 }
 
-.main-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    transition: 0.5s;
-}
-
-.main-button:hover::before {
-    left: 100%;
-}
-
 .main-button:hover {
     transform: translateY(-2px);
     box-shadow: var(--border-glow);
@@ -332,6 +312,7 @@ h1 {
     overflow: visible;
     padding: 20px;
     position: relative;
+    justify-content: center;
 }
 
 .certification-slider {
@@ -341,6 +322,7 @@ h1 {
     display: flex;
     transition: transform 0.3s ease-in-out;
     overflow: visible;
+    align-items: center;
 }
 
 .slide {
@@ -349,13 +331,13 @@ h1 {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    width: 100%;
 }
 
 .certification-info {
     width: 100%;
     max-width: 420px;
-    height: auto;
-    aspect-ratio: 3/4;
+    height: 594px;
     background: rgba(250, 250, 210, 0.8);
     border-radius: 10px;
     padding: 30px;
@@ -382,15 +364,14 @@ h1 {
 }
 
 .certification-image {
-    width: 100%;
-    max-width: 420px;
-    height: auto;
-    aspect-ratio: 3/4;
-    object-fit: contain;
+    width: 420px;
+    height: 594px;
+    object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(139, 139, 90, 0.2);
     background: rgba(255, 255, 255, 0.05);
-    border: 2px solid var(--text-color);
+    margin: 0 auto;
+    display: block;
 }
 
 .slider-controls {
@@ -829,9 +810,10 @@ h1 {
 
     .certification-info,
     .certification-image {
-        max-width: 100%;
-        height: auto;
-        aspect-ratio: 3/4;
+        width: 100%;
+        height: calc(100vw * 1.414);
+        max-height: 80vh;
+        margin: 0 auto;
     }
     
     .certification-info {
