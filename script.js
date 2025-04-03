@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 지도 초기화 함수
     function initMap() {
-        const mapContainer = document.querySelector('.map-background');
+        const mapContainer = document.getElementById('location-map');
         if (!mapContainer) return;
 
         // 기존 포인트 삭제
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const mapWidth = mapContainer.offsetWidth;
             const scaleRatio = mapWidth / 600; // SVG 기본 너비 기준
 
-            const points = document.querySelectorAll('.location-point');
+            const points = mapContainer.querySelectorAll('.location-point');
             points.forEach(point => {
                 const locationName = point.dataset.name;
                 const location = locationData.find(item => item.name === locationName);
@@ -160,16 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </header>
             <div class="map-title">레슨 예약</div>
             <div class="map-container">
-                <div class="map-background"></div>
+                <div class="map-background" id="location-map"></div>
             </div>
             <main>
                 <div class="button-container">
-                    <button class="main-button" onclick="window.open('https://forms.gle/4Fcb5S3KtwKYYejA9', '_blank')">
-                        [홍대] 4/6, 4/20 핸드팬 그룹수업 신청
-                    </button>
-                    <button class="main-button" onclick="navigateTo('/teachers')">
-                        강사 라인업
-                    </button>
+                    <!-- 그룹수업 신청 버튼 제거 -->
                     <button class="main-button" onclick="navigateTo('/certification')">
                         핸드팬강사 자격증
                     </button>
