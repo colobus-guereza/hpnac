@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "서대문", x: 240, y: 200, link: "/teacher/seodaemun" },
         { name: "성북", x: 300, y: 140, link: "/teacher/seongbuk" },
         { name: "건대입구", x: 400, y: 230, link: "/teacher/konkuk" },
-        { name: "강릉", x: 500, y: 190, link: "/teacher/gangneung" }
+        { name: "강릉", x: 500, y: 160, link: "/teacher/gangneung" }
     ];
 
     // 지도 초기화 함수
