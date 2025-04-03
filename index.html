@@ -19,11 +19,28 @@
         </header>
         <main>
             <div class="button-container">
-                <button class="main-button" onclick="navigateTo('/auth')">
-                    핸드팬강사 필기시험 접수
+                <button class="main-button button-1" onclick="navigateTo('/group-lesson')">
+                    [홍대] 핸드팬 그룹수업 신청<br>(4/6, 4/20)
                 </button>
-                <button class="main-button" onclick="location.href='#'">
+                <button class="main-button button-2" onclick="navigateTo('/teachers')">
+                    강사 라인업
+                </button>
+                <button class="main-button button-3" onclick="navigateTo('/certification')">
+                    핸드팬강사 자격증
+                </button>
+                <button class="main-button button-4" onclick="navigateTo('/education')">
                     교육자료
+                </button>
+                <div class="horizontal-buttons">
+                    <button class="main-button button-5" onclick="openKakaoChannel()">
+                        카톡문의
+                    </button>
+                    <button class="main-button button-6" onclick="callPhone()">
+                        전화상담
+                    </button>
+                </div>
+                <button class="main-button empty-button button-7" onclick="navigateTo('/app-download')">
+                    앱 다운로드
                 </button>
             </div>
         </main>

@@ -156,60 +156,86 @@ h1, h2, h3, .level-title {
     font-weight: var(--font-bold);
 }
 
+/* 버튼 컨테이너 기본 스타일 */
 .button-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 25px;
     width: 100%;
+    align-items: center;
 }
 
-.divider {
-    width: 75%;
-    height: 30px;
-    margin: 15px 0;
-    background: transparent;
-}
-
-.horizontal-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: -5px;
-}
-
-.horizontal-buttons .main-button {
-    font-size: 18px;
-    padding: 15px;
-}
-
+/* 메인 버튼 기본 스타일 */
 .main-button {
     width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
     padding: 18px;
     font-size: 19px;
-    font-weight: var(--font-medium);
-    border: var(--card-border);
+    font-weight: var(--font-bold);
+    border: none;
     border-radius: var(--card-border-radius);
-    background: var(--card-bg);
+    background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
     color: var(--text-color);
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: var(--box-shadow);
+    text-align: center;
 }
 
-.main-button:hover {
-    background: var(--card-hover-bg);
-    box-shadow: var(--card-hover-shadow);
-    transform: translateY(-1px);
+/* 홈 화면 버튼 개별 스타일 */
+.button-1 {
+    font-size: 8px !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    padding: 12px 5px !important;
+    line-height: 1.2 !important;
+    overflow: hidden !important;
 }
 
+.button-2 {
+    font-size: 17px !important;
+}
+
+.button-3 {
+    font-size: 17px !important;
+}
+
+.button-4 {
+    font-size: 17px !important;
+}
+
+.button-5 {
+    font-size: 16px !important;
+}
+
+.button-6 {
+    font-size: 16px !important;
+}
+
+.button-7 {
+    font-size: 17px !important;
+}
+
+/* 가로 버튼 컨테이너 */
+.horizontal-buttons {
+    display: flex;
+    gap: 10px;
+    width: 80%;
+    justify-content: center;
+}
+
+.horizontal-buttons .main-button {
+    width: 50%;
+    max-width: none;
+}
+
+/* 빈 버튼 스타일 */
 .empty-button {
-    background: transparent;
-    border: 2px dashed var(--button-gradient-end);
+    background: transparent !important;
+    border: 2px dashed var(--button-gradient-end) !important;
     color: var(--text-color);
-}
-
-.empty-button:hover {
-    background: transparent;
-    border-color: var(--button-hover-gradient-end);
-    color: var(--text-color);
+    width: 80% !important;
 }
 
 .back-button {
@@ -375,14 +401,14 @@ h1, h2, h3, .level-title {
     background: var(--card-bg);
     border: var(--card-border);
     box-shadow: var(--card-shadow);
-    width: 420px;
+    width: 594px;
     height: 594px;
     border-radius: var(--card-border-radius);
-    padding: 35px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 12px;
+    gap: 10px;
     position: relative;
     overflow: hidden;
 }
@@ -394,8 +420,26 @@ h1, h2, h3, .level-title {
 
 .certification-title {
     color: var(--text-color);
-    font-size: 32px;
+    font-size: 28px;
     font-weight: var(--font-bold);
+    margin-bottom: 10px;
+    text-align: left;
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: var(--card-border);
+}
+
+.certification-issuer {
+    color: var(--text-color-secondary);
+    font-size: 14px;
+    margin-bottom: 3px;
+    text-align: left;
+    position: relative;
+}
+
+.certification-number {
+    color: var(--text-color-secondary);
+    font-size: 14px;
     margin-bottom: 12px;
     text-align: left;
     position: relative;
@@ -403,55 +447,37 @@ h1, h2, h3, .level-title {
     border-bottom: var(--card-border);
 }
 
-.certification-issuer {
-    color: var(--text-color-secondary);
-    font-size: 16px;
-    margin-bottom: 4px;
-    text-align: left;
-    position: relative;
-}
-
-.certification-number {
-    color: var(--text-color-secondary);
-    font-size: 16px;
-    margin-bottom: 15px;
-    text-align: left;
-    position: relative;
-    padding-bottom: 15px;
-    border-bottom: var(--card-border);
-}
-
 .certification-levels {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     position: relative;
     padding: 0;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .level-item {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
     position: relative;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
 }
 
 .level-item:last-child {
     padding-bottom: 0;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .level-item h3 {
     color: var(--text-color);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: var(--font-bold);
 }
 
 .level-item p {
     color: var(--text-color-tertiary);
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.3;
     word-break: keep-all;
     letter-spacing: -0.3px;
@@ -535,8 +561,26 @@ h1, h2, h3, .level-title {
     }
 
     .main-button {
-        font-size: 18px;
-        padding: 16px;
+        font-size: 11px;
+        padding: 15px;
+        letter-spacing: -0.3px;
+    }
+
+    .button-1 {
+        font-size: 9px !important;
+        letter-spacing: -0.8px !important;
+    }
+
+    .button-2, .button-3, .button-4 {
+        font-size: 15px !important;
+    }
+
+    .button-5, .button-6 {
+        font-size: 14px !important;
+    }
+
+    .button-7 {
+        font-size: 15px !important;
     }
 
     .horizontal-buttons .main-button {
@@ -546,16 +590,15 @@ h1, h2, h3, .level-title {
 
     .certification-info {
         width: 100%;
-        max-width: 420px;
-        height: calc(100vw * 1.414);
-        max-height: 594px;
+        max-width: 594px;
+        height: 594px;
         padding: 25px;
     }
 
     .certification-title {
-        font-size: 28px;
-        margin-bottom: 12px;
-        padding-bottom: 12px;
+        font-size: 24px;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
     }
 
     .certification-issuer {
@@ -570,7 +613,7 @@ h1, h2, h3, .level-title {
     }
 
     .certification-levels {
-        gap: 10px;
+        gap: 8px;
         padding: 0;
         margin-bottom: 15px;
     }
@@ -603,25 +646,46 @@ h1, h2, h3, .level-title {
     }
 
     .button-container {
-        margin-bottom: 20px;
+        gap: 25px;
     }
 
     .main-button {
-        font-size: 17px;
-        padding: 15px;
+        font-size: 9px;
+        padding: 12px !important;
+        letter-spacing: -0.3px !important;
+        font-weight: var(--font-bold) !important;
+    }
+
+    .button-1 {
+        font-size: 8px !important;
+        letter-spacing: -0.8px !important;
+    }
+
+    .button-2, .button-3, .button-4 {
+        font-size: 12px !important;
+    }
+
+    .button-5, .button-6 {
+        font-size: 12px !important;
+    }
+
+    .button-7 {
+        font-size: 13px !important;
     }
 
     .horizontal-buttons {
-        margin-top: 10px;
+        width: 80%;
     }
 
     .horizontal-buttons .main-button {
-        font-size: 17px;
-        padding: 14px;
+        width: 50%;
+        font-size: 12px !important;
+        padding: 10px !important;
+        font-weight: var(--font-bold) !important;
     }
 
     .empty-button {
-        margin-top: -5px;
+        margin-top: 0;
     }
 
     .auth-description {
@@ -638,30 +702,30 @@ h1, h2, h3, .level-title {
     }
 
     .certification-title {
-        font-size: 24px;
-        margin-bottom: 10px;
-        padding-bottom: 10px;
+        font-size: 20px;
+        margin-bottom: 6px;
+        padding-bottom: 6px;
     }
 
     .certification-issuer {
-        font-size: 13px;
-        margin-bottom: 3px;
+        font-size: 12px;
+        margin-bottom: 2px;
     }
 
     .certification-number {
-        font-size: 13px;
-        margin-bottom: 12px;
-        padding-bottom: 12px;
+        font-size: 12px;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
     }
 
     .certification-levels {
-        gap: 8px;
+        gap: 6px;
         padding: 0;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
     }
 
     .level-item:last-child {
-        margin-bottom: 12px;
+        margin-bottom: 8px;
     }
 
     .teacher-grid {
