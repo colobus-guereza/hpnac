@@ -119,19 +119,15 @@ body {
     box-shadow: var(--box-shadow);
 }
 
-.container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-    height: 25px;
-    background-color: #1A1A1A;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: var(--neon-glow);
+.hidden-header {
+    display: none;
+    padding: 0;
+    margin: 0;
+    height: 0;
+}
+
+.hidden-header::after {
+    display: none;
 }
 
 header {
@@ -633,16 +629,18 @@ h1, h2, h3, .level-title {
 @media (max-width: 480px) {
     body {
         padding: 0;
-        min-height: 100%;
-        height: auto;
-        overflow-y: auto;
+        min-height: 100vh;
+        height: 100vh;
+        overflow: hidden;
     }
 
     .container {
-        min-height: 100%;
+        min-height: 100vh;
+        height: 100vh;
         border-radius: 0;
         padding: 25px 20px;
-        gap: 20px;
+        gap: 15px;
+        max-width: 100%;
     }
 
     /* 모바일에서 테마 토글 버튼 숨김 처리 */
@@ -651,49 +649,41 @@ h1, h2, h3, .level-title {
     }
 
     .button-container {
-        gap: 25px;
+        gap: 15px;
+        margin-top: 0;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
     }
 
     /* 모바일에서 버튼 배경색 강제 적용 */
     .main-button {
-        font-size: 9px;
-        padding: 12px !important;
+        font-size: 19px;
+        padding: 16px !important;
         letter-spacing: -0.3px !important;
         font-weight: var(--font-bold) !important;
         background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
         color: var(--text-color) !important;
+        max-width: 100%;
+        margin: 0 auto;
     }
 
     .button-1 {
-        font-size: 8px !important;
-        letter-spacing: -0.8px !important;
+        font-size: 16px !important;
+        letter-spacing: -0.5px !important;
         background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
-    }
-
-    .button-2, .button-3, .button-4 {
-        font-size: 12px !important;
-        background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
-    }
-
-    .button-5, .button-6 {
-        font-size: 12px !important;
-        background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
-    }
-
-    .button-7 {
-        font-size: 13px !important;
-        background: transparent !important;
-        border: 2px dashed var(--button-gradient-end) !important;
     }
 
     .horizontal-buttons {
-        width: 80%;
+        width: 100%;
+        margin: 0 auto;
     }
 
     .horizontal-buttons .main-button {
         width: 50%;
-        font-size: 12px !important;
-        padding: 10px !important;
+        font-size: 17px !important;
+        padding: 15px !important;
         font-weight: var(--font-bold) !important;
         background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
     }
@@ -705,16 +695,16 @@ h1, h2, h3, .level-title {
     }
 
     .auth-description {
-        font-size: 14px;
-    }
-
-    .kakao-button {
-        padding: 12px 20px;
         font-size: 16px;
     }
 
+    .kakao-button {
+        padding: 15px 20px;
+        font-size: 18px;
+    }
+
     .education-description {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .certification-title {
@@ -1572,5 +1562,51 @@ h1, h2, h3, .level-title {
 
     .teacher-grid {
         gap: 6px;
+    }
+}
+
+.mobile-view .container {
+    padding-top: 15px;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.mobile-view .button-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.mobile-view .main-button {
+    font-size: 19px;
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
+/* 스크롤 방지 */
+.mobile-view {
+    overflow: hidden;
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+        min-height: 100vh;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .container {
+        min-height: 100vh;
+        height: 100vh;
+        border-radius: 0;
+        padding: 25px 20px;
+        gap: 15px;
+        max-width: 100%;
     }
 } 
