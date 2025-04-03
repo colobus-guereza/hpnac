@@ -104,21 +104,18 @@ body {
 }
 
 .container {
-    max-width: 480px;
+    background: var(--container-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 30px;
     width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    height: 95vh;
+    max-width: 430px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    background-color: var(--container-bg);
-    border-radius: 20px;
-    box-shadow: var(--box-shadow);
+    gap: 30px;
     position: relative;
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    box-shadow: var(--box-shadow);
 }
 
 .container::before {
@@ -162,9 +159,7 @@ h1, h2, h3, .level-title {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-top: 10px;
-    align-items: center;
-    position: relative;
+    width: 100%;
 }
 
 .divider {
@@ -176,41 +171,32 @@ h1, h2, h3, .level-title {
 
 .horizontal-buttons {
     display: flex;
-    gap: 20px;
-    width: 75%;
-    justify-content: center;
-    margin: 15px 0;
+    gap: 10px;
+    margin-top: -5px;
 }
 
 .horizontal-buttons .main-button {
-    flex: 1;
-    width: auto;
+    font-size: 18px;
+    padding: 15px;
 }
 
 .main-button {
-    background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    border-radius: 15px;
-    padding: 15px;
-    font-size: 18px;
+    width: 100%;
+    padding: 18px;
+    font-size: 19px;
     font-weight: var(--font-medium);
+    border: var(--card-border);
+    border-radius: var(--card-border-radius);
+    background: var(--card-bg);
+    color: var(--text-color);
     cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: var(--box-shadow);
-    width: 75%;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-family: 'Spoqa Han Sans Neo', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    transition: all 0.3s ease;
 }
 
 .main-button:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(135deg, var(--button-hover-gradient-start), var(--button-hover-gradient-end));
-    color: var(--text-color);
-    border-color: var(--border-color);
-    box-shadow: var(--neon-glow);
+    background: var(--card-hover-bg);
+    box-shadow: var(--card-hover-shadow);
+    transform: translateY(-1px);
 }
 
 .empty-button {
@@ -542,6 +528,21 @@ h1, h2, h3, .level-title {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 25px;
+        gap: 25px;
+    }
+
+    .main-button {
+        font-size: 18px;
+        padding: 16px;
+    }
+
+    .horizontal-buttons .main-button {
+        font-size: 18px;
+        padding: 15px;
+    }
+
     .certification-info {
         width: 100%;
         max-width: 420px;
@@ -588,65 +589,71 @@ h1, h2, h3, .level-title {
 @media (max-width: 480px) {
     body {
         padding: 0;
-        font-size: 14px;
+        height: 100vh;
+        overflow: hidden;
     }
-    
+
     .container {
         height: 100vh;
         border-radius: 0;
+        padding: 20px;
+        gap: 20px;
+        justify-content: space-between;
+    }
+
+    .button-container {
+        gap: 12px;
+        margin-bottom: auto;
+    }
+
+    .main-button {
+        font-size: 17px;
         padding: 15px;
     }
-    
-    .container::before {
-        display: none;
+
+    .horizontal-buttons {
+        margin-top: 10px;
     }
-    
-    h1 {
-        font-size: 24px;
-    }
-    
-    .main-button {
+
+    .horizontal-buttons .main-button {
+        font-size: 17px;
         padding: 14px;
-        font-size: 14px;
     }
-    
-    .back-button {
-        left: 15px;
-        top: 15px;
-        font-size: 14px;
-        padding: 6px 12px;
+
+    .empty-button {
+        margin-top: -5px;
     }
-    
+
     .auth-description {
         font-size: 14px;
     }
-    
+
     .kakao-button {
         padding: 12px 20px;
         font-size: 16px;
     }
-    
+
     .education-description {
         font-size: 14px;
     }
-    
+
     .certification-title {
         font-size: 24px;
         margin-bottom: 10px;
         padding-bottom: 10px;
     }
-    
+
     .certification-issuer {
         font-size: 13px;
         margin-bottom: 3px;
     }
-    
+
     .certification-number {
         font-size: 13px;
         margin-bottom: 12px;
         padding-bottom: 12px;
     }
-    
+
     .certification-levels {
         gap: 8px;
         padding: 0;
