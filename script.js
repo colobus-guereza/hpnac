@@ -61,6 +61,36 @@ function initializeApp() {
     }, 1500);
 }
 
+// 초기화 함수
+document.addEventListener('DOMContentLoaded', function () {
+    // URL 라우팅 설정
+    setupRouting();
+
+    // 모바일 환경에서 화면 높이 조정
+    adjustMobileHeight();
+
+    // 리사이즈 이벤트에 맞춰 높이 재조정
+    window.addEventListener('resize', adjustMobileHeight);
+});
+
+// 모바일 환경에서 화면 높이를 조정하는 함수
+function adjustMobileHeight() {
+    // 실제 뷰포트 높이 설정 (모바일 환경의 주소창 등 고려)
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    // 콘텐츠 높이 조정
+    const isMobile = window.innerWidth <= 480;
+    if (isMobile) {
+        // 현재 콘텐츠의 높이 계산
+        const container = document.querySelector('.container');
+        if (container) {
+            const minHeight = window.innerHeight;
+            container.style.minHeight = `${minHeight}px`;
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // 카카오 SDK 초기화 실행
     initializeKakao();
