@@ -1775,4 +1775,21 @@ h1, h2, h3, .level-title {
         opacity: 1;
         transform: scale(1);
     }
+}
+
+/* 홍대 지점 그룹레슨 버튼 스타일 */
+.hongdae-lesson-btn {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 14px;
+    letter-spacing: -0.5px;
+    padding: 16px 10px;
+}
+
+@media (max-width: 480px) {
+    .hongdae-lesson-btn {
+        font-size: 13px;
+        padding: 14px 8px;
+    }
 } 

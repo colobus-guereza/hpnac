@@ -632,6 +632,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const teacherInfo = getTeacherInfo(location);
 
+        // 홍대 지점 버튼 텍스트 설정
+        let buttonText = '수업 신청하기';
+        let buttonClass = 'main-button';
+        let buttonFontSize = '';
+
+        if (location === '홍대') {
+            buttonText = '4/6, 20(일) 오후2시 그룹레슨 신청';
+            buttonClass = 'main-button hongdae-lesson-btn';
+            buttonFontSize = 'font-size: 14px;'; // 폰트 사이즈 축소
+        }
+
         document.querySelector('.container').innerHTML = `
             <button class="back-button" onclick="navigateTo('/')">
                 <span class="back-arrow">←</span>
@@ -654,8 +665,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <div class="button-container" style="margin-top: 20px;">
-                    <button class="main-button" onclick="window.open('https://forms.gle/4Fcb5S3KtwKYYejA9', '_blank')">
-                        수업 신청하기
+                    <button class="${buttonClass}" style="${buttonFontSize}" onclick="window.open('https://forms.gle/4Fcb5S3KtwKYYejA9', '_blank')">
+                        ${buttonText}
                     </button>
                 </div>
             </main>
