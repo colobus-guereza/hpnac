@@ -636,9 +636,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="back-button" onclick="navigateTo('/')">
                 <span class="back-arrow">←</span>
             </button>
-            <header>
-                <h1>${location} 지점</h1>
-            </header>
             <main>
                 <div class="teacher-card">
                     <div class="teacher-grid">
