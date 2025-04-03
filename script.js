@@ -11,6 +11,32 @@ function initializeKakao() {
     }
 }
 
+// 시간대에 따른 테마 설정
+function setThemeByTime() {
+    const hour = new Date().getHours();
+    const isDarkTime = hour >= 18 || hour < 6;
+    document.body.classList.toggle('dark-theme', isDarkTime);
+}
+
+// 1분마다 테마 체크
+function initThemeChecker() {
+    setThemeByTime(); // 초기 설정
+    setInterval(setThemeByTime, 60000); // 1분마다 체크
+}
+
+// 앱 초기화 함수 수정
+function initializeApp() {
+    initThemeChecker(); // 테마 체커 초기화
+    showLoadingScreen();
+    setTimeout(() => {
+        const loadingContainer = document.querySelector('.loading-container');
+        loadingContainer.classList.add('fade-out');
+        setTimeout(() => {
+            mainView();
+        }, 500);
+    }, 1500);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // 카카오 SDK 초기화 실행
     initializeKakao();
@@ -38,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function homeView() {
         document.querySelector('.container').innerHTML = `
             <header>
-                <h1>Handpan 아카데미</h1>
+                <h1><span class="title-emoji">🏫</span> 핸드팬 아카데미</h1>
             </header>
             <main>
                 <div class="button-container">
@@ -358,7 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li>스케일 개론</li>
                             <li>작곡</li>
                             <li>교수법</li>
-                            <li>악기 보관/관리법</li>
+                            <li>악기 보관과 관리</li>
                         </ul>
                     </div>
                     <div class="curriculum-card">
@@ -560,6 +586,23 @@ function teacherCardView() {
                     <button class="exam-button" onclick="examView()">필기시험 접수</button>
                 </div>
             </div>
+        </div>
+    `;
+}
+
+function mainView() {
+    const container = document.getElementById('container');
+    container.innerHTML = `
+        <header>
+            <h1><span class="title-emoji">🏫</span> 핸드팬 아카데미</h1>
+        </header>
+        <div class="button-container">
+            <button class="main-button" onclick="navigateTo('/curriculum')">기초과정 학습과목</button>
+            <div class="divider"></div>
+            <button class="main-button" onclick="navigateTo('/certification')">강사 자격증</button>
+            <button class="main-button" onclick="navigateTo('/teachers')">강사 라인업</button>
+            <button class="main-button" onclick="navigateTo('/dictionary')">스케일 사전</button>
+            <button class="main-button empty-button">커뮤니티 (준비중)</button>
         </div>
     `;
 } 
