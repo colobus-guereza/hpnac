@@ -190,6 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
+        // 홈 화면에서만 스크롤 비활성화
+        document.body.classList.add('no-scroll-home');
+
         // 모바일 환경에서 스타일을 최적화하기 위해 클래스만 추가
         const isMobile = window.innerWidth <= 480;
         if (isMobile) {
@@ -204,6 +207,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 인증 화면 뷰
     function authView() {
+        // 스크롤 다시 활성화
+        document.body.classList.remove('no-scroll-home');
+
         document.querySelector('.container').innerHTML = `
             <button class="back-button" onclick="navigateTo('/')">
                 <span class="back-arrow">←</span>
@@ -226,6 +232,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 교육자료 화면 뷰
     function educationView() {
+        // 스크롤 다시 활성화
+        document.body.classList.remove('no-scroll-home');
+
         document.querySelector('.container').innerHTML = `
             <button class="back-button" onclick="navigateTo('/')">
                 <span class="back-arrow">←</span>
@@ -253,6 +262,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 동영상 레슨 페이지 뷰
     function videoLessonsView() {
+        // 스크롤 다시 활성화
+        document.body.classList.remove('no-scroll-home');
+
         document.querySelector('.container').innerHTML = `
             <button class="back-button" onclick="navigateTo('/education')">
                 <span class="back-arrow">←</span>
@@ -278,6 +290,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 자격증 정보 페이지
     function certificationView() {
+        // 스크롤 다시 활성화
+        document.body.classList.remove('no-scroll-home');
+
         document.querySelector('.container').innerHTML = `
             <button class="back-button" onclick="navigateTo('/')">
                 <span class="back-arrow">←</span>
@@ -426,6 +441,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 커리큘럼 페이지 뷰
     function curriculumView() {
+        // 스크롤 다시 활성화
+        document.body.classList.remove('no-scroll-home');
+
         document.querySelector('.container').innerHTML = `
             <button class="back-button" onclick="navigateTo('/education')">
                 <span class="back-arrow">←</span>
@@ -474,6 +492,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 스케일 사전 페이지 뷰
     function scaleDictionaryView() {
+        // 스크롤 다시 활성화
+        document.body.classList.remove('no-scroll-home');
+
         document.querySelector('.container').innerHTML = `
             <div class="scale-dictionary-container">
                 <button class="back-button" onclick="navigateTo('/education')">
@@ -576,6 +597,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 선생님 프로필 뷰
     function teacherProfileView(location) {
+        // 스크롤 다시 활성화
+        document.body.classList.remove('no-scroll-home');
+
         const teacherInfo = getTeacherInfo(location);
 
         document.querySelector('.container').innerHTML = `

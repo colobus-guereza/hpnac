@@ -50,6 +50,21 @@
     --button-text-padding: 4px;
 }
 
+/* 홈 화면에서만 스크롤 비활성화 */
+.no-scroll-home {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
+/* 모바일 환경에서는 더 엄격하게 스크롤 방지 */
+@media (max-width: 480px) {
+    .no-scroll-home {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+}
+
 .dark-theme {
     --bg-color: #1A1A1A;
     --container-bg: #242424;
