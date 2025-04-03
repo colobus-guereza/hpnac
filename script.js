@@ -583,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             '성북': {
                 name: '안재민',
-                age: '20대 남성',
+                age: '30대 남성',
                 target: '청소년, 성인',
                 job: '배우 & 연주자',
                 location: '서울 성북구',
@@ -603,7 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             '강릉': {
                 name: '김문겸',
-                age: '30대 남성',
+                age: '40대 남성',
                 target: '청소년, 성인',
                 job: '국악 연주자',
                 location: '강원 강릉',
