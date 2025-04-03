@@ -99,10 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 지역 위치 데이터
     const locationData = [
-        { name: "홍대", x: 210, y: 170, link: "/teacher/hongdae" },
-        { name: "서대문", x: 210, y: 210, link: "/teacher/seodaemun" },
-        { name: "성북", x: 260, y: 160, link: "/teacher/seongbuk" },
-        { name: "건대입구", x: 320, y: 200, link: "/teacher/konkuk" },
+        { name: "홍대", x: 180, y: 180, link: "/teacher/hongdae" },
+        { name: "서대문", x: 250, y: 230, link: "/teacher/seodaemun" },
+        { name: "성북", x: 310, y: 170, link: "/teacher/seongbuk" },
+        { name: "건대입구", x: 350, y: 210, link: "/teacher/konkuk" },
         { name: "강릉", x: 450, y: 190, link: "/teacher/gangneung" }
     ];
 
@@ -158,8 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <header class="hidden-header">
                 <!-- 타이틀 제거 -->
             </header>
-            <div class="map-title">레슨 예약</div>
             <div class="map-container">
+                <div class="map-title">레슨 예약</div>
                 <div class="map-background" id="location-map"></div>
             </div>
             <main>
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-        // 모바일 환경에서 버튼 레이아웃을 최적화
+        // 모바일 환경에서 스타일을 최적화하기 위해 클래스만 추가
         const isMobile = window.innerWidth <= 480;
         if (isMobile) {
             document.body.classList.add('mobile-view');
@@ -673,13 +673,6 @@ function kakaoAuth() {
 window.toggleAppDownloadPopup = function () {
     const overlay = document.querySelector('.popup-overlay');
     overlay.classList.toggle('active');
-
-    // 팝업이 열릴 때 스크롤 방지
-    if (overlay.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = '';
-    }
 }
 
 function showCertificationExam() {

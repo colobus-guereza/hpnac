@@ -3,21 +3,18 @@
   <!-- 배경 -->
   <rect width="600" height="400" fill="#e6f3f7" />
   
-  <!-- 서울 영역 (크게 표현) -->
-  <ellipse cx="250" cy="200" rx="100" ry="80" fill="#f0f0f0" stroke="#c0c0c0" stroke-width="1.5" />
+  <!-- 서울 영역 (더 넓게 표현) -->
+  <ellipse cx="250" cy="200" rx="150" ry="100" fill="#f0f0f0" stroke="#c0c0c0" stroke-width="1.5" />
   
   <!-- 강릉과 서울 연결선 -->
-  <path d="M350,200 Q400,190 450,190" fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="5,3" />
+  <path d="M400,200 Q425,190 450,190" fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="5,3" />
   
   <!-- 강릉 영역 -->
   <ellipse cx="450" cy="190" rx="30" ry="25" fill="#f0f0f0" stroke="#c0c0c0" stroke-width="1" />
   
-  <!-- 지역명 라벨 -->
-  <text x="250" y="195" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="16" fill="#808080">서울</text>
-  <text x="450" y="190" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="14" fill="#808080">강릉</text>
+  <!-- 지역명 라벨 제거 -->
   
-  <!-- 한강 표현 -->
-  <path d="M150,220 Q220,200 300,190 Q350,185 420,180" fill="none" stroke="#a8d4ff" stroke-width="2" />
+  <!-- 한강 표현 제거 -->
 
   <!-- 국토 외곽선 (단순화) -->
   <path d="M100,150 Q150,80 250,90 Q300,100 350,120 Q400,90 500,120 Q550,150 570,250 Q550,300 470,330 Q350,350 180,320 Q120,280 100,220 Z" 

@@ -111,7 +111,7 @@ body {
     padding: 30px;
     width: 100%;
     max-width: 430px;
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -181,12 +181,9 @@ h1, h2, h3, .level-title {
 
 /* 홈 화면 버튼 개별 스타일 */
 .button-1 {
-    font-size: 8px !important;
-    white-space: normal !important;
-    word-break: keep-all !important;
-    padding: 12px 5px !important;
-    line-height: 1.2 !important;
-    overflow: hidden !important;
+    font-size: 19px !important;
+    letter-spacing: -0.5px !important;
+    background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
 }
 
 .button-2 {
@@ -359,7 +356,7 @@ h1, h2, h3, .level-title {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: calc(100vh - 180px);
+    height: auto;
     overflow: visible;
     padding: 20px;
     position: relative;
@@ -563,8 +560,8 @@ h1, h2, h3, .level-title {
     }
 
     .button-1 {
-        font-size: 9px !important;
-        letter-spacing: -0.8px !important;
+        font-size: 19px !important;
+        letter-spacing: -0.5px !important;
     }
 
     .button-2, .button-3, .button-4 {
@@ -629,18 +626,20 @@ h1, h2, h3, .level-title {
 @media (max-width: 480px) {
     body {
         padding: 0;
-        min-height: 100vh;
-        height: 100vh;
-        overflow: hidden;
+        overflow-y: auto;
     }
 
     .container {
-        min-height: 100vh;
-        height: 100vh;
         border-radius: 0;
         padding: 25px 20px;
         gap: 15px;
         max-width: 100%;
+    }
+    
+    /* 버튼 컨테이너가 콘텐츠에 맞게 조정되도록 수정 */
+    .button-container {
+        gap: 15px;
+        margin-top: 0;
     }
 
     /* 모바일에서 테마 토글 버튼 숨김 처리 */
@@ -648,29 +647,8 @@ h1, h2, h3, .level-title {
         display: none !important; /* 모바일에서 테마 전환 버튼 비활성화 */
     }
 
-    .button-container {
-        gap: 15px;
-        margin-top: 0;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-    }
-
-    /* 모바일에서 버튼 배경색 강제 적용 */
-    .main-button {
-        font-size: 19px;
-        padding: 16px !important;
-        letter-spacing: -0.3px !important;
-        font-weight: var(--font-bold) !important;
-        background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
-        color: var(--text-color) !important;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-
     .button-1 {
-        font-size: 16px !important;
+        font-size: 19px !important;
         letter-spacing: -0.5px !important;
         background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
     }
@@ -782,7 +760,7 @@ h1, h2, h3, .level-title {
 
     .teachers-container {
         padding: 15px;
-        height: calc(100vh - 80px);
+        height: auto;
     }
 
     .certification-info {
@@ -839,7 +817,7 @@ h1, h2, h3, .level-title {
     }
 
     .certification-container {
-        height: calc(100vh - 120px);
+        height: auto;
         padding: 10px;
     }
 
@@ -905,7 +883,7 @@ h1, h2, h3, .level-title {
     flex-direction: column;
     gap: 20px;
     overflow-y: auto;
-    height: calc(95vh - 100px);
+    height: auto;
 }
 
 .teachers-container::-webkit-scrollbar {
@@ -1069,7 +1047,7 @@ h1, h2, h3, .level-title {
     gap: 15px;
     max-width: 430px;
     margin: 0 auto;
-    height: calc(100vh - 140px);
+    height: auto;
     overflow-y: auto;
 }
 
@@ -1202,7 +1180,7 @@ h1, h2, h3, .level-title {
     flex-direction: column;
     gap: 20px;
     overflow-y: auto;
-    height: calc(100vh - 140px);
+    height: auto;
 }
 
 .scale-card {
@@ -1568,55 +1546,52 @@ h1, h2, h3, .level-title {
 .mobile-view .container {
     padding-top: 15px;
     gap: 15px;
-    justify-content: space-between;
 }
 
 .mobile-view .button-container {
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 15px;
     padding-bottom: 10px;
 }
 
 .mobile-view .main-button {
     font-size: 19px;
     max-width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 
-/* 스크롤 방지 */
+/* 스크롤 방지 설정 제거 */
 .mobile-view {
-    overflow: hidden;
-    height: 100vh;
-    position: fixed;
     width: 100%;
 }
 
 @media (max-width: 480px) {
     body {
         padding: 0;
-        min-height: 100vh;
-        height: 100vh;
-        overflow: hidden;
+        overflow-y: auto;
     }
 
     .container {
-        min-height: 100vh;
-        height: 100vh;
         border-radius: 0;
         padding: 25px 20px;
         gap: 15px;
         max-width: 100%;
     }
+    
+    /* 버튼 컨테이너가 콘텐츠에 맞게 조정되도록 수정 */
+    .button-container {
+        gap: 15px;
+        margin-top: 0;
+    }
 }
 
 /* 지도 컨테이너 스타일 */
 .map-container {
-    width: 80%;
+    width: 90%;
     max-width: 430px;
     margin: 0 auto;
-    height: 220px;
+    height: 240px;
     position: relative;
     margin-bottom: 20px;
     background-color: var(--container-bg);
@@ -1624,11 +1599,12 @@ h1, h2, h3, .level-title {
     border: var(--card-border);
     box-shadow: var(--card-shadow);
     overflow: hidden;
+    padding-top: 10px;
 }
 
 .map-background {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 38px);
     background-image: url('images/map/korea-map.svg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -1646,7 +1622,7 @@ h1, h2, h3, .level-title {
     cursor: pointer;
     transition: all 0.3s ease;
     z-index: 10;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1655,22 +1631,22 @@ h1, h2, h3, .level-title {
 .location-point:hover, .location-point:active {
     transform: scale(1.3);
     background-color: var(--button-hover-gradient-start);
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
     z-index: 20;
 }
 
 .location-point::after {
     content: attr(data-name);
     position: absolute;
-    top: -25px;
+    top: -28px;
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
     color: #333;
-    padding: 3px 8px;
-    border-radius: 10px;
+    padding: 4px 10px;
+    border-radius: 12px;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 600;
     white-space: nowrap;
     opacity: 1;
     pointer-events: none;
@@ -1679,8 +1655,8 @@ h1, h2, h3, .level-title {
 
 .map-title {
     text-align: center;
-    margin: 10px 0;
-    font-size: 18px;
+    margin: 5px 0 10px 0;
+    font-size: 20px;
     color: var(--text-color);
     font-weight: 600;
 }
@@ -1688,35 +1664,41 @@ h1, h2, h3, .level-title {
 /* 모바일 반응형 */
 @media (max-width: 768px) {
     .map-container {
-        width: 80%;
-        height: 200px;
+        width: 90%;
+        height: 220px;
     }
     
     .location-point {
-        width: 14px;
-        height: 14px;
+        width: 18px;
+        height: 18px;
+    }
+    
+    .location-point::after {
+        font-size: 11px;
+        padding: 3px 8px;
     }
 }
 
 @media (max-width: 480px) {
     .map-container {
-        width: 80%;
-        height: 180px;
+        width: 90%;
+        height: 200px;
     }
     
     .location-point {
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
     }
     
     .location-point::after {
         font-size: 10px;
         padding: 2px 6px;
+        top: -24px;
     }
     
     .map-title {
-        font-size: 16px;
-        margin: 10px 0;
+        font-size: 18px;
+        margin: 5px 0 8px 0;
         width: 100%;
         text-align: center;
     }
