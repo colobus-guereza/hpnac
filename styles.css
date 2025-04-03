@@ -1671,12 +1671,12 @@ h1, h2, h3, .level-title {
     border: 2px solid white;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.3s ease;
     z-index: 10;
     box-shadow: 0 3px 6px rgba(0,0,0,0.25);
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: none;
 }
 
 .location-point:hover, .location-point:active {
@@ -1684,6 +1684,7 @@ h1, h2, h3, .level-title {
     background-color: var(--button-hover-gradient-start);
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
     z-index: 20;
+    transition: all 0.3s ease;
 }
 
 .location-point::after {
@@ -1702,6 +1703,7 @@ h1, h2, h3, .level-title {
     opacity: 1;
     pointer-events: none;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    animation: none;
 }
 
 .map-title {
@@ -1755,5 +1757,22 @@ h1, h2, h3, .level-title {
     
     .theme-toggle {
         display: none !important;
+    }
+}
+
+/* 애니메이션 관련 키프레임 유지 (다른 요소에서 사용할 수 있으므로) */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { 
+        opacity: 0; 
+        transform: scale(0.5);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
     }
 } 
