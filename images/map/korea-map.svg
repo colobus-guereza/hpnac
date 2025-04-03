@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
   <!-- 배경 -->
-  <rect width="600" height="400" fill="#e6f3f7" />
+  <rect width="600" height="400" fill="#f2f6f9" />
   
-  <!-- 서울 영역 (더 넓게 표현) -->
-  <ellipse cx="250" cy="200" rx="150" ry="100" fill="#f0f0f0" stroke="#c0c0c0" stroke-width="1.5" />
+  <!-- 서울 영역 (전체 지도의 2/3를 차지하도록 확장) -->
+  <ellipse cx="270" cy="200" rx="220" ry="140" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1.5" filter="drop-shadow(0 0 5px rgba(0,0,0,0.05))" />
   
   <!-- 강릉과 서울 연결선 -->
-  <path d="M400,200 Q425,190 450,190" fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="5,3" />
+  <path d="M450,200 Q475,190 500,190" fill="none" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="5,3" />
   
   <!-- 강릉 영역 -->
-  <ellipse cx="450" cy="190" rx="30" ry="25" fill="#f0f0f0" stroke="#c0c0c0" stroke-width="1" />
+  <ellipse cx="500" cy="190" rx="30" ry="25" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1" />
   
   <!-- 지역명 라벨 제거 -->
   
   <!-- 한강 표현 제거 -->
 
-  <!-- 국토 외곽선 (단순화) -->
-  <path d="M100,150 Q150,80 250,90 Q300,100 350,120 Q400,90 500,120 Q550,150 570,250 Q550,300 470,330 Q350,350 180,320 Q120,280 100,220 Z" 
-        fill="none" stroke="#d0d0d0" stroke-width="1" fill-opacity="0.1" />
+  <!-- 국토 외곽선 제거하고 더 단순화된 경계 추가 -->
+  <path d="M120,180 Q150,100 270,100 Q350,110 420,140 Q500,120 550,180 Q580,230 540,300 Q470,330 350,340 Q200,330 130,280 Q100,230 120,180 Z" 
+        fill="none" stroke="#e0e0e0" stroke-width="1" stroke-opacity="0.8" />
 </svg> 

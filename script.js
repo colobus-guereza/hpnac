@@ -99,11 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 지역 위치 데이터
     const locationData = [
-        { name: "홍대", x: 180, y: 180, link: "/teacher/hongdae" },
-        { name: "서대문", x: 250, y: 230, link: "/teacher/seodaemun" },
-        { name: "성북", x: 310, y: 170, link: "/teacher/seongbuk" },
-        { name: "건대입구", x: 350, y: 210, link: "/teacher/konkuk" },
-        { name: "강릉", x: 450, y: 190, link: "/teacher/gangneung" }
+        { name: "홍대", x: 160, y: 180, link: "/teacher/hongdae" },
+        { name: "서대문", x: 240, y: 220, link: "/teacher/seodaemun" },
+        { name: "성북", x: 320, y: 160, link: "/teacher/seongbuk" },
+        { name: "건대입구", x: 380, y: 210, link: "/teacher/konkuk" },
+        { name: "강릉", x: 500, y: 190, link: "/teacher/gangneung" }
     ];
 
     // 지도 초기화 함수
