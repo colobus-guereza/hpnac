@@ -1690,7 +1690,7 @@ h1, h2, h3, .level-title {
 .location-point::after {
     content: attr(data-name);
     position: absolute;
-    top: -37px;
+    top: -40px;
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
@@ -1729,7 +1729,7 @@ h1, h2, h3, .level-title {
     .location-point::after {
         font-size: 15px;
         padding: 5px 12px;
-        top: -34px;
+        top: -36px;
     }
 }
 
@@ -1747,7 +1747,7 @@ h1, h2, h3, .level-title {
     .location-point::after {
         font-size: 14px;
         padding: 4px 10px;
-        top: -30px;
+        top: -32px;
     }
     
     .map-title {
