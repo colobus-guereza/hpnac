@@ -99,10 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 지역 위치 데이터
     const locationData = [
-        { name: "홍대", x: 160, y: 180, link: "/teacher/hongdae" },
-        { name: "서대문", x: 240, y: 220, link: "/teacher/seodaemun" },
-        { name: "성북", x: 320, y: 160, link: "/teacher/seongbuk" },
-        { name: "건대입구", x: 380, y: 210, link: "/teacher/konkuk" },
+        { name: "홍대", x: 120, y: 150, link: "/teacher/hongdae" },
+        { name: "서대문", x: 240, y: 200, link: "/teacher/seodaemun" },
+        { name: "성북", x: 300, y: 140, link: "/teacher/seongbuk" },
+        { name: "건대입구", x: 400, y: 230, link: "/teacher/konkuk" },
         { name: "강릉", x: 500, y: 190, link: "/teacher/gangneung" }
     ];
 
