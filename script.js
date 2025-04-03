@@ -78,6 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
         '/teachers': teachersView,
         '/video-lessons': videoLessonsView,
         '/curriculum': curriculumView,
+        '/teacher/hongdae': () => teacherProfileView('홍대'),
+        '/teacher/seodaemun': () => teacherProfileView('서대문'),
+        '/teacher/seongbuk': () => teacherProfileView('성북'),
+        '/teacher/konkuk': () => teacherProfileView('건대입구'),
+        '/teacher/gangneung': () => teacherProfileView('강릉'),
         // '/scale-dictionary': scaleDictionaryView  // 임시 비활성화
     };
 
@@ -87,14 +92,76 @@ document.addEventListener('DOMContentLoaded', () => {
         const view = routes[path] || homeView;
         view();
         addThemeToggle(); // 뷰 렌더링 후 테마 토글 버튼 추가
+        if (path === '/') {
+            setTimeout(initMap, 100); // 홈 화면에서만 지도 초기화
+        }
+    }
+
+    // 지역 위치 데이터
+    const locationData = [
+        { name: "홍대", x: 210, y: 170, link: "/teacher/hongdae" },
+        { name: "서대문", x: 210, y: 210, link: "/teacher/seodaemun" },
+        { name: "성북", x: 260, y: 160, link: "/teacher/seongbuk" },
+        { name: "건대입구", x: 320, y: 200, link: "/teacher/konkuk" },
+        { name: "강릉", x: 450, y: 190, link: "/teacher/gangneung" }
+    ];
+
+    // 지도 초기화 함수
+    function initMap() {
+        const mapContainer = document.querySelector('.map-background');
+        if (!mapContainer) return;
+
+        // 기존 포인트 삭제
+        const existingPoints = mapContainer.querySelectorAll('.location-point');
+        existingPoints.forEach(point => point.remove());
+
+        // 새 포인트 생성
+        locationData.forEach(location => {
+            const point = document.createElement('div');
+            point.className = 'location-point';
+            point.dataset.name = location.name;
+            point.style.left = `${location.x}px`;
+            point.style.top = `${location.y}px`;
+
+            // 클릭 이벤트 추가
+            point.addEventListener('click', () => {
+                navigateTo(location.link);
+            });
+
+            mapContainer.appendChild(point);
+        });
+
+        // 화면 크기에 따라 지도 위치 조정 (반응형)
+        const adjustMapPoints = () => {
+            const mapWidth = mapContainer.offsetWidth;
+            const scaleRatio = mapWidth / 600; // SVG 기본 너비 기준
+
+            const points = document.querySelectorAll('.location-point');
+            points.forEach(point => {
+                const locationName = point.dataset.name;
+                const location = locationData.find(item => item.name === locationName);
+                if (location) {
+                    point.style.left = `${location.x * scaleRatio}px`;
+                    point.style.top = `${location.y * scaleRatio}px`;
+                }
+            });
+        };
+
+        // 초기 조정 및 창 크기 변경 시 조정
+        adjustMapPoints();
+        window.addEventListener('resize', adjustMapPoints);
     }
 
     // 홈 화면 뷰
     function homeView() {
         document.querySelector('.container').innerHTML = `
-            <header>
-                <h1><span class="title-emoji">🏫</span> 핸드팬 아카데미</h1>
+            <header class="hidden-header">
+                <!-- 타이틀 제거 -->
             </header>
+            <div class="map-title">레슨 예약</div>
+            <div class="map-container">
+                <div class="map-background"></div>
+            </div>
             <main>
                 <div class="button-container">
                     <button class="main-button" onclick="window.open('https://forms.gle/4Fcb5S3KtwKYYejA9', '_blank')">
@@ -127,6 +194,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="images/appdown.png" alt="앱 다운로드 QR코드" class="popup-image" onclick="event.stopPropagation()">
             </div>
         `;
+
+        // 모바일 환경에서 버튼 레이아웃을 최적화
+        const isMobile = window.innerWidth <= 480;
+        if (isMobile) {
+            document.body.classList.add('mobile-view');
+        } else {
+            document.body.classList.remove('mobile-view');
+        }
+
+        // 지도 초기화
+        setTimeout(initMap, 100);
     }
 
     // 인증 화면 뷰
@@ -430,6 +508,111 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                 </div>
             </div>
+        `;
+    }
+
+    // 선생님 정보 조회 함수
+    function getTeacherInfo(location) {
+        // 지역별 선생님 정보
+        const teacherInfoMap = {
+            '홍대': {
+                name: '이헌국',
+                age: '30대 남성',
+                target: '성인',
+                job: '원장',
+                location: '서울 홍대',
+                classType: '대중강연, 세미나',
+                social: 'https://www.instagram.com/snd_handpan_academy/',
+                phone: '+821089679204'
+            },
+            '서대문': {
+                name: '이지은',
+                age: '30대 여성',
+                target: '아동, 청소년, 성인',
+                job: '음악치료, 명상상담',
+                location: '서울 서대문구',
+                classType: '1:1, 소그룹',
+                social: 'https://www.instagram.com/warmwaves_therapy/',
+                phone: '+821045299038'
+            },
+            '성북': {
+                name: '안재민',
+                age: '20대 남성',
+                target: '청소년, 성인',
+                job: '배우 & 연주자',
+                location: '서울 성북구',
+                classType: '1:1, 소그룹',
+                social: 'https://instagram.com/handpan_korea',
+                phone: '+821072297450'
+            },
+            '건대입구': {
+                name: '이시온',
+                age: '40대 남성',
+                target: '청소년, 성인',
+                job: '명상 음악가',
+                location: '서울 건대입구',
+                classType: '1:1, 소그룹',
+                social: 'https://www.instagram.com/sion.handpan/',
+                phone: '+821044454689'
+            },
+            '강릉': {
+                name: '김문겸',
+                age: '30대 남성',
+                target: '청소년, 성인',
+                job: '국악 연주자',
+                location: '강원 강릉',
+                classType: '1:1, 소그룹, 공연',
+                social: 'https://instagram.com/handpan_korea',
+                phone: '+821029388815'
+            }
+        };
+
+        return teacherInfoMap[location] || {
+            name: '담당 강사',
+            age: '미정',
+            target: '전 연령',
+            job: '핸드팬 강사',
+            location: '미정',
+            classType: '미정',
+            social: 'https://instagram.com/handpan_korea',
+            phone: '+821089679204'
+        };
+    }
+
+    // 선생님 프로필 뷰
+    function teacherProfileView(location) {
+        const teacherInfo = getTeacherInfo(location);
+
+        document.querySelector('.container').innerHTML = `
+            <button class="back-button" onclick="navigateTo('/')">
+                <span class="back-arrow">←</span>
+            </button>
+            <header>
+                <h1>${location} 지점</h1>
+            </header>
+            <main>
+                <div class="teacher-card">
+                    <div class="teacher-grid">
+                        <div class="grid-item name">${teacherInfo.name}</div>
+                        <div class="grid-item age">${teacherInfo.age}</div>
+                        <div class="grid-item target">${teacherInfo.target}</div>
+                        <div class="grid-item job">${teacherInfo.job}</div>
+                        <div class="grid-item location">${teacherInfo.location}</div>
+                        <div class="grid-item class-type">${teacherInfo.classType}</div>
+                        <div class="grid-item social" onclick="window.open('${teacherInfo.social}', '_blank')">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="grid-item contact" onclick="window.location.href='tel:${teacherInfo.phone}'">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-container" style="margin-top: 20px;">
+                    <button class="main-button" onclick="window.open('https://forms.gle/4Fcb5S3KtwKYYejA9', '_blank')">
+                        수업 신청하기
+                    </button>
+                </div>
+            </main>
         `;
     }
 
