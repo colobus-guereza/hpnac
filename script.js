@@ -18,10 +18,31 @@ function setThemeByTime() {
     document.body.classList.toggle('dark-theme', isDarkTime);
 }
 
+// 테마 토글 함수
+function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
+}
+
+// 테마 토글 버튼 추가 함수
+function addThemeToggle() {
+    const existingToggle = document.querySelector('.theme-toggle');
+    if (!existingToggle) {
+        const toggle = document.createElement('button');
+        toggle.className = 'theme-toggle';
+        toggle.innerHTML = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+        toggle.onclick = () => {
+            toggleTheme();
+            toggle.innerHTML = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+        };
+        document.body.appendChild(toggle);
+    }
+}
+
 // 1분마다 테마 체크
 function initThemeChecker() {
     setThemeByTime(); // 초기 설정
     setInterval(setThemeByTime, 60000); // 1분마다 체크
+    addThemeToggle(); // 테마 토글 버튼 추가
 }
 
 // 앱 초기화 함수 수정
@@ -33,6 +54,7 @@ function initializeApp() {
         loadingContainer.classList.add('fade-out');
         setTimeout(() => {
             mainView();
+            addThemeToggle(); // 메인 뷰 렌더링 후 테마 토글 버튼 추가
         }, 500);
     }, 1500);
 }
@@ -40,6 +62,9 @@ function initializeApp() {
 document.addEventListener('DOMContentLoaded', () => {
     // 카카오 SDK 초기화 실행
     initializeKakao();
+
+    // 테마 토글 버튼 추가
+    addThemeToggle();
 
     // 라우팅 처리
     const routes = {
@@ -58,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const path = window.location.pathname;
         const view = routes[path] || homeView;
         view();
+        addThemeToggle(); // 뷰 렌더링 후 테마 토글 버튼 추가
     }
 
     // 홈 화면 뷰
@@ -393,7 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li>4박자 기본리듬</li>
                             <li>6박자 기본리듬</li>
                             <li>리듬 쪼개기</li>
-                            <li>하이햇으로 그루브 만들기</li>
+                            <li class="small-text">하이햇으로 그루브 만들기</li>
                             <li>Odd Meter 확장</li>
                             <li>나만의 리듬 만들기</li>
                         </ul>
@@ -403,10 +429,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <ul class="curriculum-list">
                             <li>손가락 트레이닝</li>
                             <li>아르페지오</li>
-                            <li>리듬화음멜로디 동시연주</li>
+                            <li class="small-text">리듬화음멜로디 동시연주</li>
                             <li>롤 Roll</li>
                             <li>음색 확장</li>
-                            <li>핸드팬 듀오 플레이: 캐슬링</li>
+                            <li class="small-text">핸드팬 듀오 플레이: 캐슬링</li>
                         </ul>
                     </div>
                 </div>
