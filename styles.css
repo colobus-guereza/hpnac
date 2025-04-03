@@ -1690,15 +1690,15 @@ h1, h2, h3, .level-title {
 .location-point::after {
     content: attr(data-name);
     position: absolute;
-    top: -30px;
+    top: -42px;
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
     color: #333;
-    padding: 4px 12px;
+    padding: 5px 14px;
     border-radius: 12px;
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 700;
     white-space: nowrap;
     opacity: 1;
     pointer-events: none;
@@ -1727,9 +1727,9 @@ h1, h2, h3, .level-title {
     }
     
     .location-point::after {
-        font-size: 12px;
-        padding: 3px 8px;
-        top: -28px;
+        font-size: 14px;
+        padding: 4px 10px;
+        top: -38px;
     }
 }
 
@@ -1745,9 +1745,9 @@ h1, h2, h3, .level-title {
     }
     
     .location-point::after {
-        font-size: 11px;
-        padding: 2px 6px;
-        top: -24px;
+        font-size: 13px;
+        padding: 3px 8px;
+        top: -35px;
     }
     
     .map-title {
