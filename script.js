@@ -478,8 +478,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="back-button" onclick="navigateTo('/education')">
                 <span class="back-arrow">←</span>
             </button>
-            <main>
-                <div class="curriculum-container">
+            <main style="flex: 1; display: flex; flex-direction: column;">
+                <div class="curriculum-container" style="flex: 1; height: 100%;">
                     <p class="curriculum-subtitle">기초과정 학습과목</p>
                     <div class="curriculum-card">
                         <h2 class="level-title">1. 이론</h2>
