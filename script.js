@@ -297,45 +297,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 강사 라인업 화면 뷰
     function teachersView() {
+        const activeTeachers = [
+            {
+                name: '이헌국',
+                age: '30대 남성',
+                target: '성인',
+                job: '원장',
+                location: '서울 홍대',
+                classType: '대중강연, 세미나',
+                social: 'https://www.instagram.com/snd_handpan_academy/'
+            },
+            {
+                name: '이시온',
+                age: '40대 남성',
+                target: '청소년, 성인',
+                job: '명상 음악가',
+                location: '서울 건대입구',
+                classType: '1:1, 소그룹',
+                social: 'https://www.instagram.com/sion.handpan/'
+            },
+            {
+                name: '이지은',
+                age: '30대 여성',
+                target: '아동, 청소년, 성인',
+                job: '음악치료, 명상상담',
+                location: '서울 서대문구',
+                classType: '1:1, 소그룹',
+                social: 'https://www.instagram.com/warmwaves_therapy/'
+            }
+        ];
+
         document.querySelector('.container').innerHTML = `
             <button class="back-button" onclick="navigateTo('/')">
                 <span class="back-arrow">←</span>
             </button>
             <main>
                 <div class="teachers-container">
-                    <div class="teacher-card">
-                        <div class="teacher-grid">
-                            <div class="grid-item name">이헌국</div>
-                            <div class="grid-item age">30대 남성</div>
-                            <div class="grid-item target">성인</div>
-                            <div class="grid-item job">원장</div>
-                            <div class="grid-item location">서울 홍대</div>
-                            <div class="grid-item class-type">대중강연, 세미나</div>
-                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/snd_handpan_academy/', '_blank')"><i class="fab fa-instagram"></i></button>
+                    ${activeTeachers.map(teacher => `
+                        <div class="teacher-card">
+                            <div class="teacher-grid">
+                                <div class="grid-item name">${teacher.name}</div>
+                                <div class="grid-item age">${teacher.age}</div>
+                                <div class="grid-item target">${teacher.target}</div>
+                                <div class="grid-item job">${teacher.job}</div>
+                                <div class="grid-item location">${teacher.location}</div>
+                                <div class="grid-item class-type">${teacher.classType}</div>
+                                <button class="grid-item social" onclick="window.open('${teacher.social}', '_blank')"><i class="fab fa-instagram"></i></button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="teacher-card">
-                        <div class="teacher-grid">
-                            <div class="grid-item name">이시온</div>
-                            <div class="grid-item age">40대 남성</div>
-                            <div class="grid-item target">청소년, 성인</div>
-                            <div class="grid-item job">명상 음악가</div>
-                            <div class="grid-item location">서울 건대입구</div>
-                            <div class="grid-item class-type">1:1, 소그룹</div>
-                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/sion.handpan/', '_blank')"><i class="fab fa-instagram"></i></button>
-                        </div>
-                    </div>
-                    <div class="teacher-card">
-                        <div class="teacher-grid">
-                            <div class="grid-item name">이지은</div>
-                            <div class="grid-item age">30대 여성</div>
-                            <div class="grid-item target">아동, 청소년, 성인</div>
-                            <div class="grid-item job">음악치료, 명상상담</div>
-                            <div class="grid-item location">서울 서대문구</div>
-                            <div class="grid-item class-type">1:1, 소그룹</div>
-                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/warmwaves_therapy/', '_blank')"><i class="fab fa-instagram"></i></button>
-                        </div>
-                    </div>
+                    `).join('')}
                 </div>
             </main>
         `;
@@ -492,21 +502,6 @@ window.toggleAppDownloadPopup = function () {
     } else {
         document.body.style.overflow = '';
     }
-}
-
-function createTeacherCard(teacher) {
-    return `
-        <div class="teacher-card">
-            <div class="teacher-grid">
-                <div class="grid-item name">${teacher.name}</div>
-                <div class="grid-item job">${teacher.job}</div>
-                <div class="grid-item target">${teacher.target}</div>
-                <div class="grid-item social" onclick="window.open('${teacher.social}', '_blank')">SNS</div>
-                <div class="grid-item contact" onclick="window.open('${teacher.contact}', '_blank')">문의하기</div>
-                <!-- <div class="grid-item call" onclick="window.location.href='tel:${teacher.phone}'">전화연결</div> -->
-            </div>
-        </div>
-    `;
 }
 
 function showCertificationExam() {
