@@ -579,17 +579,48 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // 선생님 프로필 뷰
+    // 선생님 프로필 뷰를 수정해 홍대 프로필에 특수 처리를 추가합니다
     function teacherProfileView(location) {
         const teacherInfo = getTeacherInfo(location);
 
-        document.querySelector('.container').innerHTML = `
+        let headerContent = `
             <button class="back-button" onclick="navigateTo('/')">
                 <span class="back-arrow">←</span>
             </button>
             <header>
                 <h1>${location} 지점</h1>
-            </header>
+            </header>`;
+
+        // 홍대 지점일 경우 헤더 숨김
+        if (location === '홍대') {
+            headerContent = `
+                <button class="back-button" onclick="navigateTo('/')">
+                    <span class="back-arrow">←</span>
+                </button>
+                <header class="hidden-header">
+                    <!-- 타이틀 제거 -->
+                </header>`;
+        }
+
+        let buttonContent = `
+            <div class="button-container" style="margin-top: 20px;">
+                <button class="main-button" onclick="window.open('https://forms.gle/4Fcb5S3KtwKYYejA9', '_blank')">
+                    수업 신청하기
+                </button>
+            </div>`;
+
+        // 홍대 지점일 경우 홈 화면의 첫 번째 버튼과 동일하게 변경
+        if (location === '홍대') {
+            buttonContent = `
+            <div class="button-container" style="margin-top: 20px;">
+                <button class="main-button" onclick="window.open('https://forms.gle/4Fcb5S3KtwKYYejA9', '_blank')">
+                    [홍대] 4/6, 4/20 핸드팬 그룹수업 신청
+                </button>
+            </div>`;
+        }
+
+        document.querySelector('.container').innerHTML = `
+            ${headerContent}
             <main>
                 <div class="teacher-card">
                     <div class="teacher-grid">
@@ -607,11 +638,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 </div>
-                <div class="button-container" style="margin-top: 20px;">
-                    <button class="main-button" onclick="window.open('https://forms.gle/4Fcb5S3KtwKYYejA9', '_blank')">
-                        수업 신청하기
-                    </button>
-                </div>
+                ${buttonContent}
             </main>
         `;
     }
