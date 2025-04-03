@@ -51,7 +51,9 @@ function initializeApp() {
     showLoadingScreen();
     setTimeout(() => {
         const loadingContainer = document.querySelector('.loading-container');
-        loadingContainer.classList.add('fade-out');
+        if (loadingContainer) {
+            loadingContainer.classList.add('fade-out');
+        }
         setTimeout(() => {
             mainView();
             addThemeToggle(); // 메인 뷰 렌더링 후 테마 토글 버튼 추가
@@ -63,7 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 카카오 SDK 초기화 실행
     initializeKakao();
 
-    // 테마 토글 버튼 추가
+    // 테마 체커 초기화 및 테마 토글 버튼 추가
+    initThemeChecker();
     addThemeToggle();
 
     // 라우팅 처리
@@ -223,9 +226,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <p>자신만의 수업기법을 개발하여 1급 및 2급 핸드팬강사를 양성하고 일반인 및 학생들을 대상으로 핸드팬 연주를 가르치는 직무를 수행</p>
                                 </div>
                             </div>
-                            <div class="exam-button-container">
-                                <button class="exam-button" onclick="navigateTo('/auth')">필기시험 접수</button>
-                            </div>
                         </div>
                     </div>
                     <div class="slide">
@@ -311,44 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item job">원장</div>
                             <div class="grid-item location">서울 홍대</div>
                             <div class="grid-item class-type">대중강연, 세미나</div>
-                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/snd_handpan_academy/', '_blank')">인스타그램</button>
-                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821089679204'">전화연결</button> -->
-                        </div>
-                    </div>
-                    <div class="teacher-card">
-                        <div class="teacher-grid">
-                            <div class="grid-item name">김문겸</div>
-                            <div class="grid-item age">40대 남성</div>
-                            <div class="grid-item target">청소년, 성인</div>
-                            <div class="grid-item job">국악 연주자</div>
-                            <div class="grid-item location">강원도 강릉</div>
-                            <div class="grid-item class-type">1:1, 소그룹</div>
-                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/ansrua84/', '_blank')">인스타그램</button>
-                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821029388815'">전화연결</button> -->
-                        </div>
-                    </div>
-                    <div class="teacher-card">
-                        <div class="teacher-grid">
-                            <div class="grid-item name">미지수</div>
-                            <div class="grid-item age">30대 여성</div>
-                            <div class="grid-item target">성인</div>
-                            <div class="grid-item job">배우 & 연주자</div>
-                            <div class="grid-item location">서울 서대문구</div>
-                            <div class="grid-item class-type">1:1, 소그룹</div>
-                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/warmwaves_therapy/', '_blank')">인스타그램</button>
-                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821045299038'">전화연결</button> -->
-                        </div>
-                    </div>
-                    <div class="teacher-card">
-                        <div class="teacher-grid">
-                            <div class="grid-item name">안재민</div>
-                            <div class="grid-item age">30대 남성</div>
-                            <div class="grid-item target">청소년, 성인</div>
-                            <div class="grid-item job">배우 & 연주자</div>
-                            <div class="grid-item location">서울 성북</div>
-                            <div class="grid-item class-type">1:1</div>
-                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/artist__jmin/', '_blank')">인스타그램</button>
-                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821072297450'">전화연결</button> -->
+                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/snd_handpan_academy/', '_blank')"><i class="fab fa-instagram"></i></button>
                         </div>
                     </div>
                     <div class="teacher-card">
@@ -359,8 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item job">명상 음악가</div>
                             <div class="grid-item location">서울 건대입구</div>
                             <div class="grid-item class-type">1:1, 소그룹</div>
-                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/sion.handpan/', '_blank')">인스타그램</button>
-                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821044454689'">전화연결</button> -->
+                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/sion.handpan/', '_blank')"><i class="fab fa-instagram"></i></button>
                         </div>
                     </div>
                     <div class="teacher-card">
@@ -371,20 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="grid-item job">음악치료, 명상상담</div>
                             <div class="grid-item location">서울 서대문구</div>
                             <div class="grid-item class-type">1:1, 소그룹</div>
-                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/warmwaves_therapy/', '_blank')">인스타그램</button>
-                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821045299038'">전화연결</button> -->
-                        </div>
-                    </div>
-                    <div class="teacher-card">
-                        <div class="teacher-grid">
-                            <div class="grid-item name">조진희</div>
-                            <div class="grid-item age">40대 여성</div>
-                            <div class="grid-item target">성인</div>
-                            <div class="grid-item job">암환우 연주자</div>
-                            <div class="grid-item location">서울 성수</div>
-                            <div class="grid-item class-type">1:1</div>
-                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/designjinhee/', '_blank')">인스타그램</button>
-                            <!-- <button class="grid-item contact" onclick="window.location.href='tel:+821031270691'">전화연결</button> -->
+                            <button class="grid-item social" onclick="window.open('https://www.instagram.com/warmwaves_therapy/', '_blank')"><i class="fab fa-instagram"></i></button>
                         </div>
                     </div>
                 </div>

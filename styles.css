@@ -745,6 +745,11 @@ h1, h2, h3, .level-title {
 
     .social i {
         font-size: 16px;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        text-align: center;
     }
 
     .slide img {
