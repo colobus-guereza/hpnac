@@ -645,32 +645,45 @@ h1, h2, h3, .level-title {
         gap: 20px;
     }
 
+    /* 모바일에서 테마 토글 버튼 숨김 처리 */
+    .theme-toggle {
+        display: none !important; /* 모바일에서 테마 전환 버튼 비활성화 */
+    }
+
     .button-container {
         gap: 25px;
     }
 
+    /* 모바일에서 버튼 배경색 강제 적용 */
     .main-button {
         font-size: 9px;
         padding: 12px !important;
         letter-spacing: -0.3px !important;
         font-weight: var(--font-bold) !important;
+        background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
+        color: var(--text-color) !important;
     }
 
     .button-1 {
         font-size: 8px !important;
         letter-spacing: -0.8px !important;
+        background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
     }
 
     .button-2, .button-3, .button-4 {
         font-size: 12px !important;
+        background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
     }
 
     .button-5, .button-6 {
         font-size: 12px !important;
+        background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
     }
 
     .button-7 {
         font-size: 13px !important;
+        background: transparent !important;
+        border: 2px dashed var(--button-gradient-end) !important;
     }
 
     .horizontal-buttons {
@@ -682,10 +695,13 @@ h1, h2, h3, .level-title {
         font-size: 12px !important;
         padding: 10px !important;
         font-weight: var(--font-bold) !important;
+        background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
     }
 
     .empty-button {
         margin-top: 0;
+        background: transparent !important;
+        border: 2px dashed var(--button-gradient-end) !important;
     }
 
     .auth-description {
