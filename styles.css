@@ -40,6 +40,14 @@
     --card-hover-shadow: 0 6px 12px rgba(74, 74, 64, 0.12);
     --card-border-radius: 15px;
     --card-inner-border-radius: 8px;
+
+    /* 버튼 컴포넌트 기본 설정 */
+    --button-min-height: 35px;
+    --button-padding-v: 8px;
+    --button-padding-h: 12px;
+    --button-font-base: 13px;
+    --button-line-height: 1.2;
+    --button-text-padding: 4px;
 }
 
 .dark-theme {
@@ -1330,4 +1338,98 @@ h1, h2, h3, .level-title {
     transform: scale(1.1);
     box-shadow: var(--neon-glow);
     background: var(--button-hover-color);
+}
+
+/* 버튼 기본 스타일 */
+.grid-item, .curriculum-list li {
+    min-height: var(--button-min-height);
+    padding: var(--button-padding-v) var(--button-padding-h);
+    font-size: var(--button-font-base);
+    line-height: var(--button-line-height);
+    white-space: normal;
+    word-break: keep-all;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: var(--card-inner-border-radius);
+    background: var(--primary-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color-secondary);
+    transition: all 0.3s ease;
+}
+
+.grid-item.name {
+    font-size: calc(var(--button-font-base) * 1.15);
+    font-weight: var(--font-medium);
+    background: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.grid-item.social {
+    font-size: calc(var(--button-font-base) * 1.4);
+    background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+}
+
+.curriculum-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 0;
+    list-style: none;
+}
+
+.curriculum-list li {
+    min-height: calc(var(--button-min-height) * 1.2);
+    font-size: var(--button-font-base);
+    padding: calc(var(--button-padding-v) * 1.2) var(--button-padding-h);
+}
+
+.curriculum-list li.small-text {
+    font-size: calc(var(--button-font-base) * 0.92);
+    line-height: calc(var(--button-line-height) * 0.95);
+    padding: calc(var(--button-padding-v) * 0.8) var(--button-padding-h);
+}
+
+@media (max-width: 480px) {
+    :root {
+        --button-min-height: 32px;
+        --button-padding-v: 6px;
+        --button-padding-h: 10px;
+        --button-font-base: 11px;
+        --button-line-height: 1.15;
+        --button-text-padding: 3px;
+    }
+
+    .grid-item, .curriculum-list li {
+        min-height: var(--button-min-height);
+        padding: var(--button-padding-v) var(--button-padding-h);
+        font-size: var(--button-font-base);
+    }
+
+    .grid-item.name {
+        font-size: calc(var(--button-font-base) * 1.15);
+    }
+
+    .grid-item.social {
+        font-size: calc(var(--button-font-base) * 1.4);
+    }
+
+    .curriculum-list li {
+        min-height: calc(var(--button-min-height) * 1.2);
+        font-size: var(--button-font-base);
+    }
+
+    .curriculum-list li.small-text {
+        font-size: calc(var(--button-font-base) * 0.92);
+        padding: calc(var(--button-padding-v) * 0.8) var(--button-padding-h);
+    }
+
+    .teacher-grid {
+        gap: 6px;
+    }
 } 
