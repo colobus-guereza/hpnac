@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <!-- 타이틀 제거 -->
             </header>
             <div class="map-container">
-                <div class="map-title">레슨 예약</div>
+                <div class="map-title">레슨예약 & 공연문의</div>
                 <div class="map-background" id="location-map"></div>
             </div>
             <main>
@@ -648,20 +648,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="back-arrow">←</span>
             </button>
             <main>
-                <div class="teacher-card">
-                    <div class="teacher-grid">
-                        <div class="grid-item name">${teacherInfo.name}</div>
-                        <div class="grid-item age">${teacherInfo.age}</div>
-                        <div class="grid-item target">${teacherInfo.target}</div>
-                        <div class="grid-item job">${teacherInfo.job}</div>
-                        <div class="grid-item location">${teacherInfo.location}</div>
-                        <div class="grid-item class-type">${teacherInfo.classType}</div>
-                        <div class="grid-item social" onclick="window.open('${teacherInfo.social}', '_blank')">
-                            <i class="fab fa-instagram"></i>
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <h2 class="profile-name">${teacherInfo.name} 선생님</h2>
+                        <p class="profile-job">${teacherInfo.job}</p>
+                    </div>
+                    <div class="profile-details">
+                        <div class="profile-item">
+                            <span class="profile-label">연령대</span>
+                            <span class="profile-value">${teacherInfo.age}</span>
                         </div>
-                        <div class="grid-item contact" onclick="window.location.href='tel:${teacherInfo.phone}'">
-                            <i class="fas fa-phone"></i>
+                        <div class="profile-item">
+                            <span class="profile-label">수업 대상</span>
+                            <span class="profile-value">${teacherInfo.target}</span>
                         </div>
+                        <div class="profile-item">
+                            <span class="profile-label">위치</span>
+                            <span class="profile-value">${teacherInfo.location}</span>
+                        </div>
+                        <div class="profile-item">
+                            <span class="profile-label">수업 형태</span>
+                            <span class="profile-value">${teacherInfo.classType}</span>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="profile-action instagram" onclick="window.open('${teacherInfo.social}', '_blank')">
+                            <i class="fab fa-instagram"></i> 인스타그램
+                        </button>
+                        <button class="profile-action phone" onclick="window.location.href='tel:${teacherInfo.phone}'">
+                            <i class="fas fa-phone"></i> 전화 문의
+                        </button>
                     </div>
                 </div>
                 <div class="button-container" style="margin-top: 20px;">

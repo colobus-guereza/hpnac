@@ -1792,4 +1792,113 @@ h1, h2, h3, .level-title {
         font-size: 13px;
         padding: 14px 8px;
     }
+}
+
+/* 프로필 카드 스타일 */
+.profile-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.profile-name {
+    font-size: 24px;
+    color: var(--text-color);
+    margin: 0 0 5px 0;
+    font-weight: var(--font-bold);
+}
+
+.profile-job {
+    font-size: 16px;
+    color: var(--text-color-secondary);
+    margin: 0;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.profile-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border-color-light);
+}
+
+.profile-label {
+    font-weight: var(--font-bold);
+    color: var(--text-color-secondary);
+}
+
+.profile-value {
+    color: var(--text-color);
+    text-align: right;
+}
+
+.profile-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.profile-action {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: var(--font-bold);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.profile-action.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+}
+
+.profile-action.phone {
+    background: linear-gradient(45deg, #25D366, #128C7E);
+    color: white;
+}
+
+.profile-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-action i {
+    font-size: 18px;
+}
+
+@media (max-width: 480px) {
+    .profile-name {
+        font-size: 22px;
+    }
+    
+    .profile-job {
+        font-size: 14px;
+    }
+    
+    .profile-action {
+        font-size: 14px;
+        padding: 10px;
+    }
 } 
