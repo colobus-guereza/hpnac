@@ -438,7 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: '이지은',
                 age: '30대 여성',
                 target: '아동, 청소년, 성인',
-                job: '음악치료, 명상상담',
+                job: '음악치료사, 명상상담가',
                 location: '서울 서대문구',
                 classType: '1:1, 소그룹',
                 social: 'https://www.instagram.com/warmwaves_therapy/'
@@ -575,7 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: '이지은',
                 age: '30대 여성',
                 target: '아동, 청소년, 성인',
-                job: '음악치료, 명상상담',
+                job: '음악치료사, 명상상담가',
                 location: '서울 서대문구',
                 classType: '1:1, 소그룹',
                 social: 'https://www.instagram.com/warmwaves_therapy/',
