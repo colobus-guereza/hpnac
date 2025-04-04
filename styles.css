@@ -1879,9 +1879,9 @@ h1, h2, h3, .level-title {
     color: white;
 }
 
-.profile-action.kakao {
-    background: linear-gradient(45deg, #FFE812, #FEE500);
-    color: #3C1E1E;
+.profile-action.message {
+    background: linear-gradient(45deg, #1E88E5, #039BE5, #00ACC1);
+    color: white;
 }
 
 .profile-action:hover {

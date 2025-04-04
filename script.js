@@ -678,8 +678,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <button class="profile-action phone" onclick="window.location.href='tel:${teacherInfo.phone}'">
                             <i class="fas fa-phone"></i>
                         </button>
-                        <button class="profile-action kakao" onclick="window.open('', '_blank')">
-                            <i class="fas fa-comment"></i>
+                        <button class="profile-action message" onclick="window.location.href='sms:${teacherInfo.phone}'">
+                            <i class="fas fa-sms"></i>
                         </button>
                     </div>
                 </div>
