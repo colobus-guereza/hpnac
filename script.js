@@ -185,38 +185,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // 홈 화면 뷰
     function homeView() {
         document.querySelector('.container').innerHTML = `
-            <header class="hidden-header">
-                <!-- 타이틀 제거 -->
-            </header>
-            <div class="map-container">
-                <div class="map-title">레슨예약 & 공연문의</div>
-                <div class="map-background" id="location-map"></div>
-            </div>
-            <main>
-                <div class="button-container">
-                    <!-- 그룹수업 신청 버튼 제거 -->
-                    <button class="main-button" onclick="navigateTo('/certification')">
-                        핸드팬강사 자격증
-                    </button>
-                    <button class="main-button" onclick="navigateTo('/education')">
-                        교육자료
-                    </button>
-                    <div class="divider"></div>
-                    <div class="horizontal-buttons">
-                        <button class="main-button" onclick="window.open('http://qr.kakao.com/talk/eaCVDVzuz5Z7kqRWulpewF1ix7M-', '_blank')">
-                            카톡문의
+            <div class="content-wrapper">
+                <header class="hidden-header">
+                    <!-- 타이틀 제거 -->
+                </header>
+                <div class="map-container">
+                    <div class="map-title">레슨예약 & 공연문의</div>
+                    <div class="map-background" id="location-map"></div>
+                </div>
+                <main>
+                    <div class="button-container">
+                        <!-- 그룹수업 신청 버튼 제거 -->
+                        <button class="main-button" onclick="navigateTo('/certification')">
+                            핸드팬강사 자격증
                         </button>
-                        <button class="main-button" onclick="window.location.href='tel:+821089679204'">
-                            전화상담
+                        <button class="main-button" onclick="navigateTo('/education')">
+                            교육자료
+                        </button>
+                        <div class="divider"></div>
+                        <div class="horizontal-buttons">
+                            <button class="main-button" onclick="window.open('http://qr.kakao.com/talk/eaCVDVzuz5Z7kqRWulpewF1ix7M-', '_blank')">
+                                카톡문의
+                            </button>
+                            <button class="main-button" onclick="window.location.href='tel:+821089679204'">
+                                전화상담
+                            </button>
+                        </div>
+                        <button class="main-button empty-button" onclick="toggleAppDownloadPopup()">
+                            앱 다운로드
                         </button>
                     </div>
-                    <button class="main-button empty-button" onclick="toggleAppDownloadPopup()">
-                        앱 다운로드
-                    </button>
+                </main>
+                <div class="popup-overlay" onclick="toggleAppDownloadPopup()">
+                    <img src="images/appdown.png" alt="앱 다운로드 QR코드" class="popup-image" onclick="event.stopPropagation()">
                 </div>
-            </main>
-            <div class="popup-overlay" onclick="toggleAppDownloadPopup()">
-                <img src="images/appdown.png" alt="앱 다운로드 QR코드" class="popup-image" onclick="event.stopPropagation()">
             </div>
         `;
 
