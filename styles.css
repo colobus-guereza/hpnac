@@ -1854,6 +1854,24 @@ h1, h2, h3, .level-title {
     transition: all 0.3s ease;
 }
 
+/* 문의 & 섭외 카드 스타일 */
+.contact-card {
+    margin-bottom: 15px;
+}
+
+.contact-card .profile-header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.profile-section-title {
+    font-size: 20px;
+    color: var(--text-color);
+    margin: 0;
+    font-weight: var(--font-medium);
+    text-align: center;
+}
+
 .profile-header {
     text-align: center;
     margin-bottom: 20px;
@@ -1878,7 +1896,7 @@ h1, h2, h3, .level-title {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .profile-item {
@@ -1960,4 +1978,9 @@ h1, h2, h3, .level-title {
     .profile-action i {
         font-size: 16px;
     }
+}
+
+/* 첫 번째 프로필 카드(contact-card가 아닌)의 패딩 조정 */
+.profile-card:not(.contact-card) {
+    padding-bottom: 15px;
 } 
