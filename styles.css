@@ -51,12 +51,6 @@
     
     /* 모바일 높이 변수 */
     --vh: 1vh;
-    
-    /* 자격증 카드 크기 변수 */
-    --card-width: 420px;
-    --card-height: 564px;
-    --card-mobile-min-height: 450px;
-    --card-aspect-ratio: 1.414; /* A4 용지 비율 (√2) */
 }
 
 /* 홈 화면에서만 스크롤 비활성화 */
@@ -277,6 +271,10 @@ h1, h2, h3, .level-title {
     width: 40px;
     height: 40px;
     margin: 10px;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 100;
 }
 
 .back-button:hover {
@@ -414,8 +412,8 @@ h1, h2, h3, .level-title {
 }
 
 .slide img {
-    width: var(--card-width);
-    height: var(--card-height);
+    width: 420px;
+    height: 594px;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
     object-fit: cover;
@@ -425,9 +423,8 @@ h1, h2, h3, .level-title {
     background: var(--card-bg);
     border: var(--card-border);
     box-shadow: var(--card-shadow);
-    width: 100%;
-    max-width: var(--card-width);
-    height: var(--card-height);
+    width: 594px;
+    height: 594px;
     border-radius: var(--card-border-radius);
     padding: 30px;
     display: flex;
@@ -439,8 +436,8 @@ h1, h2, h3, .level-title {
 }
 
 .certification-info:hover {
-    background: var(--card-bg);
-    box-shadow: var(--card-shadow);
+    background: var(--card-hover-bg);
+    box-shadow: var(--card-hover-shadow);
 }
 
 .certification-title {
@@ -615,8 +612,8 @@ h1, h2, h3, .level-title {
 
     .certification-info {
         width: 100%;
-        max-width: var(--card-width);
-        height: var(--card-height);
+        max-width: 594px;
+        height: 594px;
         padding: 25px;
     }
 
@@ -649,9 +646,9 @@ h1, h2, h3, .level-title {
 
     .slide img {
         width: 100%;
-        max-width: var(--card-width);
-        height: calc(100vw * var(--card-aspect-ratio));
-        max-height: var(--card-height);
+        max-width: 420px;
+        height: calc(100vw * 1.414);
+        max-height: 594px;
     }
 }
 
@@ -838,9 +835,8 @@ h1, h2, h3, .level-title {
         border: var(--card-border);
         box-shadow: var(--card-shadow);
         width: 100%;
-        height: calc((100vw * var(--card-aspect-ratio)) - 40px);
-        max-height: var(--card-height);
-        min-height: var(--card-mobile-min-height);
+        height: auto;
+        min-height: 480px;
         padding: 25px;
     }
 
@@ -938,12 +934,25 @@ h1, h2, h3, .level-title {
 
     .slide img {
         width: 100%;
-        height: calc((100vw * var(--card-aspect-ratio)) - 40px);
-        max-height: var(--card-height);
+        height: calc(100vw * 1.414);
+        max-height: 594px;
     }
 
     .certification-info {
         padding: 20px;
+    }
+
+    .back-button {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 100;
+        font-size: 18px;
+        width: 36px;
+        height: 36px;
+        padding: 6px;
+        margin: 8px;
+        display: flex !important;
     }
 }
 
@@ -1113,13 +1122,34 @@ h1, h2, h3, .level-title {
 /* 커리큘럼 스타일 */
 .curriculum-container {
     padding: 15px;
+    padding-top: 60px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     max-width: 430px;
     margin: 0 auto;
     height: auto;
+    min-height: 680px; /* 최소 세로 길이 지정 */
     overflow-y: auto;
+    background: var(--container-bg);
+}
+
+/* 커리큘럼 페이지 컨테이너 높이 조정 */
+.container.curriculum-page {
+    min-height: 750px; /* 커리큘럼 페이지에서만 적용될 최소 높이 */
+    height: auto;
+}
+
+@media (max-width: 480px) {
+    .container.curriculum-page {
+        min-height: 750px;
+        height: auto !important; /* 모바일에서 강제 적용 */
+        overflow-y: auto !important; /* 스크롤 허용 */
+    }
+    
+    .curriculum-container {
+        min-height: 680px;
+    }
 }
 
 .curriculum-container::-webkit-scrollbar {

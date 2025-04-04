@@ -476,7 +476,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // 스크롤 다시 활성화
         document.body.classList.remove('no-scroll-home');
 
-        document.querySelector('.container').innerHTML = `
+        // 기존 container 요소 선택
+        const container = document.querySelector('.container');
+
+        // 커리큘럼 페이지 클래스 추가
+        container.classList.add('curriculum-page');
+
+        container.innerHTML = `
             <button class="back-button" onclick="navigateTo('/education')">
                 <span class="back-arrow">←</span>
             </button>
@@ -829,4 +835,47 @@ function mainView() {
             <button class="main-button empty-button">커뮤니티 (준비중)</button>
         </div>
     `;
+}
+
+// 페이지 네비게이션 함수
+function navigateTo(route) {
+    // 커리큘럼 페이지 클래스 제거
+    document.querySelector('.container').classList.remove('curriculum-page');
+
+    switch (route) {
+        case '/':
+            homeView();
+            break;
+        case '/auth':
+            authView();
+            break;
+        case '/education':
+            educationView();
+            break;
+        case '/curriculum':
+            curriculumView();
+            break;
+        case '/video-lessons':
+            videoLessonsView();
+            break;
+        case '/scale-dictionary':
+            scaleDictionaryView();
+            break;
+        case '/certification':
+            certificationView();
+            break;
+        case '/teachers':
+            teachersView();
+            break;
+        default:
+            if (route.startsWith('/teacher/')) {
+                const location = route.replace('/teacher/', '');
+                teacherProfileView(decodeURIComponent(location));
+            } else {
+                homeView();
+            }
+    }
+
+    // 현재 활성 경로 설정 (필요시 다른 기능에 활용)
+    activeRoute = route;
 } 
