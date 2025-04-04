@@ -436,8 +436,8 @@ h1, h2, h3, .level-title {
 }
 
 .certification-info:hover {
-    background: var(--card-hover-bg);
-    box-shadow: var(--card-hover-shadow);
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
 }
 
 .certification-title {
