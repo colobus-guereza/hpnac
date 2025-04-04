@@ -1782,14 +1782,14 @@ h1, h2, h3, .level-title {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: -0.5px;
     padding: 16px 10px;
 }
 
 @media (max-width: 480px) {
     .hongdae-lesson-btn {
-        font-size: 13px;
+        font-size: 14px;
         padding: 14px 8px;
     }
 }

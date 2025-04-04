@@ -438,7 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: '이지은',
                 age: '30대 여성',
                 target: '아동, 청소년, 성인',
-                job: '음악치료사, 명상상담가',
+                job: '음악치료, 명상상담',
                 location: '서울 서대문구',
                 classType: '1:1, 소그룹',
                 social: 'https://www.instagram.com/warmwaves_therapy/'
@@ -575,7 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: '이지은',
                 age: '30대 여성',
                 target: '아동, 청소년, 성인',
-                job: '음악치료사, 명상상담가',
+                job: '음악치료사 & 명상심리상담사',
                 location: '서울 서대문구',
                 classType: '1:1, 소그룹',
                 social: 'https://www.instagram.com/warmwaves_therapy/',
@@ -593,9 +593,9 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             '건대입구': {
                 name: '이시온',
-                age: '40대 남성',
+                age: '50대 남성',
                 target: '청소년, 성인',
-                job: '명상 음악가',
+                job: '마고사운드 명상음악가',
                 location: '서울 건대입구',
                 classType: '1:1, 소그룹',
                 social: 'https://www.instagram.com/sion.handpan/',
@@ -606,8 +606,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 age: '40대 남성',
                 target: '청소년, 성인',
                 job: '국악 연주자',
-                location: '강원 강릉',
-                classType: '1:1, 소그룹, 공연',
+                location: '강원도 강릉',
+                classType: '1:1, 소그룹',
                 social: 'https://instagram.com/handpan_korea',
                 phone: '+821029388815'
             }
@@ -640,7 +640,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (location === '홍대') {
             buttonText = '4/6, 20(일) 오후2시 그룹레슨 신청';
             buttonClass = 'main-button hongdae-lesson-btn';
-            buttonFontSize = 'font-size: 14px;'; // 폰트 사이즈 축소
+            buttonFontSize = ''; // CSS 파일에서 설정된 크기를 사용
         }
 
         document.querySelector('.container').innerHTML = `
