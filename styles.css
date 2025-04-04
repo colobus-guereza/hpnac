@@ -268,9 +268,9 @@ h1, h2, h3, .level-title {
     justify-content: center;
     padding: 8px;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    margin: 10px;
+    width: 44px;
+    height: 44px;
+    margin: 0;
     position: fixed;
     top: 15px;
     left: 15px;
@@ -709,10 +709,10 @@ h1, h2, h3, .level-title {
         display: none;
     }
     
-    /* 모바일에서 테마 토글 버튼 숨김 처리 */
-    .theme-toggle {
-        display: none !important; /* 모바일에서 테마 전환 버튼 비활성화 */
-    }
+    /* 모바일에서 테마 토글 버튼 표시 */
+    /* .theme-toggle {
+        display: none !important; 
+    } */
 
     .button-1 {
         font-size: 19px !important;
@@ -918,41 +918,25 @@ h1, h2, h3, .level-title {
     .theme-toggle {
         top: 15px;
         right: 15px;
-        width: 36px;
-        height: 36px;
-        font-size: 18px;
+        width: 44px;
+        height: 44px;
     }
 
-    .social i {
-        font-size: 16px;
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        line-height: 16px;
-        text-align: center;
-    }
-
-    .slide img {
-        width: 100%;
-        height: calc(100vw * 1.414);
-        max-height: 594px;
-    }
-
-    .certification-info {
-        padding: 20px;
+    .theme-icon {
+        width: 22px;
+        height: 22px;
     }
 
     .back-button {
-        position: fixed;
         top: 15px;
         left: 15px;
-        z-index: 100;
-        font-size: 18px;
-        width: 36px;
-        height: 36px;
-        padding: 6px;
-        margin: 8px;
-        display: flex !important;
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+    }
+    
+    .back-arrow {
+        font-size: 24px;
     }
 }
 
@@ -1526,10 +1510,10 @@ h1, h2, h3, .level-title {
 
 .theme-toggle {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
+    top: 15px;
+    right: 15px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: var(--container-bg);
     border: 1px solid var(--border-color);
@@ -1541,13 +1525,48 @@ h1, h2, h3, .level-title {
     z-index: 1000;
     transition: all 0.3s ease;
     box-shadow: var(--box-shadow);
-    font-size: 20px;
+    padding: 0;
+    overflow: hidden;
+    margin: 0;
 }
 
 .theme-toggle:hover {
     transform: scale(1.1);
     box-shadow: var(--neon-glow);
     background: var(--button-hover-color);
+}
+
+.theme-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 480px) {
+    .theme-toggle {
+        top: 15px;
+        right: 15px;
+        width: 44px;
+        height: 44px;
+    }
+    
+    .theme-icon {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .back-button {
+        top: 15px;
+        left: 15px;
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+    }
+    
+    .back-arrow {
+        font-size: 24px;
+    }
 }
 
 /* 버튼 기본 스타일 */
@@ -1806,7 +1825,10 @@ h1, h2, h3, .level-title {
     }
     
     .theme-toggle {
-        display: none !important;
+        top: 15px;
+        right: 15px;
+        width: 44px;
+        height: 44px;
     }
 }
 
