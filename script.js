@@ -640,10 +640,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const teacherInfo = getTeacherInfo(location);
 
-        // 홍대 지점 버튼 텍스트 설정
+        // 홍대 지점 버튼 텍스트 설정 및 버튼 표시 여부 결정
         let buttonText = '수업 신청하기';
         let buttonClass = 'main-button';
         let buttonFontSize = '';
+        let showButton = location === '홍대'; // 홍대 지점만 버튼을 표시
 
         if (location === '홍대') {
             buttonText = '4/6, 20(일) 오후2시 그룹레슨 신청';
@@ -679,8 +680,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="profile-value">${teacherInfo.target}</span>
                         </div>
                     </div>
+                </div>
+                
+                <!-- 새로운 문의 & 섭외 카드 -->
+                <div class="profile-card contact-card">
+                    <div class="profile-header">
+                        <h3 class="profile-section-title">문의 & 섭외</h3>
+                    </div>
                     <div class="profile-actions">
-                        <button class="profile-action instagram" onclick="window.open('${teacherInfo.social}', '_blank')">
+                        <button class="profile-action instagram" onclick="window.open('${teacherInfo.social}')">
                             <i class="fab fa-instagram"></i>
                         </button>
                         <button class="profile-action phone" onclick="window.location.href='tel:${teacherInfo.phone}'">
@@ -691,11 +699,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         </button>
                     </div>
                 </div>
+                
+                ${showButton ? `
                 <div class="button-container" style="margin-top: 20px;">
                     <button class="${buttonClass}" style="${buttonFontSize}" onclick="window.open('https://forms.gle/4Fcb5S3KtwKYYejA9', '_blank')">
                         ${buttonText}
                     </button>
                 </div>
+                ` : ''}
             </main>
         `;
     }
