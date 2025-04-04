@@ -51,6 +51,12 @@
     
     /* 모바일 높이 변수 */
     --vh: 1vh;
+    
+    /* 자격증 카드 크기 변수 */
+    --card-width: 420px;
+    --card-height: 564px;
+    --card-mobile-min-height: 450px;
+    --card-aspect-ratio: 1.414; /* A4 용지 비율 (√2) */
 }
 
 /* 홈 화면에서만 스크롤 비활성화 */
@@ -408,8 +414,8 @@ h1, h2, h3, .level-title {
 }
 
 .slide img {
-    width: 420px;
-    height: 594px;
+    width: var(--card-width);
+    height: var(--card-height);
     border-radius: 10px;
     box-shadow: var(--box-shadow);
     object-fit: cover;
@@ -419,8 +425,9 @@ h1, h2, h3, .level-title {
     background: var(--card-bg);
     border: var(--card-border);
     box-shadow: var(--card-shadow);
-    width: 594px;
-    height: 594px;
+    width: 100%;
+    max-width: var(--card-width);
+    height: var(--card-height);
     border-radius: var(--card-border-radius);
     padding: 30px;
     display: flex;
@@ -432,8 +439,8 @@ h1, h2, h3, .level-title {
 }
 
 .certification-info:hover {
-    background: var(--card-hover-bg);
-    box-shadow: var(--card-hover-shadow);
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
 }
 
 .certification-title {
@@ -608,8 +615,8 @@ h1, h2, h3, .level-title {
 
     .certification-info {
         width: 100%;
-        max-width: 594px;
-        height: 594px;
+        max-width: var(--card-width);
+        height: var(--card-height);
         padding: 25px;
     }
 
@@ -642,9 +649,9 @@ h1, h2, h3, .level-title {
 
     .slide img {
         width: 100%;
-        max-width: 420px;
-        height: calc(100vw * 1.414);
-        max-height: 594px;
+        max-width: var(--card-width);
+        height: calc(100vw * var(--card-aspect-ratio));
+        max-height: var(--card-height);
     }
 }
 
@@ -831,8 +838,9 @@ h1, h2, h3, .level-title {
         border: var(--card-border);
         box-shadow: var(--card-shadow);
         width: 100%;
-        height: auto;
-        min-height: 480px;
+        height: calc((100vw * var(--card-aspect-ratio)) - 40px);
+        max-height: var(--card-height);
+        min-height: var(--card-mobile-min-height);
         padding: 25px;
     }
 
@@ -930,8 +938,8 @@ h1, h2, h3, .level-title {
 
     .slide img {
         width: 100%;
-        height: calc(100vw * 1.414);
-        max-height: 594px;
+        height: calc((100vw * var(--card-aspect-ratio)) - 40px);
+        max-height: var(--card-height);
     }
 
     .certification-info {
