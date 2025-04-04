@@ -655,28 +655,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="profile-details">
                         <div class="profile-item">
-                            <span class="profile-label">연령대</span>
-                            <span class="profile-value">${teacherInfo.age}</span>
-                        </div>
-                        <div class="profile-item">
-                            <span class="profile-label">수업 대상</span>
-                            <span class="profile-value">${teacherInfo.target}</span>
-                        </div>
-                        <div class="profile-item">
                             <span class="profile-label">위치</span>
                             <span class="profile-value">${teacherInfo.location}</span>
+                        </div>
+                        <div class="profile-item">
+                            <span class="profile-label">연령대</span>
+                            <span class="profile-value">${teacherInfo.age}</span>
                         </div>
                         <div class="profile-item">
                             <span class="profile-label">수업 형태</span>
                             <span class="profile-value">${teacherInfo.classType}</span>
                         </div>
+                        <div class="profile-item">
+                            <span class="profile-label">수업 대상</span>
+                            <span class="profile-value">${teacherInfo.target}</span>
+                        </div>
                     </div>
                     <div class="profile-actions">
                         <button class="profile-action instagram" onclick="window.open('${teacherInfo.social}', '_blank')">
-                            <i class="fab fa-instagram"></i> 인스타그램
+                            <i class="fab fa-instagram"></i>
                         </button>
                         <button class="profile-action phone" onclick="window.location.href='tel:${teacherInfo.phone}'">
-                            <i class="fas fa-phone"></i> 전화 문의
+                            <i class="fas fa-phone"></i>
+                        </button>
+                        <button class="profile-action kakao" onclick="window.open('', '_blank')">
+                            <i class="fas fa-comment"></i>
                         </button>
                     </div>
                 </div>
