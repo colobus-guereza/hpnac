@@ -29,10 +29,29 @@ function addThemeToggle() {
     if (!existingToggle) {
         const toggle = document.createElement('button');
         toggle.className = 'theme-toggle';
-        toggle.innerHTML = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+
+        // 이미지 요소 생성
+        const img = document.createElement('img');
+        img.className = 'theme-icon';
+
+        // 현재 테마에 따라 이미지 소스 설정
+        img.src = document.body.classList.contains('dark-theme')
+            ? 'images/theme/light-mode.png'
+            : 'images/theme/dark-mode.png';
+
+        // 이미지 스타일 설정
+        img.style.width = '24px';
+        img.style.height = '24px';
+
+        // 토글 버튼에 이미지 추가
+        toggle.appendChild(img);
+
         toggle.onclick = () => {
             toggleTheme();
-            toggle.innerHTML = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+            // 테마 변경 시 이미지 소스 업데이트
+            img.src = document.body.classList.contains('dark-theme')
+                ? 'images/theme/light-mode.png'
+                : 'images/theme/dark-mode.png';
         };
         document.body.appendChild(toggle);
     }
@@ -596,7 +615,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 job: '배우 & 연주자',
                 location: '서울 성북구',
                 classType: '1:1, 소그룹',
-                social: 'https://instagram.com/handpan_korea',
+                social: 'https://www.instagram.com/artist__jmin/',
                 phone: '+821072297450'
             },
             '건대입구': {
@@ -616,7 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 job: '국악 연주자',
                 location: '강원도 강릉',
                 classType: '1:1, 소그룹',
-                social: 'https://instagram.com/handpan_korea',
+                social: 'https://www.instagram.com/ansrua84/',
                 phone: '+821029388815'
             }
         };
@@ -628,7 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
             job: '핸드팬 강사',
             location: '미정',
             classType: '미정',
-            social: 'https://instagram.com/handpan_korea',
+            social: 'https://www.instagram.com/snd_handpan_academy/',
             phone: '+821089679204'
         };
     }
