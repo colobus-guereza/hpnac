@@ -164,6 +164,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const existingPoints = mapContainer.querySelectorAll('.location-point');
         existingPoints.forEach(point => point.remove());
 
+        // 이벤트 위임을 위한 이벤트 리스너
+        mapContainer.addEventListener('click', (e) => {
+            // 클릭된 요소 또는 그 부모 중 .location-point 클래스를 가진 요소 찾기
+            let targetElement = e.target;
+            // 클릭된 요소가 가상 요소(::after)인 경우 부모(포인터)를 찾음
+            let pointElement = targetElement.closest('.location-point');
+
+            if (pointElement) {
+                const locationName = pointElement.dataset.name;
+                const location = locationData.find(item => item.name === locationName);
+                if (location) {
+                    navigateTo(location.link);
+                }
+            }
+        });
+
         // 새 포인트 생성
         locationData.forEach(location => {
             const point = document.createElement('div');
@@ -171,11 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
             point.dataset.name = location.name;
             point.style.left = `${location.x}px`;
             point.style.top = `${location.y}px`;
-
-            // 클릭 이벤트 추가
-            point.addEventListener('click', () => {
-                navigateTo(location.link);
-            });
 
             mapContainer.appendChild(point);
         });
@@ -459,10 +470,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: '이지은',
                 age: '30대 여성',
                 target: '아동, 청소년, 성인',
-                job: '음악치료, 명상상담',
+                job: '음악치료사 & 명상심리상담',
                 location: '서울 서대문구',
                 classType: '1:1, 소그룹',
-                social: 'https://www.instagram.com/warmwaves_therapy/'
+                social: 'https://www.instagram.com/warmwaves_therapy/',
+                phone: '+821045299038'
             }
         ];
 
@@ -602,7 +614,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: '이지은',
                 age: '30대 여성',
                 target: '아동, 청소년, 성인',
-                job: '음악치료사 & 명상심리상담사',
+                job: '음악치료사 & 명상심리상담',
                 location: '서울 서대문구',
                 classType: '1:1, 소그룹',
                 social: 'https://www.instagram.com/warmwaves_therapy/',
