@@ -745,7 +745,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="slide">
                             <div class="curriculum-card">
                                 <h2 class="level-title">1. 이론</h2>
-                                <ul class="curriculum-list">
+                                <ul class="curriculum-list single-column">
                                     <li>핸드팬 구조와 명칭</li>
                                     <li>하모닉스 원리</li>
                                     <li>튜닝과 리튠</li>
@@ -759,11 +759,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="slide">
                             <div class="curriculum-card">
                                 <h2 class="level-title">2. 리듬</h2>
-                                <ul class="curriculum-list">
+                                <ul class="curriculum-list single-column">
                                     <li>4박자 기본리듬</li>
                                     <li>6박자 기본리듬</li>
                                     <li>리듬 쪼개기</li>
-                                    <li class="small-text">하이햇으로 그루브 만들기</li>
+                                    <li>하이햇으로 그루브 만들기</li>
                                     <li>Odd Meter 확장</li>
                                     <li>나만의 리듬 만들기</li>
                                 </ul>
@@ -772,13 +772,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="slide">
                             <div class="curriculum-card">
                                 <h2 class="level-title">3. 테크닉</h2>
-                                <ul class="curriculum-list">
+                                <ul class="curriculum-list single-column">
                                     <li>손가락 트레이닝</li>
                                     <li>아르페지오</li>
-                                    <li class="small-text">리듬화음멜로디 동시연주</li>
+                                    <li>리듬화음멜로디 동시연주</li>
                                     <li>롤 Roll</li>
                                     <li>음색 확장</li>
-                                    <li class="small-text">핸드팬 듀오 플레이: 캐슬링</li>
+                                    <li>핸드팬 듀오 플레이: 캐슬링</li>
                                 </ul>
                             </div>
                         </div>
