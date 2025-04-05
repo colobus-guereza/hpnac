@@ -137,9 +137,9 @@ function setViewportHeight() {
             setTimeout(() => {
                 const mapContainer = document.querySelector('.map-container');
                 if (mapContainer) {
-                    mapContainer.style.height = '210px';
-                    mapContainer.style.minHeight = '210px';
-                    mapContainer.style.maxHeight = '210px';
+                    mapContainer.style.height = '190px';
+                    mapContainer.style.minHeight = '190px';
+                    mapContainer.style.maxHeight = '190px';
                 }
             }, 50);
         }
@@ -328,9 +328,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(function () {
             const mapContainer = document.querySelector('.map-container');
             if (mapContainer) {
-                mapContainer.style.height = '210px';
-                mapContainer.style.minHeight = '210px';
-                mapContainer.style.maxHeight = '210px';
+                mapContainer.style.height = '190px';
+                mapContainer.style.minHeight = '190px';
+                mapContainer.style.maxHeight = '190px';
             }
         }, 150);
 

@@ -1915,7 +1915,7 @@ h1, h2, h3, .level-title {
     width: 95%;
     max-width: 430px;
     margin: 0 auto;
-    height: 210px;
+    height: 190px;
     position: relative;
     margin-bottom: 20px;
     background-color: var(--container-bg);
