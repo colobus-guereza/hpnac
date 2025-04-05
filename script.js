@@ -329,14 +329,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 전화상담
                             </button>
                         </div>
-                        <button class="main-button empty-button button-7" style="width: 100%; max-width: 100%;" onclick="toggleAppDownloadPopup()">
-                            앱 다운로드
-                        </button>
                     </div>
                 </main>
-                <div class="popup-overlay" onclick="toggleAppDownloadPopup()">
-                    <img src="images/appdown.png" alt="앱 다운로드 QR코드" class="popup-image" onclick="event.stopPropagation()">
-                </div>
             </div>
         `;
 
@@ -1119,12 +1113,6 @@ function kakaoAuth() {
             }
         }
     });
-}
-
-// 앱 다운로드 팝업 토글 함수
-window.toggleAppDownloadPopup = function () {
-    const overlay = document.querySelector('.popup-overlay');
-    overlay.classList.toggle('active');
 }
 
 function showCertificationExam() {
