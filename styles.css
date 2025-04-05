@@ -280,6 +280,7 @@ h1, h2, h3, .level-title {
 /* 홈 화면 버튼 개별 스타일 */
 .button-1 {
     background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
+    font-size: 19px !important;
 }
 
 .button-2 {
@@ -660,11 +661,15 @@ h1, h2, h3, .level-title {
     }
 
     .button-1 {
-        font-size: 15px !important;
+        font-size: 18px !important;
         letter-spacing: -0.5px !important;
     }
 
-    .button-2, .button-3, .button-4 {
+    .button-2, .button-3 {
+        font-size: 18px !important;
+    }
+
+    .button-4 {
         font-size: 15px !important;
     }
 
@@ -787,6 +792,11 @@ h1, h2, h3, .level-title {
 
     .button-1 {
         background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
+        font-size: 18px !important;
+    }
+
+    .button-2, .button-3 {
+        font-size: 18px !important;
     }
 
     .horizontal-buttons {
@@ -2152,7 +2162,9 @@ body.pwa-mode {
     box-shadow: var(--card-shadow);
     padding: 15px;
     transition: all 0.3s ease;
-    overflow: hidden;
+    height: auto; /* 높이를 자동으로 설정 */
+    display: flex;
+    flex-direction: column;
 }
 
 .faq-item:hover {
@@ -2174,6 +2186,10 @@ body.pwa-mode {
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
+    flex: 1; /* 남은 공간을 모두 차지하도록 설정 */
+    word-break: keep-all; /* 단어 단위로 줄바꿈 */
+    white-space: normal; /* 줄바꿈 허용 */
+    overflow: visible; /* 내용이 넘치면 표시 */
 }
 
 @media (max-width: 480px) {
