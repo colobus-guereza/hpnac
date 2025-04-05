@@ -89,6 +89,18 @@ function setViewportHeight() {
     // PWA 모드 감지
     const isPWA = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
 
+    // 컨테이너 요소 선택
+    const container = document.querySelector('.container');
+    if (!container) return;
+
+    // 모든 환경에서 컨테이너 높이를 조정
+    container.style.height = `${window.innerHeight}px`;
+    container.style.minHeight = `${window.innerHeight}px`;
+    container.style.maxHeight = `${window.innerHeight}px`;
+
+    // 컨테이너 배경색 설정
+    container.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
+
     if (isPWA) {
         // PWA 모드일 때 body와 html에 클래스 추가
         document.documentElement.classList.add('pwa-mode');
@@ -117,33 +129,44 @@ function setViewportHeight() {
             }
 
             // 컨테이너 패딩 수정
-            const container = document.querySelector('.container');
-            if (container) {
-                container.style.paddingTop = 'calc(env(safe-area-inset-top) + 50px)';
-            }
+            container.style.paddingTop = 'calc(env(safe-area-inset-top) + 50px)';
         }
+    } else {
+        // 모바일 웹에서는 화면에 맞게 컨테이너 내부 요소 조정
+        setTimeout(() => {
+            const contentWrapper = container.querySelector('.content-wrapper');
+            const mapContainer = container.querySelector('.map-container');
+            const buttonContainer = container.querySelector('.button-container');
 
-        // 컨테이너 높이를 뷰포트에 맞춤
-        const container = document.querySelector('.container');
-        if (container) {
-            container.style.height = `${window.innerHeight}px`;
-            container.style.minHeight = `${window.innerHeight}px`;
-            container.style.maxHeight = `${window.innerHeight}px`;
+            // 홈 화면에서만 적용
+            if (contentWrapper && buttonContainer && mapContainer) {
+                const totalHeight = window.innerHeight;
+                const buttonContainerHeight = buttonContainer.offsetHeight;
+                const titleAndBrandHeight = 80; // 대략적인 타이틀과 브랜드 높이
+                const padding = 50; // 상하 패딩
 
-            // 컨테이너의 배경색도 동일하게 유지
-            container.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
+                // 적절한 지도 컨테이너 높이 계산
+                const idealMapHeight = totalHeight - buttonContainerHeight - titleAndBrandHeight - padding;
+                const mapHeight = Math.max(180, Math.min(idealMapHeight, 210)); // 최소 180px, 최대 210px
 
-            // PWA 모드에서도 지도 컨테이너 높이 유지
-            setTimeout(() => {
-                const mapContainer = document.querySelector('.map-container');
                 if (mapContainer) {
-                    mapContainer.style.height = '190px';
-                    mapContainer.style.minHeight = '190px';
-                    mapContainer.style.maxHeight = '190px';
+                    mapContainer.style.height = `${mapHeight}px`;
+                    mapContainer.style.minHeight = `${mapHeight}px`;
+                    mapContainer.style.maxHeight = `${mapHeight}px`;
                 }
-            }, 50);
-        }
+            }
+        }, 50);
     }
+
+    // PWA 모드에서도 지도 컨테이너 높이 유지
+    setTimeout(() => {
+        const mapContainer = document.querySelector('.map-container');
+        if (mapContainer && isPWA) {
+            mapContainer.style.height = '190px';
+            mapContainer.style.minHeight = '190px';
+            mapContainer.style.maxHeight = '190px';
+        }
+    }, 50);
 }
 
 // 초기화 함수
@@ -204,6 +227,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 현재 시간에 따른 테마 설정 적용
         setThemeByTime();
+
+        // 각 페이지의 레이아웃 조정 (모바일 웹 환경에서)
+        adjustPageLayout();
+
+        // 페이지 로드 후 컨테이너 높이 재조정
+        setViewportHeight();
     }
 
     // 지역 위치 데이터
@@ -324,16 +353,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // 지도 초기화
         setTimeout(initMap, 100);
 
-        // 지도 높이 조정 (모바일 웹과 PWA에서 일관성 유지)
-        setTimeout(function () {
-            const mapContainer = document.querySelector('.map-container');
-            if (mapContainer) {
-                mapContainer.style.height = '190px';
-                mapContainer.style.minHeight = '190px';
-                mapContainer.style.maxHeight = '190px';
-            }
-        }, 150);
-
         // 인라인 스타일 추가로 버튼 너비 강제 적용
         setTimeout(function () {
             const buttons = document.querySelectorAll('.main-button');
@@ -352,6 +371,31 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.button-container').style.maxWidth = '100%';
             document.querySelector('.content-wrapper').style.width = '100%';
             document.querySelector('.content-wrapper').style.maxWidth = '100%';
+
+            // 모바일 웹에서 화면 높이에 맞게 버튼 컨테이너 높이 조정
+            const isPWA = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+            if (!isPWA && window.innerWidth <= 480) {
+                const container = document.querySelector('.container');
+                const contentWrapper = document.querySelector('.content-wrapper');
+                const buttonContainer = document.querySelector('.button-container');
+                const mapContainer = document.querySelector('.map-container');
+
+                if (container && contentWrapper && buttonContainer && mapContainer) {
+                    // 현재 총 컨텐츠 높이 계산
+                    const totalContentHeight = mapContainer.offsetHeight + buttonContainer.offsetHeight + 120; // 마진, 패딩, 브랜드 등 추가 높이
+
+                    // 컨테이너 높이와 컨텐츠 높이의 차이 계산
+                    const containerHeight = container.offsetHeight;
+                    const heightDifference = containerHeight - totalContentHeight;
+
+                    // 차이가 있으면 버튼 컨테이너 위치 조정
+                    if (heightDifference > 0) {
+                        // 버튼 컨테이너에 마진을 추가하여 하단에 붙지 않도록 함
+                        const marginTop = Math.min(heightDifference / 2, 30); // 최대 30px
+                        buttonContainer.style.marginTop = `${marginTop}px`;
+                    }
+                }
+            }
         }, 200);
     }
 
@@ -393,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h1>교육자료</h1>
             </header>
             <main>
-                <div class="button-container">
+                <div class="button-container education-buttons">
                     <button class="main-button button-1" onclick="navigateTo('/faq')">
                         자주묻는질문
                     </button>
@@ -411,6 +455,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </main>
         `;
+
+        // 교육자료 페이지 컨테이너 높이 조정
+        adjustPageLayout();
+    }
+
+    // 페이지별 레이아웃 조정 함수
+    function adjustPageLayout() {
+        const isPWA = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+
+        // PWA가 아닌 모바일 웹에서만 특별 처리
+        if (!isPWA && window.innerWidth <= 480) {
+            setTimeout(() => {
+                const container = document.querySelector('.container');
+                if (!container) return;
+
+                // 교육자료 페이지
+                const educationButtons = container.querySelector('.education-buttons');
+                if (educationButtons) {
+                    // 버튼 컨테이너를 화면 중앙에 배치
+                    const totalHeight = window.innerHeight;
+                    const headerHeight = 60; // 헤더 높이 (대략)
+                    const buttonContainerHeight = educationButtons.offsetHeight;
+                    const topPosition = (totalHeight - headerHeight - buttonContainerHeight) / 2;
+
+                    educationButtons.style.marginTop = `${Math.max(20, topPosition - 40)}px`;
+                }
+
+                // 다른 페이지들의 요소도 필요에 따라 조정
+                // ...
+
+            }, 100);
+        }
     }
 
     // 자주묻는질문 페이지 뷰
@@ -1149,57 +1225,6 @@ function mainView() {
             <button class="main-button empty-button">커뮤니티 (준비중)</button>
         </div>
     `;
-}
-
-// 페이지 네비게이션 함수
-function navigateTo(route) {
-    // 커리큘럼 페이지 클래스 제거
-    document.querySelector('.container').classList.remove('curriculum-page');
-
-    // 홈으로 이동하는 경우가 아니면 mobile-view 클래스 제거
-    if (route !== '/') {
-        document.body.classList.remove('mobile-view');
-    }
-
-    switch (route) {
-        case '/':
-            homeView();
-            break;
-        case '/auth':
-            authView();
-            break;
-        case '/education':
-            educationView();
-            break;
-        case '/curriculum':
-            curriculumView();
-            break;
-        case '/video-lessons':
-            videoLessonsView();
-            break;
-        case '/scale-dictionary':
-            scaleDictionaryView();
-            break;
-        case '/certification':
-            certificationView();
-            break;
-        case '/teachers':
-            teachersView();
-            break;
-        case '/faq':
-            faqView();
-            break;
-        default:
-            if (route.startsWith('/teacher/')) {
-                const location = route.replace('/teacher/', '');
-                teacherProfileView(decodeURIComponent(location));
-            } else {
-                homeView();
-            }
-    }
-
-    // 현재 활성 경로 설정 (필요시 다른 기능에 활용)
-    activeRoute = route;
 }
 
 // 스플래시 스크린 표시 함수
