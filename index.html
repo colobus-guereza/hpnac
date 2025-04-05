@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-title" content="핸드팬 레슨예약">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#242424" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="description" content="핸드팬 레슨예약">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- PWA 아이콘 -->
+    <link rel="icon" href="images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+
+    <!-- iOS 스플래시 스크린 -->
+    <link rel="apple-touch-startup-image" href="images/splash/splash-logo.png">
+
+    <!-- 웹 앱 매니페스트 -->
+    <link rel="manifest" href="manifest.json">
+
+    <title>핸드팬 레슨예약</title>
+    <link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content-wrapper" style="width: 100%; max-width: 100%;">
+            <header class="hidden-header">
+                <!-- 타이틀 제거 -->
+            </header>
+            <main style="width: 100%; max-width: 100%;">
+                <div class="button-container" style="width: 100%; max-width: 100%;">
+                    <button class="main-button button-1" style="width: 100%; max-width: 100%;"
+                        onclick="navigateTo('/group-lesson')">
+                        [홍대] 핸드팬 그룹수업 신청<br>(4/6, 4/20)
+                    </button>
+                    <button class="main-button button-2" style="width: 100%; max-width: 100%;"
+                        onclick="navigateTo('/teachers')">
+                        강사 라인업
+                    </button>
+                    <button class="main-button button-3" style="width: 100%; max-width: 100%;"
+                        onclick="navigateTo('/certification')">
+                        핸드팬강사 자격증
+                    </button>
+                    <button class="main-button button-4" style="width: 100%; max-width: 100%;"
+                        onclick="navigateTo('/education')">
+                        교육자료
+                    </button>
+                    <div class="horizontal-buttons" style="width: 100%; max-width: 100%;">
+                        <button class="main-button button-5" onclick="openKakaoChannel()">
+                            카톡문의
+                        </button>
+                        <button class="main-button button-6" onclick="callPhone()">
+                            전화상담
+                        </button>
+                    </div>
+                    <button class="main-button empty-button button-7" style="width: 100%; max-width: 100%;"
+                        onclick="navigateTo('/app-download')">
+                        앱 다운로드
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- 서비스 워커 등록 스크립트 -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/service-worker.js').then(function () {
+                    console.log('서비스 워커가 등록되었습니다.');
+                }).catch(function (error) {
+                    console.log('서비스 워커 등록 실패:', error);
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
