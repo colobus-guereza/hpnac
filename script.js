@@ -132,6 +132,16 @@ function setViewportHeight() {
 
             // 컨테이너의 배경색도 동일하게 유지
             container.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
+
+            // PWA 모드에서도 지도 컨테이너 높이 유지
+            setTimeout(() => {
+                const mapContainer = document.querySelector('.map-container');
+                if (mapContainer) {
+                    mapContainer.style.height = '210px';
+                    mapContainer.style.minHeight = '210px';
+                    mapContainer.style.maxHeight = '210px';
+                }
+            }, 50);
         }
     }
 }
@@ -313,6 +323,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 지도 초기화
         setTimeout(initMap, 100);
+
+        // 지도 높이 조정 (모바일 웹과 PWA에서 일관성 유지)
+        setTimeout(function () {
+            const mapContainer = document.querySelector('.map-container');
+            if (mapContainer) {
+                mapContainer.style.height = '210px';
+                mapContainer.style.minHeight = '210px';
+                mapContainer.style.maxHeight = '210px';
+            }
+        }, 150);
 
         // 인라인 스타일 추가로 버튼 너비 강제 적용
         setTimeout(function () {
