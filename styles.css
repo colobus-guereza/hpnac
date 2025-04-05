@@ -1152,6 +1152,13 @@ h1, h2, h3, .level-title {
     height: auto;
 }
 
+/* 커리큘럼 페이지의 main 요소 배경색 설정 */
+.container.curriculum-page main {
+    background-color: var(--container-bg);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
 @media (max-width: 480px) {
     .container.curriculum-page {
         min-height: 750px;
