@@ -1342,10 +1342,10 @@ h1, h2, h3, .level-title {
     color: var(--text-color-secondary);
     font-size: 20px;
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
     font-weight: var(--font-regular);
-    padding-top: 15px;
+    padding-top: 10px;
 }
 
 .curriculum-list {
