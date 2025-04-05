@@ -196,6 +196,15 @@ body {
         left: max(15px, env(safe-area-inset-left) + 10px);
         z-index: 1001;
     }
+
+    body.dark-theme,
+    html.dark-theme {
+        background-color: var(--body-bg) !important;
+    }
+    
+    .dark-theme .container {
+        background-color: var(--container-bg) !important;
+    }
 }
 
 .container {
@@ -734,6 +743,21 @@ h1, h2, h3, .level-title {
 }
 
 @media (max-width: 480px) {
+    body {
+        background-color: var(--body-bg) !important;
+        transition: background-color 0.3s ease;
+    }
+    
+    .container {
+        background-color: var(--container-bg) !important;
+        transition: background-color 0.3s ease;
+    }
+    
+    html.dark-theme,
+    body.dark-theme {
+        background-color: var(--body-bg) !important;
+    }
+
     html, body {
         padding: 0;
         margin: 0;

@@ -22,19 +22,28 @@ function setThemeByTime() {
 function toggleTheme() {
     document.body.classList.toggle('dark-theme');
 
-    // PWA 모드에서 배경색 업데이트
-    const isPWA = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
-    if (isPWA) {
-        // body와 html 배경색 업데이트
-        document.body.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--body-bg');
-        document.documentElement.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--body-bg');
+    // 다크모드 전환 상태 체크
+    const isDarkMode = document.body.classList.contains('dark-theme');
 
-        // 컨테이너 배경색 업데이트
-        const container = document.querySelector('.container');
-        if (container) {
-            container.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
-        }
+    // 모든 환경에서 강제로 배경색 업데이트
+    document.documentElement.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--body-bg');
+    document.body.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--body-bg');
+
+    // 컨테이너 배경색 업데이트
+    const container = document.querySelector('.container');
+    if (container) {
+        container.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
     }
+
+    // PWA 모드와 모바일 환경 모두 고려
+    // iOS Safari에서는 meta 태그도 업데이트해야 함
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeColorMeta) {
+        themeColorMeta.setAttribute('content', isDarkMode ? '#242424' : '#ffffff');
+    }
+
+    // 현재 테마 로컬 스토리지에 저장
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
 }
 
 // 테마 토글 버튼 추가 함수
@@ -73,7 +82,27 @@ function addThemeToggle() {
 
 // 1분마다 테마 체크
 function initThemeChecker() {
-    setThemeByTime(); // 초기 설정
+    // 로컬 스토리지에서 테마 불러오기
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme) {
+        // 저장된 테마가 있으면 적용
+        document.body.classList.toggle('dark-theme', savedTheme === 'dark');
+
+        // 배경색 수동 업데이트
+        document.documentElement.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--body-bg');
+        document.body.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--body-bg');
+
+        // 컨테이너 배경색 업데이트
+        const container = document.querySelector('.container');
+        if (container) {
+            container.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
+        }
+    } else {
+        // 저장된 테마가 없으면 시간에 따라 설정
+        setThemeByTime();
+    }
+
     setInterval(setThemeByTime, 60000); // 1분마다 체크
     addThemeToggle(); // 테마 토글 버튼 추가
 }
