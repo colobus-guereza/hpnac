@@ -272,17 +272,15 @@ h1, h2, h3, .level-title {
 
 /* 홈 화면 버튼 개별 스타일 */
 .button-1 {
-    font-size: 19px !important;
-    letter-spacing: -0.5px !important;
     background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
 }
 
 .button-2 {
-    font-size: 17px !important;
+    font-size: 19px !important;
 }
 
 .button-3 {
-    font-size: 17px !important;
+    font-size: 19px !important;
 }
 
 .button-4 {
@@ -655,7 +653,7 @@ h1, h2, h3, .level-title {
     }
 
     .button-1 {
-        font-size: 19px !important;
+        font-size: 15px !important;
         letter-spacing: -0.5px !important;
     }
 
@@ -781,8 +779,6 @@ h1, h2, h3, .level-title {
     } */
 
     .button-1 {
-        font-size: 19px !important;
-        letter-spacing: -0.5px !important;
         background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end)) !important;
     }
 
