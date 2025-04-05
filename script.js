@@ -21,6 +21,20 @@ function setThemeByTime() {
 // 테마 토글 함수
 function toggleTheme() {
     document.body.classList.toggle('dark-theme');
+
+    // PWA 모드에서 배경색 업데이트
+    const isPWA = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+    if (isPWA) {
+        // body와 html 배경색 업데이트
+        document.body.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--body-bg');
+        document.documentElement.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--body-bg');
+
+        // 컨테이너 배경색 업데이트
+        const container = document.querySelector('.container');
+        if (container) {
+            container.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
+        }
+    }
 }
 
 // 테마 토글 버튼 추가 함수
@@ -472,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="slide">
                         <div class="certification-info">
                             <p class="certification-title">자격명: 핸드팬강사</p>
-                            <p class="certification-issuer">발급: 사운드앤디자인(SND)</p>
+                            <p class="certification-issuer">발급기관: 사운드앤디자인(SND)</p>
                             <p class="certification-number">민간자격등록번호: 2025-001474</p>
                             <div class="certification-levels">
                                 <div class="level-item">

@@ -1,6 +1,7 @@
 :root {
     /* Light mode colors - 무광 파스텔톤 */
     --bg-color: #F7F7F2;
+    --body-bg: #F7F7F2;
     --container-bg: #FFFFFF;
     --primary-color: #E8E8D8;
     --secondary-color: #F2F2E6; /* 부드러운 아이보리 */
@@ -75,6 +76,7 @@
 
 .dark-theme {
     --bg-color: #1A1A1A;
+    --body-bg: #1A1A1A;
     --container-bg: #242424;
     --primary-color: #2A2A2A;
     --secondary-color: #2F2F2F;
@@ -129,7 +131,7 @@ body {
 /* PWA 환경을 위한 추가 스타일 */
 @media all and (display-mode: standalone) {
     html, body {
-        background-color: var(--container-bg) !important;
+        background-color: var(--body-bg) !important;
         overflow: hidden;
         height: 100vh;
         height: calc(var(--vh, 1vh) * 100);
@@ -139,6 +141,7 @@ body {
         position: fixed;
         top: 0;
         left: 0;
+        transition: background-color 0.3s ease;
     }
     
     body {
@@ -165,6 +168,8 @@ body {
         position: absolute;
         top: 0;
         left: 0;
+        background-color: var(--container-bg);
+        transition: background-color 0.3s ease;
     }
     
     .content-wrapper {
