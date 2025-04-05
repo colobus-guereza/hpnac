@@ -87,24 +87,52 @@ function setViewportHeight() {
     // CSS 변수로 설정
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-    // PWA 모드에서 전체 화면 설정
-    if (window.navigator.standalone ||
-        window.matchMedia('(display-mode: standalone)').matches) {
+    // PWA 모드 감지
+    const isPWA = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
 
-        // iOS의 경우 상태 표시줄 높이를 고려
+    if (isPWA) {
+        // PWA 모드일 때 body와 html에 클래스 추가
+        document.documentElement.classList.add('pwa-mode');
+        document.body.classList.add('pwa-mode');
+
+        // iOS의 경우 추가 설정
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
         if (isIOS) {
-            // iOS에서 상태 표시줄과 하단 홈 인디케이터 영역 고려
-            document.body.style.paddingTop = 'env(safe-area-inset-top)';
-            document.body.style.paddingBottom = 'env(safe-area-inset-bottom)';
+            // 컨테이너와 body의 배경색을 완전히 일치시킴
+            document.body.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
+
+            // 뒤로가기 버튼과 테마 토글 버튼에 safe area 여백 추가
+            const backButton = document.querySelector('.back-button');
+            const themeToggle = document.querySelector('.theme-toggle');
+
+            if (backButton) {
+                // iOS에서 뒤로가기 버튼 위치 추가 조정
+                backButton.style.top = '40px'; // 더 높게 설정하여 가려지지 않도록
+                backButton.style.marginTop = 'env(safe-area-inset-top)'; // Safe area 고려
+            }
+
+            if (themeToggle) {
+                // iOS에서 테마 버튼 위치 추가 조정
+                themeToggle.style.top = '40px'; // 더 높게 설정하여 가려지지 않도록
+                themeToggle.style.marginTop = 'env(safe-area-inset-top)'; // Safe area 고려
+            }
+
+            // 컨테이너 패딩 수정
+            const container = document.querySelector('.container');
+            if (container) {
+                container.style.paddingTop = 'calc(env(safe-area-inset-top) + 50px)';
+            }
         }
 
-        // 컨테이너의 높이를 화면 전체로 설정
+        // 컨테이너 높이를 뷰포트에 맞춤
         const container = document.querySelector('.container');
         if (container) {
             container.style.height = `${window.innerHeight}px`;
             container.style.minHeight = `${window.innerHeight}px`;
+            container.style.maxHeight = `${window.innerHeight}px`;
+
+            // 컨테이너의 배경색도 동일하게 유지
+            container.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
         }
     }
 }
@@ -144,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '/teachers': teachersView,
         '/video-lessons': videoLessonsView,
         '/curriculum': curriculumView,
+        '/faq': faqView,
         '/teacher/hongdae': () => teacherProfileView('홍대'),
         '/teacher/seodaemun': () => teacherProfileView('서대문'),
         '/teacher/seongbuk': () => teacherProfileView('성북'),
@@ -324,10 +353,13 @@ document.addEventListener('DOMContentLoaded', () => {
             </header>
             <main>
                 <div class="button-container">
-                    <button class="main-button" onclick="navigateTo('/curriculum')">
+                    <button class="main-button button-1" onclick="navigateTo('/faq')">
+                        자주묻는질문
+                    </button>
+                    <button class="main-button button-2" onclick="navigateTo('/curriculum')">
                         커리큘럼
                     </button>
-                    <button class="main-button" onclick="navigateTo('/video-lessons')">
+                    <button class="main-button button-3" onclick="navigateTo('/video-lessons')">
                         동영상 레슨
                     </button>
                     <!-- 스케일 사전 임시 비활성화
@@ -335,6 +367,59 @@ document.addEventListener('DOMContentLoaded', () => {
                         스케일 사전
                     </button>
                     -->
+                </div>
+            </main>
+        `;
+    }
+
+    // 자주묻는질문 페이지 뷰
+    function faqView() {
+        // 스크롤 다시 활성화
+        document.body.classList.remove('no-scroll-home');
+
+        // FAQ 항목을 배열로 관리 - 필요에 따라 여기서 항목을 추가, 수정, 삭제할 수 있습니다
+        const faqItems = [
+            {
+                question: "핸드팬은 어떤 악기인가요?",
+                answer: "핸드팬은 2000년대 초반에 스위스에서 개발된 타악기로, 스틸드럼의 일종입니다. 양면이 볼록한 금속 원반 형태로, 상단면에 여러 개의 음역대를 가진 노트(음계)가 배치되어 있습니다. 손가락이나 손바닥으로 연주하며 따뜻하고 명상적인 소리가 특징입니다."
+            },
+            {
+                question: "핸드팬을 배우기 위한 사전 지식이 필요한가요?",
+                answer: "핸드팬은 사전 음악 지식 없이도 시작할 수 있는 직관적인 악기입니다. 기본적인 연주법은 몇 시간 내에 익힐 수 있으며, 더 복잡한 테크닉은 시간을 들여 연습하면 습득할 수 있습니다. 음악 이론을 알면 작곡이나 즉흥 연주에 도움이 되지만, 필수는 아닙니다."
+            },
+            {
+                question: "핸드팬 강사 자격증은 어떻게 취득하나요?",
+                answer: "핸드팬 강사 자격증은 필기시험과 실기시험을 통과해야 취득할 수 있습니다. 필기시험은 핸드팬의 이론, 역사, 구조에 대한 이해도를 평가하고, 실기시험은 연주 능력과 교육 능력을 평가합니다. 자세한 정보는 '핸드팬강사 자격증' 메뉴에서 확인하실 수 있습니다."
+            },
+            {
+                question: "레슨은 어떻게 신청할 수 있나요?",
+                answer: "홈페이지의 지도에서 원하는 지역을 선택하면 해당 지역 강사의 프로필 페이지로 이동합니다. 각 강사별 연락처를 통해 직접 문의하시거나, 홈페이지 하단의 '카톡문의' 또는 '전화상담' 버튼을 이용해 문의하실 수 있습니다."
+            }
+            // 필요한 경우 여기에 새 FAQ 항목을 추가하세요
+            // {
+            //     question: "새로운 질문",
+            //     answer: "새로운 답변"
+            // },
+        ];
+
+        // FAQ 항목을 HTML로 변환
+        const faqItemsHtml = faqItems.map(item => `
+            <div class="faq-item">
+                <h3 class="faq-question">${item.question}</h3>
+                <p class="faq-answer">${item.answer}</p>
+            </div>
+        `).join('');
+
+        document.querySelector('.container').innerHTML = `
+            <button class="back-button" onclick="navigateTo('/education')">
+                <span class="back-arrow">←</span>
+            </button>
+            <header>
+                <h1>자주묻는질문</h1>
+            </header>
+            <main>
+                <div class="faq-container">
+                    ${faqItemsHtml}
                 </div>
             </main>
         `;
@@ -926,6 +1011,9 @@ function navigateTo(route) {
             break;
         case '/teachers':
             teachersView();
+            break;
+        case '/faq':
+            faqView();
             break;
         default:
             if (route.startsWith('/teacher/')) {
