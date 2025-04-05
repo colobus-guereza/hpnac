@@ -107,20 +107,58 @@ function initThemeChecker() {
     addThemeToggle(); // 테마 토글 버튼 추가
 }
 
+// 로딩 화면 표시 함수
+function showLoadingScreen() {
+    // 기존에 로딩 컨테이너가 있으면 제거
+    const existingLoadingContainer = document.querySelector('.loading-container');
+    if (existingLoadingContainer) {
+        existingLoadingContainer.remove();
+    }
+
+    // 로딩 컨테이너 생성
+    const loadingContainer = document.createElement('div');
+    loadingContainer.className = 'loading-container';
+
+    // 로딩 콘텐츠 생성
+    loadingContainer.innerHTML = `
+        <div class="loading-content">
+            <div class="loading-logo">
+                <img src="images/icons/apple-touch-icon.png" alt="Logo" class="loading-logo-img">
+            </div>
+            <div class="loading-spinner"></div>
+            <div class="loading-text">로딩 중...</div>
+        </div>
+    `;
+
+    // body에 추가
+    document.body.appendChild(loadingContainer);
+
+    // 페이드인 애니메이션
+    setTimeout(() => {
+        loadingContainer.classList.add('visible');
+    }, 10);
+}
+
 // 앱 초기화 함수 수정
 function initializeApp() {
-    initThemeChecker(); // 테마 체커 초기화
+    // 로딩 화면 표시
     showLoadingScreen();
+
+    // 테마 체커 초기화
+    initThemeChecker();
+
+    // 로딩 화면 페이드 아웃 후 메인 뷰 렌더링
     setTimeout(() => {
         const loadingContainer = document.querySelector('.loading-container');
         if (loadingContainer) {
             loadingContainer.classList.add('fade-out');
         }
         setTimeout(() => {
-            mainView();
+            // 초기 뷰 렌더링
+            renderView();
             addThemeToggle(); // 메인 뷰 렌더링 후 테마 토글 버튼 추가
         }, 500);
-    }, 1500);
+    }, 1000); // 1초로 단축
 }
 
 // 실제 뷰포트 높이 설정 함수
@@ -194,6 +232,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 초기화 함수 호출
+    initializeApp();
+
     // 카카오 SDK 초기화 실행
     initializeKakao();
 
@@ -901,9 +942,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 브라우저 뒤로가기 처리
     window.addEventListener('popstate', renderView);
-
-    // 초기 뷰 렌더링
-    renderView();
 });
 
 // 카카오 인증 함수
