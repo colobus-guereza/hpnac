@@ -237,6 +237,7 @@ body {
     align-items: center;
     margin: 0 auto;
     padding: 0;
+    margin-top: 15px;
 }
 
 .container .main-button {
@@ -264,6 +265,10 @@ body {
     min-height: 100%;
     width: 100% !important;
     max-width: 100% !important;
+}
+
+.content-wrapper main {
+    padding-top: 10px;
 }
 
 .hidden-header {
@@ -309,6 +314,7 @@ h1, h2, h3, .level-title {
     align-items: center;
     margin: 0 auto;
     padding: 0;
+    margin-top: 15px;
 }
 
 /* 메인 버튼 기본 스타일 */
@@ -846,7 +852,7 @@ h1, h2, h3, .level-title {
     
     .button-container {
         gap: 15px;
-        margin-top: 0;
+        margin-top: 20px;
     }
     
     /* 하단 고정 여백 제거 */
@@ -1906,7 +1912,7 @@ h1, h2, h3, .level-title {
     /* 버튼 컨테이너가 콘텐츠에 맞게 조정되도록 수정 */
     .button-container {
         gap: 15px;
-        margin-top: 0;
+        margin-top: 20px;
     }
 }
 
@@ -1917,7 +1923,7 @@ h1, h2, h3, .level-title {
     margin: 0 auto;
     height: 190px;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     background-color: var(--container-bg);
     border-radius: var(--card-border-radius);
     border: var(--card-border);

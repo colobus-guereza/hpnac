@@ -132,16 +132,6 @@ function setViewportHeight() {
 
             // 컨테이너의 배경색도 동일하게 유지
             container.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
-
-            // PWA 모드에서도 지도 컨테이너 높이 유지
-            setTimeout(() => {
-                const mapContainer = document.querySelector('.map-container');
-                if (mapContainer) {
-                    mapContainer.style.height = '190px';
-                    mapContainer.style.minHeight = '190px';
-                    mapContainer.style.maxHeight = '190px';
-                }
-            }, 50);
         }
     }
 }
@@ -199,7 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
         view();
 
         if (path === '/') {
-            setTimeout(initMap, 100); // 홈 화면에서만 지도 초기화
+            // 홈 화면에서만 지도 초기화 - 지연 없이 즉시 실행
+            initMap();
         }
 
         // 현재 시간에 따른 테마 설정 적용
@@ -270,6 +261,40 @@ document.addEventListener('DOMContentLoaded', () => {
         // 초기 조정 및 창 크기 변경 시 조정
         adjustMapPoints();
         window.addEventListener('resize', adjustMapPoints);
+
+        // PC 웹에서 안정성 향상을 위해 한 번 더 실행 (지연 없이)
+        adjustMapPoints();
+
+        // 지도 크기 설정 - 지도 초기화 직후 즉시 설정
+        setMapContainerSize();
+    }
+
+    // 지도 컨테이너 크기 설정 전역 함수
+    function setMapContainerSize() {
+        const mapContainer = document.querySelector('.map-container');
+        if (mapContainer) {
+            // 기존 스타일을 유지하면서 특정 속성만 덮어쓰는 방식으로 수정
+            const existingStyles = mapContainer.getAttribute('style') || '';
+            const styles = existingStyles.split(';').filter(style =>
+                !style.includes('height') &&
+                !style.includes('min-height') &&
+                !style.includes('max-height') &&
+                style.trim() !== ''
+            ).join(';');
+
+            // 새로운 스타일 설정 (기존 스타일 유지 + 크기 속성 추가)
+            const newStyles = `${styles}; height: 190px !important; min-height: 190px !important; max-height: 190px !important;`;
+            mapContainer.setAttribute('style', newStyles);
+
+            // 내부 요소들의 가시성 확인
+            const mapBackground = document.getElementById('location-map');
+            if (mapBackground) {
+                mapBackground.style.visibility = 'visible';
+                mapBackground.style.display = 'block';
+                mapBackground.style.position = 'relative';
+                mapBackground.style.height = 'calc(100% - 38px)';
+            }
+        }
     }
 
     // 홈 화면 뷰
@@ -283,12 +308,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="images/theme/${document.body.classList.contains('dark-theme') ? 'light-mode.png' : 'dark-mode.png'}" alt="프로필" class="profile-icon">
                 </div>
                 <div class="map-brand">Snd Handpan Academy</div>
-                <div class="map-container">
+                <div class="map-container" style="height: 190px; min-height: 190px; max-height: 190px; margin-bottom: 20px;">
                     <div class="map-title">레슨예약 & 공연문의</div>
                     <div class="map-background" id="location-map"></div>
                 </div>
-                <main style="width: 100%; max-width: 100%;">
-                    <div class="button-container" style="width: 100%; max-width: 100%;">
+                <main style="width: 100%; max-width: 100%; padding-top: 10px;">
+                    <div class="button-container" style="width: 100%; max-width: 100%; margin-top: 20px;">
                         <!-- 그룹수업 신청 버튼 제거 -->
                         <button class="main-button button-3" style="width: 100%; max-width: 100%;" onclick="navigateTo('/certification')">
                             핸드팬강사 자격증
@@ -321,38 +346,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // 모든 환경에서 mobile-view 클래스 추가
         document.body.classList.add('mobile-view');
 
-        // 지도 초기화
-        setTimeout(initMap, 100);
+        // 버튼 너비 즉시 적용
+        const buttons = document.querySelectorAll('.main-button');
+        buttons.forEach(button => {
+            button.style.width = '100%';
+            button.style.maxWidth = '100%';
+        });
 
-        // 지도 높이 조정 (모바일 웹과 PWA에서 일관성 유지)
-        setTimeout(function () {
-            const mapContainer = document.querySelector('.map-container');
-            if (mapContainer) {
-                mapContainer.style.height = '190px';
-                mapContainer.style.minHeight = '190px';
-                mapContainer.style.maxHeight = '190px';
-            }
-        }, 150);
+        const horizontalButtons = document.querySelectorAll('.horizontal-buttons .main-button');
+        horizontalButtons.forEach(button => {
+            button.style.width = '50%';
+            button.style.maxWidth = '50%';
+        });
 
-        // 인라인 스타일 추가로 버튼 너비 강제 적용
-        setTimeout(function () {
-            const buttons = document.querySelectorAll('.main-button');
-            buttons.forEach(button => {
-                button.style.width = '100%';
-                button.style.maxWidth = '100%';
-            });
-
-            const horizontalButtons = document.querySelectorAll('.horizontal-buttons .main-button');
-            horizontalButtons.forEach(button => {
-                button.style.width = '50%';
-                button.style.maxWidth = '50%';
-            });
-
-            document.querySelector('.button-container').style.width = '100%';
-            document.querySelector('.button-container').style.maxWidth = '100%';
-            document.querySelector('.content-wrapper').style.width = '100%';
-            document.querySelector('.content-wrapper').style.maxWidth = '100%';
-        }, 200);
+        document.querySelector('.button-container').style.width = '100%';
+        document.querySelector('.button-container').style.maxWidth = '100%';
+        document.querySelector('.content-wrapper').style.width = '100%';
+        document.querySelector('.content-wrapper').style.maxWidth = '100%';
     }
 
     // 인증 화면 뷰
@@ -1015,8 +1025,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 페이지 이동 함수
-    window.navigateTo = function (path) {
-        window.history.pushState({}, '', path);
+    window.navigateTo = function (route) {
+        const container = document.querySelector('.container');
+
+        // 모든 페이지 전환 시 스크롤 위치 초기화
+        window.scrollTo(0, 0);
+
+        // 특수 페이지 클래스 제거
+        container.classList.remove('curriculum-page');
+
+        // 홈 화면으로 돌아갈 때 특별 처리
+        if (route === '/') {
+            // 기존 설정된 인라인 스타일 초기화
+            container.removeAttribute('style');
+
+            // PWA 모드 확인 및 컨테이너 스타일 재설정
+            const isPWA = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+            if (isPWA) {
+                container.style.height = `${window.innerHeight}px`;
+                container.style.minHeight = `${window.innerHeight}px`;
+                container.style.maxHeight = `${window.innerHeight}px`;
+                container.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
+            }
+
+            // 홈 화면을 위한 클래스 추가 전에 모든 이전 상태 클래스 초기화
+            document.body.classList.remove('no-scroll-home');
+            document.body.classList.remove('mobile-view');
+
+            // 기존 스크롤 위치 초기화
+            container.scrollTop = 0;
+
+            // 뷰포트 높이 재설정
+            setViewportHeight();
+        } else {
+            // 홈 화면이 아닌 다른 페이지로 이동할 때는 mobile-view 제거
+            document.body.classList.remove('mobile-view');
+        }
+
+        // 브라우저 히스토리 업데이트
+        window.history.pushState({}, '', route);
+
+        // renderView 함수를 통해 라우팅 처리
         renderView();
     };
 
@@ -1149,57 +1198,6 @@ function mainView() {
             <button class="main-button empty-button">커뮤니티 (준비중)</button>
         </div>
     `;
-}
-
-// 페이지 네비게이션 함수
-function navigateTo(route) {
-    // 커리큘럼 페이지 클래스 제거
-    document.querySelector('.container').classList.remove('curriculum-page');
-
-    // 홈으로 이동하는 경우가 아니면 mobile-view 클래스 제거
-    if (route !== '/') {
-        document.body.classList.remove('mobile-view');
-    }
-
-    switch (route) {
-        case '/':
-            homeView();
-            break;
-        case '/auth':
-            authView();
-            break;
-        case '/education':
-            educationView();
-            break;
-        case '/curriculum':
-            curriculumView();
-            break;
-        case '/video-lessons':
-            videoLessonsView();
-            break;
-        case '/scale-dictionary':
-            scaleDictionaryView();
-            break;
-        case '/certification':
-            certificationView();
-            break;
-        case '/teachers':
-            teachersView();
-            break;
-        case '/faq':
-            faqView();
-            break;
-        default:
-            if (route.startsWith('/teacher/')) {
-                const location = route.replace('/teacher/', '');
-                teacherProfileView(decodeURIComponent(location));
-            } else {
-                homeView();
-            }
-    }
-
-    // 현재 활성 경로 설정 (필요시 다른 기능에 활용)
-    activeRoute = route;
 }
 
 // 스플래시 스크린 표시 함수
