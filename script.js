@@ -403,7 +403,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 question: "악기가 없어도 배울 수 있나요?",
                 answer: "그럼요. 지점들 마다 여러 스케일의 악기가 비치되어 있기 때문에, 처음에는 악기가 없어도 충분히 배우실 수 있습니다. 이후 원하실 때, 악기 제작자가 직접 악기 선택과 구매도 함께 도와드립니다."
             },
-
             // 필요한 경우 여기에 새 FAQ 항목을 추가하세요
             // {
             //     question: "새로운 질문",
@@ -423,9 +422,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="back-button" onclick="navigateTo('/education')">
                 <span class="back-arrow">←</span>
             </button>
-            <header>
-                <h1>자주묻는질문</h1>
-            </header>
             <main>
                 <div class="faq-container">
                     ${faqItemsHtml}
