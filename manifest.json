@@ -1,10 +1,10 @@
 {
     "name": "핸드팬 레슨예약",
     "short_name": "핸드팬",
-    "description": "핸드팬 아카데미 공식 웹 앱",
+    "description": "핸드팬 아카데미 공식 웹앱",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#ffffff",
+    "background_color": "#242424",
     "theme_color": "#242424",
     "icons": [
         {

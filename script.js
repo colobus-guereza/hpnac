@@ -87,14 +87,24 @@ function setViewportHeight() {
     // CSS 변수로 설정
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-    // 콘텐츠 높이 조정 (모바일 환경)
-    const isMobile = window.innerWidth <= 480;
-    if (isMobile) {
-        // 현재 콘텐츠의 높이 계산
+    // PWA 모드에서 전체 화면 설정
+    if (window.navigator.standalone ||
+        window.matchMedia('(display-mode: standalone)').matches) {
+
+        // iOS의 경우 상태 표시줄 높이를 고려
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+        if (isIOS) {
+            // iOS에서 상태 표시줄과 하단 홈 인디케이터 영역 고려
+            document.body.style.paddingTop = 'env(safe-area-inset-top)';
+            document.body.style.paddingBottom = 'env(safe-area-inset-bottom)';
+        }
+
+        // 컨테이너의 높이를 화면 전체로 설정
         const container = document.querySelector('.container');
         if (container) {
-            const minHeight = window.innerHeight;
-            container.style.minHeight = `${minHeight}px`;
+            container.style.height = `${window.innerHeight}px`;
+            container.style.minHeight = `${window.innerHeight}px`;
         }
     }
 }
