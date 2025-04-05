@@ -168,6 +168,16 @@ function setViewportHeight() {
     // CSS 변수로 설정
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 
+    // 뒤로가기 버튼과 테마 토글 버튼의 y좌표 일치시키기
+    const backButton = document.querySelector('.back-button');
+    const themeToggle = document.querySelector('.theme-toggle');
+
+    if (backButton && themeToggle) {
+        const buttonTop = window.innerWidth <= 480 ? '25px' : 'max(25px, env(safe-area-inset-top) + 10px)';
+        backButton.style.top = buttonTop;
+        themeToggle.style.top = buttonTop;
+    }
+
     // PWA 모드 감지
     const isPWA = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
 
@@ -183,19 +193,15 @@ function setViewportHeight() {
             document.body.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
 
             // 뒤로가기 버튼과 테마 토글 버튼에 safe area 여백 추가
-            const backButton = document.querySelector('.back-button');
-            const themeToggle = document.querySelector('.theme-toggle');
+            if (backButton && themeToggle) {
+                // iOS에서 버튼 위치 동일하게 추가 조정
+                const buttonTop = '40px';
+                backButton.style.top = buttonTop;
+                themeToggle.style.top = buttonTop;
 
-            if (backButton) {
-                // iOS에서 뒤로가기 버튼 위치 추가 조정
-                backButton.style.top = '40px'; // 더 높게 설정하여 가려지지 않도록
-                backButton.style.marginTop = 'env(safe-area-inset-top)'; // Safe area 고려
-            }
-
-            if (themeToggle) {
-                // iOS에서 테마 버튼 위치 추가 조정
-                themeToggle.style.top = '40px'; // 더 높게 설정하여 가려지지 않도록
-                themeToggle.style.marginTop = 'env(safe-area-inset-top)'; // Safe area 고려
+                const marginTop = 'env(safe-area-inset-top)';
+                backButton.style.marginTop = marginTop;
+                themeToggle.style.marginTop = marginTop;
             }
 
             // 컨테이너 패딩 수정
