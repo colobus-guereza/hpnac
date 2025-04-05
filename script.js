@@ -107,58 +107,20 @@ function initThemeChecker() {
     addThemeToggle(); // 테마 토글 버튼 추가
 }
 
-// 로딩 화면 표시 함수
-function showLoadingScreen() {
-    // 기존에 로딩 컨테이너가 있으면 제거
-    const existingLoadingContainer = document.querySelector('.loading-container');
-    if (existingLoadingContainer) {
-        existingLoadingContainer.remove();
-    }
-
-    // 로딩 컨테이너 생성
-    const loadingContainer = document.createElement('div');
-    loadingContainer.className = 'loading-container';
-
-    // 로딩 콘텐츠 생성
-    loadingContainer.innerHTML = `
-        <div class="loading-content">
-            <div class="loading-logo">
-                <img src="images/icons/apple-touch-icon.png" alt="Logo" class="loading-logo-img">
-            </div>
-            <div class="loading-spinner"></div>
-            <div class="loading-text">로딩 중...</div>
-        </div>
-    `;
-
-    // body에 추가
-    document.body.appendChild(loadingContainer);
-
-    // 페이드인 애니메이션
-    setTimeout(() => {
-        loadingContainer.classList.add('visible');
-    }, 10);
-}
-
 // 앱 초기화 함수 수정
 function initializeApp() {
-    // 로딩 화면 표시
+    initThemeChecker(); // 테마 체커 초기화
     showLoadingScreen();
-
-    // 테마 체커 초기화
-    initThemeChecker();
-
-    // 로딩 화면 페이드 아웃 후 메인 뷰 렌더링
     setTimeout(() => {
         const loadingContainer = document.querySelector('.loading-container');
         if (loadingContainer) {
             loadingContainer.classList.add('fade-out');
         }
         setTimeout(() => {
-            // 초기 뷰 렌더링
-            renderView();
+            mainView();
             addThemeToggle(); // 메인 뷰 렌더링 후 테마 토글 버튼 추가
         }, 500);
-    }, 1000); // 1초로 단축
+    }, 1500);
 }
 
 // 실제 뷰포트 높이 설정 함수
@@ -167,16 +129,6 @@ function setViewportHeight() {
     let vh = window.innerHeight * 0.01;
     // CSS 변수로 설정
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-    // 뒤로가기 버튼과 테마 토글 버튼의 y좌표 일치시키기
-    const backButton = document.querySelector('.back-button');
-    const themeToggle = document.querySelector('.theme-toggle');
-
-    if (backButton && themeToggle) {
-        const buttonTop = window.innerWidth <= 480 ? '25px' : 'max(25px, env(safe-area-inset-top) + 10px)';
-        backButton.style.top = buttonTop;
-        themeToggle.style.top = buttonTop;
-    }
 
     // PWA 모드 감지
     const isPWA = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
@@ -193,15 +145,19 @@ function setViewportHeight() {
             document.body.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
 
             // 뒤로가기 버튼과 테마 토글 버튼에 safe area 여백 추가
-            if (backButton && themeToggle) {
-                // iOS에서 버튼 위치 동일하게 추가 조정
-                const buttonTop = '40px';
-                backButton.style.top = buttonTop;
-                themeToggle.style.top = buttonTop;
+            const backButton = document.querySelector('.back-button');
+            const themeToggle = document.querySelector('.theme-toggle');
 
-                const marginTop = 'env(safe-area-inset-top)';
-                backButton.style.marginTop = marginTop;
-                themeToggle.style.marginTop = marginTop;
+            if (backButton) {
+                // iOS에서 뒤로가기 버튼 위치 추가 조정
+                backButton.style.top = '40px'; // 더 높게 설정하여 가려지지 않도록
+                backButton.style.marginTop = 'env(safe-area-inset-top)'; // Safe area 고려
+            }
+
+            if (themeToggle) {
+                // iOS에서 테마 버튼 위치 추가 조정
+                themeToggle.style.top = '40px'; // 더 높게 설정하여 가려지지 않도록
+                themeToggle.style.marginTop = 'env(safe-area-inset-top)'; // Safe area 고려
             }
 
             // 컨테이너 패딩 수정
@@ -238,9 +194,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 초기화 함수 호출
-    initializeApp();
-
     // 카카오 SDK 초기화 실행
     initializeKakao();
 
@@ -948,6 +901,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 브라우저 뒤로가기 처리
     window.addEventListener('popstate', renderView);
+
+    // 초기 뷰 렌더링
+    renderView();
 });
 
 // 카카오 인증 함수
