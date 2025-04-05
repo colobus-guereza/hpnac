@@ -236,6 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <header class="hidden-header">
                     <!-- 타이틀 제거 -->
                 </header>
+                <div class="map-brand">Snd Handpan Academy</div>
                 <div class="map-container">
                     <div class="map-title">레슨예약 & 공연문의</div>
                     <div class="map-background" id="location-map"></div>
