@@ -395,8 +395,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 자주묻는질문 페이지 뷰
     function faqView() {
-        // 자주묻는질문 페이지에서는 스크롤 활성화
-        document.body.classList.remove('no-scroll-home');
+        // 자주묻는질문 페이지에서는 스크롤 비활성화로 변경
+        document.body.classList.add('no-scroll-home');
 
         // FAQ 항목을 배열로 관리 - 필요에 따라 여기서 항목을 추가, 수정, 삭제할 수 있습니다
         const faqItems = [
@@ -431,11 +431,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // },
         ];
 
-        // FAQ 항목을 HTML로 변환
-        const faqItemsHtml = faqItems.map(item => `
-            <div class="faq-item">
-                <h3 class="faq-question">${item.question}</h3>
-                <p class="faq-answer">${item.answer}</p>
+        // FAQ 슬라이드 HTML 생성
+        const faqSlidesHtml = faqItems.map((item, index) => `
+            <div class="slide">
+                <div class="faq-item">
+                    <div class="faq-counter">${index + 1}/${faqItems.length}</div>
+                    <h3 class="faq-question">${item.question}</h3>
+                    <p class="faq-answer">${item.answer}</p>
+                </div>
             </div>
         `).join('');
 
@@ -444,11 +447,67 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="back-arrow">←</span>
             </button>
             <main>
-                <div class="faq-container">
-                    ${faqItemsHtml}
+                <div class="certification-container">
+                    <div class="certification-slider faq-slider">
+                        ${faqSlidesHtml}
+                    </div>
+                    <div class="slider-controls">
+                        <button class="slider-button prev" onclick="showFaqSlide(currentFaqSlide - 1)">←</button>
+                        <button class="slider-button next" onclick="showFaqSlide(currentFaqSlide + 1)">→</button>
+                    </div>
                 </div>
             </main>
         `;
+
+        initializeFaqSlider();
+    }
+
+    // FAQ 슬라이더 초기화 함수
+    function initializeFaqSlider() {
+        window.currentFaqSlide = 0;
+        const slider = document.querySelector('.faq-slider');
+        const slides = document.querySelectorAll('.faq-slider .slide');
+        const prevButton = document.querySelector('.faq-slider ~ .slider-controls .slider-button.prev');
+        const nextButton = document.querySelector('.faq-slider ~ .slider-controls .slider-button.next');
+
+        if (!slider || !slides.length) return;
+
+        window.showFaqSlide = function (index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+
+            currentFaqSlide = index;
+            const offset = -100 * index;
+            slider.style.transform = `translateX(${offset}%)`;
+
+            // 버튼 상태 업데이트
+            if (prevButton) prevButton.style.opacity = index === 0 ? '0.5' : '1';
+            if (nextButton) nextButton.style.opacity = index === slides.length - 1 ? '0.5' : '1';
+        };
+
+        // 터치/스와이프 이벤트 처리
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slider.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        slider.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > 50) { // 최소 스와이프 거리
+                if (diff > 0) {
+                    showFaqSlide(currentFaqSlide + 1);
+                } else {
+                    showFaqSlide(currentFaqSlide - 1);
+                }
+            }
+        });
+
+        // 초기 슬라이드 표시
+        showFaqSlide(0);
     }
 
     // 동영상 레슨 페이지 뷰
@@ -636,8 +695,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 커리큘럼 페이지 뷰
     function curriculumView() {
-        // 커리큘럼 페이지에서는 스크롤 활성화
-        document.body.classList.remove('no-scroll-home');
+        // 커리큘럼 페이지에서는 스크롤 비활성화로 변경
+        document.body.classList.add('no-scroll-home');
 
         // 기존 container 요소 선택
         const container = document.querySelector('.container');
@@ -650,45 +709,106 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="back-arrow">←</span>
             </button>
             <main style="flex: 1; display: flex; flex-direction: column;">
-                <div class="curriculum-container" style="flex: 1; height: 100%;">
-                    <p class="curriculum-subtitle">기초과정 학습과목</p>
-                    <div class="curriculum-card">
-                        <h2 class="level-title">1. 이론</h2>
-                        <ul class="curriculum-list">
-                            <li>핸드팬 구조와 명칭</li>
-                            <li>하모닉스 원리</li>
-                            <li>튜닝과 리튠</li>
-                            <li>스케일 개론</li>
-                            <li>작곡</li>
-                            <li>교수법</li>
-                            <li>악기 보관과 관리</li>
-                        </ul>
+                <p class="curriculum-subtitle">기초과정 학습과목</p>
+                <div class="certification-container">
+                    <div class="certification-slider curriculum-slider">
+                        <div class="slide">
+                            <div class="curriculum-card">
+                                <h2 class="level-title">1. 이론</h2>
+                                <ul class="curriculum-list">
+                                    <li>핸드팬 구조와 명칭</li>
+                                    <li>하모닉스 원리</li>
+                                    <li>튜닝과 리튠</li>
+                                    <li>스케일 개론</li>
+                                    <li>작곡</li>
+                                    <li>교수법</li>
+                                    <li>악기 보관과 관리</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="curriculum-card">
+                                <h2 class="level-title">2. 리듬</h2>
+                                <ul class="curriculum-list">
+                                    <li>4박자 기본리듬</li>
+                                    <li>6박자 기본리듬</li>
+                                    <li>리듬 쪼개기</li>
+                                    <li class="small-text">하이햇으로 그루브 만들기</li>
+                                    <li>Odd Meter 확장</li>
+                                    <li>나만의 리듬 만들기</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="curriculum-card">
+                                <h2 class="level-title">3. 테크닉</h2>
+                                <ul class="curriculum-list">
+                                    <li>손가락 트레이닝</li>
+                                    <li>아르페지오</li>
+                                    <li class="small-text">리듬화음멜로디 동시연주</li>
+                                    <li>롤 Roll</li>
+                                    <li>음색 확장</li>
+                                    <li class="small-text">핸드팬 듀오 플레이: 캐슬링</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="curriculum-card">
-                        <h2 class="level-title">2. 리듬</h2>
-                        <ul class="curriculum-list">
-                            <li>4박자 기본리듬</li>
-                            <li>6박자 기본리듬</li>
-                            <li>리듬 쪼개기</li>
-                            <li class="small-text">하이햇으로 그루브 만들기</li>
-                            <li>Odd Meter 확장</li>
-                            <li>나만의 리듬 만들기</li>
-                        </ul>
-                    </div>
-                    <div class="curriculum-card">
-                        <h2 class="level-title">3. 테크닉</h2>
-                        <ul class="curriculum-list">
-                            <li>손가락 트레이닝</li>
-                            <li>아르페지오</li>
-                            <li class="small-text">리듬화음멜로디 동시연주</li>
-                            <li>롤 Roll</li>
-                            <li>음색 확장</li>
-                            <li class="small-text">핸드팬 듀오 플레이: 캐슬링</li>
-                        </ul>
+                    <div class="slider-controls">
+                        <button class="slider-button prev" onclick="showCurriculumSlide(currentCurriculumSlide - 1)">←</button>
+                        <button class="slider-button next" onclick="showCurriculumSlide(currentCurriculumSlide + 1)">→</button>
                     </div>
                 </div>
             </main>
         `;
+        initializeCurriculumSlider();
+    }
+
+    // 커리큘럼 슬라이더 초기화 함수
+    function initializeCurriculumSlider() {
+        window.currentCurriculumSlide = 0;
+        const slider = document.querySelector('.curriculum-slider');
+        const slides = document.querySelectorAll('.curriculum-slider .slide');
+        const prevButton = document.querySelector('.curriculum-slider ~ .slider-controls .slider-button.prev');
+        const nextButton = document.querySelector('.curriculum-slider ~ .slider-controls .slider-button.next');
+
+        if (!slider || !slides.length) return;
+
+        window.showCurriculumSlide = function (index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+
+            currentCurriculumSlide = index;
+            const offset = -100 * index;
+            slider.style.transform = `translateX(${offset}%)`;
+
+            // 버튼 상태 업데이트
+            if (prevButton) prevButton.style.opacity = index === 0 ? '0.5' : '1';
+            if (nextButton) nextButton.style.opacity = index === slides.length - 1 ? '0.5' : '1';
+        };
+
+        // 터치/스와이프 이벤트 처리
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slider.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        slider.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > 50) { // 최소 스와이프 거리
+                if (diff > 0) {
+                    showCurriculumSlide(currentCurriculumSlide + 1);
+                } else {
+                    showCurriculumSlide(currentCurriculumSlide - 1);
+                }
+            }
+        });
+
+        // 초기 슬라이드 표시
+        showCurriculumSlide(0);
     }
 
     // 스케일 사전 페이지 뷰

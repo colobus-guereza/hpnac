@@ -2305,4 +2305,188 @@ body.pwa-mode {
         width: 280px;
         height: 280px;
     }
+}
+
+/* 커리큘럼 슬라이더 스타일 */
+.curriculum-slider {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    overflow: visible;
+    align-items: center;
+}
+
+.curriculum-slider .slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.curriculum-slider .curriculum-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    height: auto;
+}
+
+@media (max-width: 480px) {
+    .curriculum-slider .slide {
+        padding: 10px;
+    }
+    
+    .curriculum-slider .curriculum-card {
+        max-width: 90%;
+    }
+}
+
+/* 커리큘럼 컨테이너 스타일 수정 - 슬라이더 지원 */
+.container.curriculum-page {
+    overflow: hidden;
+}
+
+/* 커리큘럼 페이지 관련 스타일 수정 - 스크롤 비활성화 */
+.container.curriculum-page {
+    min-height: auto; /* 높이 자동 조정 */
+    height: auto;
+    overflow: hidden; /* 스크롤 비활성화 */
+}
+
+.container.curriculum-page main {
+    overflow: hidden; /* 스크롤 비활성화 */
+}
+
+@media (max-width: 480px) {
+    .container.curriculum-page {
+        min-height: auto;
+        height: auto !important;
+        overflow: hidden !important; /* 스크롤 비활성화 */
+    }
+}
+
+/* FAQ 슬라이더 스타일 */
+.faq-slider {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    overflow: visible;
+    align-items: center;
+}
+
+.faq-slider .slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.faq-slider .faq-item {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    height: auto;
+    background: var(--card-bg);
+    border: var(--card-border);
+    box-shadow: var(--card-shadow);
+    border-radius: var(--card-border-radius);
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.faq-slider .faq-item:hover {
+    background: var(--card-hover-bg);
+    box-shadow: var(--card-hover-shadow);
+    transform: translateY(-2px);
+}
+
+.faq-slider .faq-question {
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: var(--font-bold);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.faq-slider .faq-answer {
+    color: var(--text-color-secondary);
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: keep-all;
+}
+
+@media (max-width: 480px) {
+    .faq-slider .slide {
+        padding: 10px;
+    }
+    
+    .faq-slider .faq-item {
+        max-width: 90%;
+        padding: 20px;
+    }
+    
+    .faq-slider .faq-question {
+        font-size: 16px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
+    
+    .faq-slider .faq-answer {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+}
+
+/* FAQ 질문 컨테이너와 카운터 스타일 */
+.faq-question-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.faq-counter {
+    color: var(--text-color-tertiary);
+    font-size: 14px;
+    font-weight: var(--font-regular);
+    padding: 5px 8px;
+    border-radius: 12px;
+    background-color: transparent;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.faq-slider .faq-question {
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: var(--font-bold);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+@media (max-width: 480px) {
+    .faq-counter {
+        font-size: 12px;
+        padding: 3px 6px;
+        margin-bottom: 8px;
+    }
+    
+    .faq-slider .faq-question {
+        font-size: 16px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
 } 
