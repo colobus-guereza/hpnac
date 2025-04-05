@@ -14,36 +14,45 @@ function initializeKakao() {
 // 시간대에 따른 테마 설정
 function setThemeByTime() {
     const hour = new Date().getHours();
-    const isDarkTime = hour >= 18 || hour < 6;
+    const isDarkTime = hour >= 18 || hour < 6; // 오후 6시부터 오전 6시까지 다크모드
+
+    // 항상 시간에 따라 테마 설정 (로컬 스토리지 확인 없음)
     document.body.classList.toggle('dark-theme', isDarkTime);
+    console.log(`시간대에 따른 테마 설정: ${hour}시, 다크모드=${isDarkTime}`);
+
+    // 테마 변경 시 아이콘 업데이트
+    updateThemeIcon();
 }
 
-// 테마 토글 함수
+// 테마 아이콘 업데이트 함수
+function updateThemeIcon() {
+    const themeIcon = document.querySelector('.theme-icon');
+    if (themeIcon) {
+        // 현재 테마에 따라 이미지 소스 설정
+        themeIcon.src = document.body.classList.contains('dark-theme')
+            ? 'images/theme/light-mode.png'
+            : 'images/theme/dark-mode.png';
+    }
+}
+
+// 테마 토글 함수 - 실제로는 테마를 변경하지 않고 아이콘만 변경
 function toggleTheme() {
-    document.body.classList.toggle('dark-theme');
+    // 테마는 변경하지 않음 (아무런 효과 없음)
+    // 아이콘만 시각적으로 토글 (보여주기 효과)
+    const themeIcon = document.querySelector('.theme-icon');
+    if (themeIcon) {
+        const isDarkMode = document.body.classList.contains('dark-theme');
+        themeIcon.src = isDarkMode
+            ? 'images/theme/dark-mode.png'
+            : 'images/theme/light-mode.png';
 
-    // 다크모드 전환 상태 체크
-    const isDarkMode = document.body.classList.contains('dark-theme');
-
-    // 모든 환경에서 강제로 배경색 업데이트
-    document.documentElement.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--body-bg');
-    document.body.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--body-bg');
-
-    // 컨테이너 배경색 업데이트
-    const container = document.querySelector('.container');
-    if (container) {
-        container.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
+        // 1초 후 다시 원래 아이콘으로 되돌림
+        setTimeout(() => {
+            themeIcon.src = isDarkMode
+                ? 'images/theme/light-mode.png'
+                : 'images/theme/dark-mode.png';
+        }, 1000);
     }
-
-    // PWA 모드와 모바일 환경 모두 고려
-    // iOS Safari에서는 meta 태그도 업데이트해야 함
-    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-    if (themeColorMeta) {
-        themeColorMeta.setAttribute('content', isDarkMode ? '#242424' : '#ffffff');
-    }
-
-    // 현재 테마 로컬 스토리지에 저장
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
 }
 
 // 테마 토글 버튼 추가 함수
@@ -69,41 +78,20 @@ function addThemeToggle() {
         // 토글 버튼에 이미지 추가
         toggle.appendChild(img);
 
-        toggle.onclick = () => {
-            toggleTheme();
-            // 테마 변경 시 이미지 소스 업데이트
-            img.src = document.body.classList.contains('dark-theme')
-                ? 'images/theme/light-mode.png'
-                : 'images/theme/dark-mode.png';
-        };
+        // 버튼 클릭 시 효과 없음 (온클릭 이벤트 제거)
+        toggle.onclick = null;
+
         document.body.appendChild(toggle);
     }
 }
 
 // 1분마다 테마 체크
 function initThemeChecker() {
-    // 로컬 스토리지에서 테마 불러오기
-    const savedTheme = localStorage.getItem('theme');
+    // 시간에 따라 테마 설정 (로컬 스토리지 체크 없음)
+    setThemeByTime();
 
-    if (savedTheme) {
-        // 저장된 테마가 있으면 적용
-        document.body.classList.toggle('dark-theme', savedTheme === 'dark');
-
-        // 배경색 수동 업데이트
-        document.documentElement.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--body-bg');
-        document.body.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--body-bg');
-
-        // 컨테이너 배경색 업데이트
-        const container = document.querySelector('.container');
-        if (container) {
-            container.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--container-bg');
-        }
-    } else {
-        // 저장된 테마가 없으면 시간에 따라 설정
-        setThemeByTime();
-    }
-
-    setInterval(setThemeByTime, 60000); // 1분마다 체크
+    // 1분마다 시간대에 따른 테마 체크
+    setInterval(setThemeByTime, 60000);
     addThemeToggle(); // 테마 토글 버튼 추가
 }
 
@@ -191,6 +179,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // 창 크기 변경 시 업데이트
     window.addEventListener('resize', setViewportHeight);
     window.addEventListener('orientationchange', setViewportHeight);
+
+    // 페이지 로드 시 현재 시간에 따른 테마 즉시 설정
+    setThemeByTime();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -233,6 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (path === '/') {
             setTimeout(initMap, 100); // 홈 화면에서만 지도 초기화
         }
+        // 현재 시간에 따른 테마 설정 적용
+        setThemeByTime();
     }
 
     // 지역 위치 데이터
@@ -1074,4 +1067,26 @@ function navigateTo(route) {
 
     // 현재 활성 경로 설정 (필요시 다른 기능에 활용)
     activeRoute = route;
+}
+
+// 스플래시 스크린 표시 함수
+function showLoadingScreen() {
+    // 이미 로딩 컨테이너가 있으면 제거
+    const existingContainer = document.querySelector('.loading-container');
+    if (existingContainer) {
+        existingContainer.remove();
+    }
+
+    // 로딩 컨테이너 생성
+    const loadingContainer = document.createElement('div');
+    loadingContainer.className = 'loading-container';
+
+    // 로고 이미지 추가
+    const logoImg = document.createElement('img');
+    logoImg.src = 'images/splash/splash-logo.png';
+    logoImg.alt = '핸드팬 레슨예약';
+    logoImg.className = 'splash-logo';
+
+    loadingContainer.appendChild(logoImg);
+    document.body.appendChild(loadingContainer);
 } 

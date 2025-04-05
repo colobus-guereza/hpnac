@@ -1602,17 +1602,30 @@ h1, h2, h3, .level-title {
 }
 
 .loading-container {
-    background-color: var(--bg-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--container-bg);
+    z-index: 9999;
+    transition: opacity 0.5s ease;
 }
 
-.loading-text {
-    color: var(--text-color);
-    font-weight: var(--font-medium);
+.splash-logo {
+    width: 360px;
+    height: 360px;
+    object-fit: contain;
+    margin-bottom: 20px;
 }
 
-.loading-spinner {
-    border: 3px solid var(--border-color);
-    border-top: 3px solid var(--text-color);
+.fade-out {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .title-emoji {
@@ -2229,5 +2242,12 @@ body.pwa-mode {
     
     .faq-answer {
         font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .splash-logo {
+        width: 280px;
+        height: 280px;
     }
 } 
