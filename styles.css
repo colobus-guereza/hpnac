@@ -1636,7 +1636,7 @@ h1, h2, h3, .level-title {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    cursor: default;
     z-index: 1000;
     transition: all 0.3s ease;
     box-shadow: var(--box-shadow);
@@ -1645,11 +1645,7 @@ h1, h2, h3, .level-title {
     margin: 0;
 }
 
-.theme-toggle:hover {
-    transform: scale(1.1);
-    box-shadow: var(--neon-glow);
-    background: var(--button-hover-color);
-}
+/* 호버 효과 제거 */
 
 .theme-icon {
     width: 22px;
