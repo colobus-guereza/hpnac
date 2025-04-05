@@ -732,7 +732,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="back-button" onclick="navigateTo('/education')">
                 <span class="back-arrow">←</span>
             </button>
-            <main style="flex: 1; display: flex; flex-direction: column;">
+            <main style="flex: 1; display: flex; flex-direction: column; padding-top: 20px;">
                 <p class="curriculum-subtitle">기초과정 학습과목</p>
                 <div class="certification-container">
                     <div class="certification-slider curriculum-slider">
