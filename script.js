@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="kakao-icon-container"></div>
                             </button>
                             <button class="main-button button-6" style="width: 50%; max-width: 50%;" onclick="window.location.href='tel:+821089679204'">
-                                <i class="fa-solid fa-phone" style="font-size: 20px;"></i>
+                                <i class="fa-solid fa-phone" style="font-size: 25px;"></i>
                             </button>
                         </div>
                     </div>

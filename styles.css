@@ -2542,8 +2542,8 @@ body.pwa-mode {
 
 /* 카카오 아이콘 컨테이너 스타일 */
 .kakao-icon-container {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     background-image: url('images/originals/kakao.png');
     background-size: 80%;
     background-position: center;
