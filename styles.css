@@ -1324,9 +1324,9 @@ h1, h2, h3, .level-title {
 }
 
 .curriculum-card:hover {
-    background: var(--card-hover-bg);
-    box-shadow: var(--card-hover-shadow);
-    transform: translateY(-2px);
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    transform: none;
 }
 
 .level-title {
@@ -1377,8 +1377,8 @@ h1, h2, h3, .level-title {
 }
 
 .curriculum-list li:hover {
-    transform: translateY(-2px);
-    background: var(--button-hover-color);
+    transform: none;
+    background: var(--secondary-color);
 }
 
 .popup-overlay {
@@ -2269,8 +2269,8 @@ body.pwa-mode {
 }
 
 .faq-item:hover {
-    box-shadow: var(--card-hover-shadow);
-    transform: translateY(-2px);
+    box-shadow: var(--card-shadow);
+    transform: none;
 }
 
 .faq-question {
@@ -2410,9 +2410,9 @@ body.pwa-mode {
 }
 
 .faq-slider .faq-item:hover {
-    background: var(--card-hover-bg);
-    box-shadow: var(--card-hover-shadow);
-    transform: translateY(-2px);
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    transform: none;
 }
 
 .faq-slider .faq-question {
@@ -2524,8 +2524,8 @@ body.pwa-mode {
 }
 
 .curriculum-list.single-column li:hover {
-    transform: translateY(-2px);
-    background: var(--button-hover-color);
+    transform: none;
+    background: var(--secondary-color);
 }
 
 @media (max-width: 480px) {
