@@ -42,6 +42,9 @@
     --card-border-radius: 15px;
     --card-inner-border-radius: 8px;
 
+    /* 버튼 테마 통합 관리 */
+    --button-border-radius: 23px;
+    
     /* 버튼 컴포넌트 기본 설정 */
     --button-min-height: 35px;
     --button-padding-v: 8px;
@@ -248,7 +251,7 @@ body {
     font-size: var(--button-font-size);
     font-weight: var(--font-bold);
     border: none;
-    border-radius: var(--card-border-radius);
+    border-radius: var(--button-border-radius);
     background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
     color: var(--text-color);
     cursor: pointer;
@@ -326,7 +329,7 @@ h1, h2, h3, .level-title {
     font-size: var(--button-font-size);
     font-weight: var(--font-bold);
     border: none;
-    border-radius: var(--card-border-radius);
+    border-radius: var(--button-border-radius);
     background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
     color: var(--text-color);
     cursor: pointer;
@@ -448,7 +451,7 @@ h1, h2, h3, .level-title {
     background-color: var(--kakao-color);
     color: var(--kakao-text);
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
+    border-radius: var(--button-border-radius);
     padding: 15px 30px;
     font-size: 18px;
     font-weight: 600;
@@ -654,7 +657,7 @@ h1, h2, h3, .level-title {
     background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
     color: var(--text-color);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
+    border-radius: var(--button-border-radius);
     padding: 12px 20px;
     font-size: 16px;
     font-weight: 600;
@@ -1402,7 +1405,7 @@ h1, h2, h3, .level-title {
 .popup-image {
     max-width: 90%;
     max-height: 90vh;
-    border-radius: 15px;
+    border-radius: var(--button-border-radius);
     box-shadow: var(--box-shadow);
     animation: popupFadeIn 0.3s ease-out;
 }
@@ -1432,7 +1435,7 @@ h1, h2, h3, .level-title {
 
 .scale-card {
     background: var(--container-bg);
-    border-radius: 15px;
+    border-radius: var(--button-border-radius);
     padding: 25px;
     border: 1px solid rgba(240, 230, 140, 0.3);
     box-shadow: var(--neon-glow);
@@ -1501,7 +1504,7 @@ h1, h2, h3, .level-title {
     padding: 15px;
     background: var(--secondary-color);
     border: none;
-    border-radius: 10px;
+    border-radius: var(--button-border-radius);
     color: var(--text-color);
     font-size: 16px;
     display: flex;
@@ -1977,7 +1980,7 @@ h1, h2, h3, .level-title {
     background-color: white;
     color: #333;
     padding: 4px 10px;
-    border-radius: 12px;
+    border-radius: var(--card-inner-border-radius);
     font-size: 14px;
     font-weight: 700;
     white-space: nowrap;
@@ -2087,7 +2090,7 @@ body.pwa-mode {
 /* 프로필 카드 스타일 */
 .profile-card {
     background: var(--card-bg);
-    border-radius: 16px;
+    border-radius: var(--button-border-radius);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 20px;
@@ -2526,6 +2529,37 @@ body.pwa-mode {
 .curriculum-list.single-column li:hover {
     transform: none;
     background: var(--secondary-color);
+}
+
+@media (max-width: 480px) {
+    .curriculum-list.single-column li {
+        font-size: 15px;
+        min-height: 48px;
+        padding: 8px 12px;
+        line-height: 1.3;
+    }
+}
+
+/* 카카오 아이콘 컨테이너 스타일 */
+.kakao-icon-container {
+    width: 50px;
+    height: 50px;
+    background-image: url('images/originals/kakao.png');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+    margin: 0 auto;
+}
+
+/* 카카오 버튼(부모 요소) 고정 높이 설정 */
+.main-button.button-5 {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 480px) {

@@ -374,10 +374,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         </button>
                         <div class="horizontal-buttons" style="width: 100%; max-width: 100%;">
                             <button class="main-button button-5" style="width: 50%; max-width: 50%;" onclick="window.open('http://qr.kakao.com/talk/eaCVDVzuz5Z7kqRWulpewF1ix7M-', '_blank')">
-                                카톡문의
+                                <div class="kakao-icon-container"></div>
                             </button>
                             <button class="main-button button-6" style="width: 50%; max-width: 50%;" onclick="window.location.href='tel:+821089679204'">
-                                전화상담
+                                <i class="fa-solid fa-phone" style="font-size: 20px;"></i>
                             </button>
                         </div>
                     </div>
@@ -515,16 +515,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 answer: "핸드팬은 누구나 손으로 두드리는 것만으로도 깊고 따뜻한 울림을 느낄 수 있는, 직관적인 소리명상 도구입니다. 복잡한 음악지식이 없어도 내 감정과 호흡에 따라 자연스럽게 연주할 수 있어, 처음 접하시는 분들도 편안하게 즐기실 수 있습니다. 마음을 가라앉히는 웰니스부터 리듬감 있는 표현까지, 일상의 다양한 순간에 어울리는 포근한 악기입니다."
             },
             {
-                question: "그럼 음악을 전공하셨거나, 작곡이나 연주 활동에 활용하고 싶으신 분들에게도 어울릴까요?",
+                question: "그럼 음악을 전공했거나, 작곡이나 연주 활동에 활용하고 싶으신 분들에게도 어울릴까요?",
                 answer: "물론입니다. 핸드팬은 멜로디, 화음, 리듬을 모두 표현할 수 있어 단독 연주뿐 아니라 작·편곡, 세션, 공연 등 다양한 음악 작업에 유연하게 쓰일 수 있는 악기입니다. 소리 하나하나가 섬세하고 풍부해서 자신만의 감성을 표현하기 좋습니다."
             },
             {
                 question: "핸드팬을 배우기 위한 사전 지식이 필요한가요?",
-                answer: "핸드팬은 사전 음악지식과 경험 없이도 시작할 수 있는 직관적인 악기입니다. 때문에 비전공자, 취미생들도 쉽게 배울 수 있습니다. 또한 전문 핸드팬 연주자가 아니더라도, 심리상담과 요가명상 등 관련 분야의 전문가들이 많이 활용하고 계십니다."
-            },
-            {
-                question: "핸드팬강사 자격증은 어떻게 취득하나요?",
-                answer: "핸드팬강사 자격증은 필기시험과 실기시험을 통과해야 취득할 수 있습니다. 필기시험은 '핸드팬에 대한 이해도', '전문성', '강사로서의 마음가짐'을 평가하고, 실기시험은 '연주능력'과 '교육능력'을 평가합니다. 자격증을 취득한 강사분들께서는 현업에서 활동하고 계십니다."
+                answer: "핸드팬은 사전 음악지식과 경험 없이도 시작할 수 있는 진입장벽이 낮은 악기입니다. 때문에 비전공자, 취미생들도 쉽게 배울 수 있습니다. 또한 전문 핸드팬 연주자가 아니더라도, 심리상담과 요가명상 등 관련 분야의 전문가들이 많이 활용하고 계십니다."
             },
             {
                 question: "레슨은 어떻게 신청할 수 있나요?",
@@ -533,6 +529,10 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 question: "악기가 없어도 배울 수 있나요?",
                 answer: "그럼요. 지점들 마다 여러 스케일의 악기가 비치되어 있기 때문에, 처음에는 악기가 없어도 충분히 배우실 수 있습니다. 이후 원하실 때, 악기 제작자가 직접 악기 선택과 구매도 함께 도와드립니다."
+            },
+            {
+                question: "핸드팬강사 자격증은 어떻게 취득하나요?",
+                answer: "핸드팬강사 자격증은 필기시험과 실기시험을 통과해야 취득할 수 있습니다. 필기시험은 '핸드팬에 대한 이해도', '전문성', '강사로서의 마음가짐'을 평가하고, 실기시험은 '연주능력'과 '교육능력'을 평가합니다. 자격증을 취득한 강사분들께서는 현업에서 활동하고 계십니다."
             },
             // 필요한 경우 여기에 새 FAQ 항목을 추가하세요
             // {
@@ -677,7 +677,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="images/certi.png" alt="자격증" class="certification-image">
+                        <img src="images/certi.webp" alt="자격증" class="certification-image" loading="eager" width="320" height="464">
                     </div>
                 </div>
                 <div class="slider-controls">
