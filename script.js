@@ -1040,7 +1040,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let showButton = location === '홍대'; // 홍대 지점만 버튼을 표시
 
         if (location === '홍대') {
-            buttonText = '4/6, 20(일) 오후2시 그룹레슨 신청';
+            buttonText = '4/20(일) 오후2시 그룹레슨 신청';
             buttonClass = 'main-button hongdae-lesson-btn';
             buttonFontSize = ''; // CSS 파일에서 설정된 크기를 사용
         }
