@@ -1936,12 +1936,12 @@ h1, h2, h3, .level-title {
 
 .map-background {
     width: 100%;
-    height: calc(100% - 38px);
-    background-image: url('images/map/korea-map.svg');
-    background-size: contain;
+    height: 100%;
+    background-size: 98%;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
+    background-image: url('images/map/korea-map.svg');  /* SVG는 이미 최적화되어 있음 */
 }
 
 .location-point {

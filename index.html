@@ -13,15 +13,21 @@
     <meta name="description" content="핸드팬 레슨예약">
     <meta name="mobile-web-app-capable" content="yes">
 
+    <!-- 중요 이미지 미리 로드 -->
+    <link rel="preload" as="image" href="images/theme/light-mode.webp" type="image/webp">
+    <link rel="preload" as="image" href="images/theme/dark-mode.webp" type="image/webp">
+    <link rel="preload" as="image" href="images/map/korea-map.svg" type="image/svg+xml">
+    <link rel="preload" as="image" href="images/splash-logo.webp" type="image/webp">
+
     <!-- PWA 아이콘 -->
     <link rel="icon" href="images/icons/favicon.ico">
-    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.webp">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icons/apple-touch-icon.webp">
+    <link rel="apple-touch-icon" sizes="167x167" href="images/icons/apple-touch-icon.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.webp">
 
     <!-- iOS 스플래시 스크린 -->
-    <link rel="apple-touch-startup-image" href="images/splash/splash-logo.png">
+    <link rel="apple-touch-startup-image" href="images/splash/splash-logo.webp">
 
     <!-- 웹 앱 매니페스트 -->
     <link rel="manifest" href="manifest.json">
@@ -59,10 +65,12 @@
                         교육자료
                     </button>
                     <div class="horizontal-buttons" style="width: 100%; max-width: 100%;">
-                        <button class="main-button button-5" onclick="openKakaoChannel()">
+                        <button class="main-button button-5" style="width: 50%; max-width: 50%;"
+                            onclick="window.open('http://qr.kakao.com/talk/eaCVDVzuz5Z7kqRWulpewF1ix7M-', '_blank')">
                             카톡문의
                         </button>
-                        <button class="main-button button-6" onclick="callPhone()">
+                        <button class="main-button button-6" style="width: 50%; max-width: 50%;"
+                            onclick="window.location.href='tel:+821089679204'">
                             전화상담
                         </button>
                     </div>

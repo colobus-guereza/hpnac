@@ -30,8 +30,15 @@ function updateThemeIcon() {
     if (themeIcon) {
         // 현재 테마에 따라 이미지 소스 설정
         themeIcon.src = document.body.classList.contains('dark-theme')
-            ? 'images/theme/light-mode.png'
-            : 'images/theme/dark-mode.png';
+            ? 'images/theme/light-mode.webp'
+            : 'images/theme/dark-mode.webp';
+
+        // 이미지 지연 로딩 방지
+        themeIcon.loading = 'eager';
+
+        // CLS 방지를 위한 크기 명시
+        themeIcon.width = 22;
+        themeIcon.height = 22;
     }
 }
 
@@ -43,14 +50,14 @@ function toggleTheme() {
     if (themeIcon) {
         const isDarkMode = document.body.classList.contains('dark-theme');
         themeIcon.src = isDarkMode
-            ? 'images/theme/dark-mode.png'
-            : 'images/theme/light-mode.png';
+            ? 'images/theme/dark-mode.webp'
+            : 'images/theme/light-mode.webp';
 
         // 1초 후 다시 원래 아이콘으로 되돌림
         setTimeout(() => {
             themeIcon.src = isDarkMode
-                ? 'images/theme/light-mode.png'
-                : 'images/theme/dark-mode.png';
+                ? 'images/theme/light-mode.webp'
+                : 'images/theme/dark-mode.webp';
         }, 1000);
     }
 }
@@ -146,7 +153,10 @@ const cachedThemeImages = {
 function preloadThemeImages() {
     // 라이트 모드 이미지 미리 로드
     const lightImage = new Image();
-    lightImage.src = 'images/theme/light-mode.png';
+    lightImage.src = 'images/theme/light-mode.webp';
+    lightImage.loading = 'eager'; // 즉시 로딩
+    lightImage.width = 60;
+    lightImage.height = 60;
     lightImage.onload = () => {
         cachedThemeImages.light = lightImage;
         console.log('라이트 모드 아이콘 이미지 미리 로드 완료');
@@ -154,11 +164,25 @@ function preloadThemeImages() {
 
     // 다크 모드 이미지 미리 로드
     const darkImage = new Image();
-    darkImage.src = 'images/theme/dark-mode.png';
+    darkImage.src = 'images/theme/dark-mode.webp';
+    darkImage.loading = 'eager'; // 즉시 로딩
+    darkImage.width = 60;
+    darkImage.height = 60;
     darkImage.onload = () => {
         cachedThemeImages.dark = darkImage;
         console.log('다크 모드 아이콘 이미지 미리 로드 완료');
     };
+
+    // 한국 지도 이미지 미리 로드 (SVG는 이미 최적화)
+    const mapImage = new Image();
+    mapImage.src = 'images/map/korea-map.svg';
+
+    // 스플래시 로고 미리 로드
+    const splashImage = new Image();
+    splashImage.src = 'images/splash-logo.webp';
+    splashImage.loading = 'eager';
+    splashImage.width = 360;
+    splashImage.height = 360;
 }
 
 // 초기화 함수에 이미지 미리 로드 추가
@@ -398,10 +422,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 img.src = imageToUse.src;
                 img.alt = '프로필';
                 img.className = 'profile-icon';
+                img.width = 60;
+                img.height = 60;
+                img.loading = 'eager';
                 profileContainer.appendChild(img);
             } else {
                 // 캐시된 이미지가 없으면 기존 방식으로 로드
-                profileContainer.innerHTML = `<img src="images/theme/${isDarkTheme ? 'light-mode.png' : 'dark-mode.png'}" alt="프로필" class="profile-icon">`;
+                const imgElement = document.createElement('img');
+                imgElement.src = `images/theme/${isDarkTheme ? 'light-mode.webp' : 'dark-mode.webp'}`;
+                imgElement.alt = '프로필';
+                imgElement.className = 'profile-icon';
+                imgElement.width = 60;
+                imgElement.height = 60;
+                imgElement.loading = 'eager';
+                profileContainer.appendChild(imgElement);
             }
         }
 
@@ -1254,9 +1288,12 @@ function showLoadingScreen() {
 
     // 로고 이미지 추가
     const logoImg = document.createElement('img');
-    logoImg.src = 'images/splash-logo.png'; // 경로 수정: 루트 이미지 디렉토리에서 로드
+    logoImg.src = 'images/splash-logo.webp'; // WebP 형식으로 변경
     logoImg.alt = '핸드팬 레슨예약';
     logoImg.className = 'splash-logo';
+    logoImg.width = 360;
+    logoImg.height = 360;
+    logoImg.loading = 'eager'; // 즉시 로드
 
     // 이미지 로드 상태 확인
     logoImg.onload = function () {
@@ -1266,7 +1303,7 @@ function showLoadingScreen() {
     logoImg.onerror = function () {
         console.error('스플래시 이미지 로드 실패');
         // 이미지 로드 실패 시 대체 이미지 표시
-        logoImg.src = 'images/theme/light-mode.png';
+        logoImg.src = 'images/theme/light-mode.webp';
     };
 
     loadingContainer.appendChild(logoImg);
