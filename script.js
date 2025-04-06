@@ -136,8 +136,36 @@ function setViewportHeight() {
     }
 }
 
-// 초기화 함수
+// 테마 아이콘 이미지 캐시
+const cachedThemeImages = {
+    dark: null,
+    light: null
+};
+
+// 테마 이미지 미리 로드 함수
+function preloadThemeImages() {
+    // 라이트 모드 이미지 미리 로드
+    const lightImage = new Image();
+    lightImage.src = 'images/theme/light-mode.png';
+    lightImage.onload = () => {
+        cachedThemeImages.light = lightImage;
+        console.log('라이트 모드 아이콘 이미지 미리 로드 완료');
+    };
+
+    // 다크 모드 이미지 미리 로드
+    const darkImage = new Image();
+    darkImage.src = 'images/theme/dark-mode.png';
+    darkImage.onload = () => {
+        cachedThemeImages.dark = darkImage;
+        console.log('다크 모드 아이콘 이미지 미리 로드 완료');
+    };
+}
+
+// 초기화 함수에 이미지 미리 로드 추가
 document.addEventListener('DOMContentLoaded', function () {
+    // 테마 이미지 미리 로드
+    preloadThemeImages();
+
     // URL 라우팅 설정
     setupRouting();
 
@@ -299,14 +327,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 홈 화면 뷰
     function homeView() {
+        // 기본 HTML 구조 생성 (프로필 이미지 제외)
         document.querySelector('.container').innerHTML = `
             <div class="content-wrapper" style="width: 100%; max-width: 100%;">
                 <header class="hidden-header">
                     <!-- 타이틀 제거 -->
                 </header>
-                <div class="profile-icon-container">
-                    <img src="images/theme/${document.body.classList.contains('dark-theme') ? 'light-mode.png' : 'dark-mode.png'}" alt="프로필" class="profile-icon">
-                </div>
+                <div class="profile-icon-container"></div>
                 <div class="map-brand">Snd Handpan Academy</div>
                 <div class="map-container" style="height: 190px; min-height: 190px; max-height: 190px; margin-bottom: 20px;">
                     <div class="map-title">레슨예약 & 공연문의</div>
@@ -357,6 +384,26 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.button-container').style.maxWidth = '100%';
         document.querySelector('.content-wrapper').style.width = '100%';
         document.querySelector('.content-wrapper').style.maxWidth = '100%';
+
+        // 캐시된 이미지로 프로필 아이콘 추가
+        const profileContainer = document.querySelector('.profile-icon-container');
+        if (profileContainer) {
+            // 현재 테마에 따라 이미지 선택
+            const isDarkTheme = document.body.classList.contains('dark-theme');
+            const imageToUse = isDarkTheme ? cachedThemeImages.light : cachedThemeImages.dark;
+
+            if (imageToUse) {
+                // 캐시된 이미지가 있으면 사용
+                const img = document.createElement('img');
+                img.src = imageToUse.src;
+                img.alt = '프로필';
+                img.className = 'profile-icon';
+                profileContainer.appendChild(img);
+            } else {
+                // 캐시된 이미지가 없으면 기존 방식으로 로드
+                profileContainer.innerHTML = `<img src="images/theme/${isDarkTheme ? 'light-mode.png' : 'dark-mode.png'}" alt="프로필" class="profile-icon">`;
+            }
+        }
 
         // 지도 초기화 명시적 호출 - PC 웹에서도 포인터가 표시되도록 함
         setTimeout(() => {
