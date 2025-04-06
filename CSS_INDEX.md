@@ -113,13 +113,20 @@
 ### 카카오 버튼
 - **파일 위치**: `styles.css` (2544-2564 줄)
 - 클래스: `.kakao-icon-container`, `.main-button.button-5`
-- 아이콘 컨테이너 너비/높이: 42px
+- 아이콘 컨테이너 너비/높이: 24px
+- 아이콘 background-size: 100%
 - 버튼 높이: 55px
+- 버튼 패딩: 15px 0
+- 박스 사이징: border-box
 
 ### 전화 버튼
-- **파일 위치**: `styles.css` (2575-2582 줄)
-- 클래스: `.main-button.button-6`
+- **파일 위치**: `styles.css` (2575-2589 줄)
+- 클래스: `.main-button.button-6`, `.main-button.button-6 i.fa-phone`
 - 버튼 높이: 55px
+- 버튼 패딩: 15px 0
+- 박스 사이징: border-box
+- 전화 아이콘 크기: 24px
+- 전화 아이콘 특징: line-height:1, height:24px, 가운데 정렬
 
 ### 뒤로가기 버튼
 - **파일 위치**: `styles.css` (394-420 줄)
