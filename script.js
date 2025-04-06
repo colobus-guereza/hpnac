@@ -357,6 +357,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.button-container').style.maxWidth = '100%';
         document.querySelector('.content-wrapper').style.width = '100%';
         document.querySelector('.content-wrapper').style.maxWidth = '100%';
+
+        // 지도 초기화 명시적 호출 - PC 웹에서도 포인터가 표시되도록 함
+        setTimeout(() => {
+            initMap();
+        }, 100);
     }
 
     // 인증 화면 뷰
