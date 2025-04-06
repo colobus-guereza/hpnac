@@ -15,7 +15,11 @@ const PRECACHE_ASSETS = [
     '/images/splash/splash-logo.webp',
     '/images/splash/splash-logo.png',
     '/images/certi.webp',
-    '/images/optimized/kakao-optimized.png'
+    '/images/optimized/kakao-optimized.png',
+    // 파비콘 파일들
+    '/images/icons/favicon.ico',
+    '/images/icons/favicon-16x16.png',
+    '/images/icons/favicon-32x32.png'
 ];
 
 // 서비스 워커 설치 이벤트
