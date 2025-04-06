@@ -45,6 +45,22 @@
 - `--faq-mobile-question-font-size`: 16px (모바일 FAQ 질문 폰트 크기)
 - `--faq-mobile-answer-font-size`: 14px (모바일 FAQ 답변 폰트 크기)
 
+### 자격증 페이지 폰트 크기
+- `--cert-title-font-size`: 28px (자격증 제목 폰트 크기)
+- `--cert-issuer-font-size`: 14px (발급기관 폰트 크기)
+- `--cert-number-font-size`: 14px (등록번호 폰트 크기)
+- `--cert-level-title-font-size`: 16px (자격 등급 제목 폰트 크기)
+- `--cert-level-text-font-size`: 14px (자격 등급 설명 폰트 크기)
+- `--cert-level-text-line-height`: 1.4 (자격 등급 설명 줄간격)
+
+### 자격증 페이지 모바일 폰트 크기
+- `--cert-mobile-title-font-size`: 22px (모바일 자격증 제목 폰트 크기)
+- `--cert-mobile-issuer-font-size`: 12px (모바일 발급기관 폰트 크기)
+- `--cert-mobile-number-font-size`: 12px (모바일 등록번호 폰트 크기)
+- `--cert-mobile-level-title-font-size`: 16px (모바일 자격 등급 제목 폰트 크기)
+- `--cert-mobile-level-text-font-size`: 16px (모바일 자격 등급 설명 폰트 크기)
+- `--cert-mobile-level-text-line-height`: 1.6 (모바일 자격 등급 설명 줄간격)
+
 ### 카드 스타일 변수
 - 배경: `--card-bg`
 - 경계선: `--card-border`
@@ -182,11 +198,55 @@
 - 그리드 템플릿 열: 2열 (기본), 1열 (single-column 클래스 적용 시)
 - 간격: 8px
 
+### 자격증 카드 레이아웃 및 디자인 요소
+- **파일 위치**: `styles.css` (562-650 줄)
+- 클래스: `.certification-info`
+- 배경: `var(--card-bg)`
+- 너비: 594px (데스크톱), 100% (모바일)
+- 패딩: 30px (데스크톱), 25px (모바일)
+- 테두리: `var(--card-border)`
+- 그림자: `var(--card-shadow)`
+- 둥근 모서리: `var(--card-border-radius)`
+
+#### 자격증 제목
+- 클래스: `.certification-title`
+- 파일 위치: `styles.css` (583-592 줄)
+- 폰트 크기: `var(--cert-title-font-size)` (웹), `var(--cert-mobile-title-font-size)` (모바일)
+- 하단 경계선: `var(--card-border)`
+- 여백: 10px 0 (웹), 6px 0 (모바일)
+
+#### 발급 기관 및 등록번호
+- 클래스: `.certification-issuer`, `.certification-number`
+- 파일 위치: `styles.css` (594-611 줄)
+- 폰트 크기: `var(--cert-issuer-font-size)`, `var(--cert-number-font-size)` (웹)
+- 모바일 폰트 크기: `var(--cert-mobile-issuer-font-size)`, `var(--cert-mobile-number-font-size)`
+- 하단 경계선: 없음 (제거됨)
+
+#### 자격 등급 섹션
+- 클래스: `.certification-levels`
+- 파일 위치: `styles.css` (612-620 줄)
+- 디스플레이: flex
+- 방향: column
+- 간격: 10px (웹), 10px (모바일)
+
+#### 자격 등급 항목
+- 클래스: `.level-item`, `.level-item h3`, `.level-item p`
+- 파일 위치: `styles.css` (621-647 줄)
+- 제목 폰트 크기: `var(--cert-level-title-font-size)` (웹), `var(--cert-mobile-level-title-font-size)` (모바일)
+- 내용 폰트 크기: `var(--cert-level-text-font-size)` (웹), `var(--cert-mobile-level-text-font-size)` (모바일)
+- 내용 줄간격: `1.4` (웹), `1.6` (모바일) - **655, 1043 줄에서 조정 가능**
+- 내용 글자 간격: `-0.3px` (웹), `-0.5px` (모바일)
+- 항목 간 구분선: 없음 (제거됨) - `.level-item:not(:last-child)::after` 스타일 비활성화
+
+#### 자격증 시험 버튼
+- 클래스: `.certification-exam-button`
+- 파일 위치: `styles.css` (659-681 줄)
+- 배경: 그라디언트 (var(--button-gradient-start), var(--button-gradient-end))
+- 폰트 크기: 16px (웹), 14px (모바일)
+- 패딩: 12px 20px (웹), 10px 16px (모바일)
+- 상단 여백: 30px (웹), 4px (모바일)
+
 ### 커리큘럼 목록 항목
-- **파일 위치**: `styles.css` (1838-1850 줄)
-- 클래스: `.curriculum-list li`, `.curriculum-list li.small-text`
-- 최소 높이: `calc(var(--button-min-height) * 1.2)`
-- 폰트 크기 조정: 싱글 컬럼에서 15px로 설정 (2535-2543 줄)
 
 ### 싱글 컬럼 커리큘럼 목록
 - **파일 위치**: `styles.css` (2505-2533 줄)

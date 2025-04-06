@@ -60,6 +60,22 @@
     --faq-mobile-question-font-size: 18px;
     --faq-mobile-answer-font-size: 16px;
     
+    /* 자격증 페이지 폰트 크기 변수 추가 */
+    --cert-title-font-size: 28px;
+    --cert-issuer-font-size: 14px;
+    --cert-number-font-size: 14px;
+    --cert-level-title-font-size: 16px;
+    --cert-level-text-font-size: 14px;
+    --cert-level-text-line-height: 1.4;
+    
+    /* 자격증 페이지 모바일 폰트 크기 변수 */
+    --cert-mobile-title-font-size: 30px;
+    --cert-mobile-issuer-font-size: 15px;
+    --cert-mobile-number-font-size: 15px;
+    --cert-mobile-level-title-font-size: 20px;
+    --cert-mobile-level-text-font-size: 18px;
+    --cert-mobile-level-text-line-height: 1.6;
+    
     /* 모바일 높이 변수 */
     --vh: 1vh;
 }
@@ -583,7 +599,7 @@ h1, h2, h3, .level-title {
 
 .certification-title {
     color: var(--text-color);
-    font-size: 28px;
+    font-size: var(--cert-title-font-size);
     font-weight: var(--font-bold);
     margin-bottom: 10px;
     text-align: left;
@@ -594,19 +610,19 @@ h1, h2, h3, .level-title {
 
 .certification-issuer {
     color: var(--text-color-secondary);
-    font-size: 14px;
-    margin-bottom: 3px;
+    font-size: var(--cert-issuer-font-size);
+    margin-bottom: 1px;
     text-align: left;
     position: relative;
 }
 
 .certification-number {
     color: var(--text-color-secondary);
-    font-size: 14px;
+    font-size: var(--cert-number-font-size);
     margin-bottom: 12px;
     text-align: left;
     position: relative;
-    padding-bottom: 12px;
+    padding-bottom: 15px;
     border-bottom: var(--card-border);
 }
 
@@ -634,27 +650,27 @@ h1, h2, h3, .level-title {
 
 .level-item h3 {
     color: var(--text-color);
-    font-size: 16px;
+    font-size: var(--cert-level-title-font-size);
     font-weight: var(--font-bold);
 }
 
 .level-item p {
     color: var(--text-color-tertiary);
-    font-size: 14px;
-    line-height: 1.3;
+    font-size: var(--cert-level-text-font-size);
+    line-height: var(--cert-level-text-line-height);
     word-break: keep-all;
     letter-spacing: -0.3px;
 }
 
 .level-item:not(:last-child)::after {
-    content: '';
+    content: none;
     position: absolute;
     bottom: 6px;
     left: 0;
     right: 0;
-    height: 1px;
-    background: var(--border-color);
-    opacity: 0.5;
+    height: 0;
+    background: transparent;
+    opacity: 0;
 }
 
 .certification-exam-button {
@@ -763,20 +779,21 @@ h1, h2, h3, .level-title {
     }
 
     .certification-title {
-        font-size: 24px;
+        font-size: var(--cert-title-font-size);
         margin-bottom: 8px;
         padding-bottom: 8px;
     }
 
     .certification-issuer {
-        font-size: 14px;
+        font-size: var(--cert-issuer-font-size);
         margin-bottom: 4px;
     }
 
     .certification-number {
-        font-size: 14px;
+        font-size: var(--cert-number-font-size);
         margin-bottom: 15px;
-        padding-bottom: 15px;
+        padding-bottom: 8px;
+        border-bottom: var(--card-border);
     }
 
     .certification-levels {
@@ -916,20 +933,21 @@ h1, h2, h3, .level-title {
     }
 
     .certification-title {
-        font-size: 20px;
+        font-size: var(--cert-mobile-title-font-size);
         margin-bottom: 6px;
         padding-bottom: 6px;
     }
 
     .certification-issuer {
-        font-size: 12px;
+        font-size: var(--cert-mobile-issuer-font-size);
         margin-bottom: 2px;
     }
 
     .certification-number {
-        font-size: 12px;
+        font-size: var(--cert-mobile-number-font-size);
         margin-bottom: 8px;
-        padding-bottom: 8px;
+        padding-bottom: 6px;
+        border-bottom: var(--card-border);
     }
 
     .certification-levels {
@@ -1008,6 +1026,8 @@ h1, h2, h3, .level-title {
 
     .certification-number {
         margin-bottom: 15px;
+        padding-bottom: 12px;
+        border-bottom: var(--card-border);
     }
 
     .certification-levels {
@@ -1021,12 +1041,13 @@ h1, h2, h3, .level-title {
     }
 
     .level-item h3 {
-        font-size: 16px;
+        font-size: var(--cert-mobile-level-title-font-size);
     }
 
     .level-item p {
-        font-size: 16px;
+        font-size: var(--cert-mobile-level-text-font-size);
         letter-spacing: -0.5px;
+        line-height: var(--cert-mobile-level-text-line-height);
     }
 
     .slider-controls {
@@ -1724,6 +1745,14 @@ h1, h2, h3, .level-title {
     .theme-toggle {
         top: max(env(safe-area-inset-top) + 20px, 30px);
         right: max(15px, env(safe-area-inset-right) + 10px);
+    }
+    
+    /* PWA에서 카카오 아이콘 크기 모바일 웹과 일치시키기 */
+    .kakao-icon-container {
+        width: 33px;
+        height: 33px;
+        background-size: 100%;
+        background-position: center;
     }
 }
 
