@@ -39,6 +39,12 @@
 - `--font-bold`: 700
 - `--font-extra-bold`: 800
 
+### FAQ 페이지 폰트 크기
+- `--faq-question-font-size`: 18px (FAQ 질문 폰트 크기)
+- `--faq-answer-font-size`: 18px (FAQ 답변 폰트 크기)
+- `--faq-mobile-question-font-size`: 16px (모바일 FAQ 질문 폰트 크기)
+- `--faq-mobile-answer-font-size`: 14px (모바일 FAQ 답변 폰트 크기)
+
 ### 카드 스타일 변수
 - 배경: `--card-bg`
 - 경계선: `--card-border`

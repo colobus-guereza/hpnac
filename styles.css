@@ -54,6 +54,12 @@
     --button-text-padding: 4px;
     --button-font-size: 18px;
     
+    /* FAQ 페이지 폰트 크기 변수 */
+    --faq-question-font-size: 18px;
+    --faq-answer-font-size: 18px;
+    --faq-mobile-question-font-size: 18px;
+    --faq-mobile-answer-font-size: 16px;
+    
     /* 모바일 높이 변수 */
     --vh: 1vh;
 }
@@ -2278,7 +2284,7 @@ body.pwa-mode {
 
 .faq-question {
     color: var(--text-color);
-    font-size: 18px;
+    font-size: var(--faq-question-font-size);
     font-weight: var(--font-bold);
     margin-bottom: 10px;
     padding-bottom: 5px;
@@ -2287,7 +2293,7 @@ body.pwa-mode {
 
 .faq-answer {
     color: var(--text-color-secondary);
-    font-size: 16px;
+    font-size: var(--faq-answer-font-size);
     line-height: 1.5;
     margin: 0;
     flex: 1; /* 남은 공간을 모두 차지하도록 설정 */
@@ -2303,11 +2309,11 @@ body.pwa-mode {
     }
     
     .faq-question {
-        font-size: 16px;
+        font-size: var(--faq-mobile-question-font-size);
     }
     
     .faq-answer {
-        font-size: 14px;
+        font-size: var(--faq-mobile-answer-font-size);
     }
 }
 
@@ -2420,7 +2426,7 @@ body.pwa-mode {
 
 .faq-slider .faq-question {
     color: var(--text-color);
-    font-size: 18px;
+    font-size: var(--faq-question-font-size);
     font-weight: var(--font-bold);
     margin-bottom: 15px;
     padding-bottom: 10px;
@@ -2429,7 +2435,7 @@ body.pwa-mode {
 
 .faq-slider .faq-answer {
     color: var(--text-color-secondary);
-    font-size: 16px;
+    font-size: var(--faq-answer-font-size);
     line-height: 1.6;
     white-space: pre-wrap;
     word-break: keep-all;
@@ -2446,13 +2452,13 @@ body.pwa-mode {
     }
     
     .faq-slider .faq-question {
-        font-size: 16px;
+        font-size: var(--faq-mobile-question-font-size);
         margin-bottom: 12px;
         padding-bottom: 8px;
     }
     
     .faq-slider .faq-answer {
-        font-size: 14px;
+        font-size: var(--faq-mobile-answer-font-size);
         line-height: 1.5;
     }
 }
@@ -2481,7 +2487,7 @@ body.pwa-mode {
 
 .faq-slider .faq-question {
     color: var(--text-color);
-    font-size: 18px;
+    font-size: var(--faq-question-font-size);
     font-weight: var(--font-bold);
     margin-bottom: 15px;
     padding-bottom: 10px;
@@ -2496,9 +2502,7 @@ body.pwa-mode {
     }
     
     .faq-slider .faq-question {
-        font-size: 16px;
-        margin-bottom: 12px;
-        padding-bottom: 8px;
+        font-size: var(--faq-mobile-question-font-size);
     }
 }
 
@@ -2542,8 +2546,8 @@ body.pwa-mode {
 
 /* 카카오 아이콘 컨테이너 스타일 */
 .kakao-icon-container {
-    width: 24px;
-    height: 24px;
+    width: 33px;
+    height: 33px;
     background-image: url('images/optimized/kakao-optimized.png');
     background-size: 100%;
     background-position: center;
