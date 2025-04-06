@@ -1,5 +1,5 @@
 // 캐시 이름 설정
-const CACHE_NAME = 'handpan-academy-cache-v4';
+const CACHE_NAME = 'handpan-academy-cache-v5';
 
 // 미리 캐싱할 핵심 리소스 목록
 const PRECACHE_ASSETS = [
@@ -14,7 +14,8 @@ const PRECACHE_ASSETS = [
     '/images/map/korea-map.svg',
     '/images/splash/splash-logo.webp',
     '/images/splash/splash-logo.png',
-    '/images/certi.webp'
+    '/images/certi.webp',
+    '/images/optimized/kakao-optimized.png'
 ];
 
 // 서비스 워커 설치 이벤트
