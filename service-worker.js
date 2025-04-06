@@ -1,5 +1,5 @@
 // 캐시 이름 설정
-const CACHE_NAME = 'handpan-academy-cache-v5';
+const CACHE_NAME = 'handpan-academy-cache-v7';
 
 // 미리 캐싱할 핵심 리소스 목록
 const PRECACHE_ASSETS = [
@@ -19,7 +19,11 @@ const PRECACHE_ASSETS = [
     // 파비콘 파일들
     '/images/icons/favicon.ico',
     '/images/icons/favicon-16x16.png',
-    '/images/icons/favicon-32x32.png'
+    '/images/icons/favicon-32x32.png',
+    '/images/icons/favicon-48x48.png',
+    '/images/icons/favicon-64x64.png',
+    '/images/icons/icon-192x192.png',
+    '/images/icons/icon-512x512.png'
 ];
 
 // 서비스 워커 설치 이벤트
