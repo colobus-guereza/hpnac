@@ -532,7 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 question: "악기가 없어도 배울 수 있나요?",
-                answer: "지점들 마다 여러 스케일의 악기가 비치되어 있기 때문에, 처음에는 악기가 없어도 충분히 배우실 수 있습니다. 이후 원하실 때, 악기 제작자가 직접 악기 선택과 구매도 함께 도와드립니다."
+                answer: "지점들 마다 여러 스케일의 악기가 비치되어 있기 때문에, 처음에는 악기가 없어도 충분히 배우실 수 있습니다. 다양한 음계의 악기들을 직접 연주하며 자신에게 맞는 악기를 찾아갈 수 있습니다."
             },
             {
                 question: "핸드팬강사 자격증은 어떻게 취득하나요?",
@@ -836,7 +836,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <li>스케일 개론</li>
                                     <li>작곡</li>
                                     <li>교수법</li>
-                                    <li>악기 보관과 관리</li>
                                 </ul>
                             </div>
                         </div>
@@ -871,7 +870,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <h2 class="level-title">4. 스타일</h2>
                                 <ul class="curriculum-list single-column">
                                     <li>Hang Massive</li>
-                                    <li>Kabecao</li>
+                                    <li>Kabeçao</li>
                                     <li>Nadishana</li>
                                     <li>Malte Marten</li>
                                 </ul>
