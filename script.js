@@ -869,10 +869,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="curriculum-card">
                                 <h2 class="level-title">4. 스타일</h2>
                                 <ul class="curriculum-list single-column">
-                                    <li>Hang Massive</li>
-                                    <li>Kabeçao</li>
-                                    <li>Nadishana</li>
-                                    <li>Malte Marten</li>
+                                    <li>Hang Massive - 사운드디자인</li>
+                                    <li>Kabeçao - 그루브</li>
+                                    <li>Nadishana - 테크닉</li>
+                                    <li>Malte Marten - 코드진행</li>
                                 </ul>
                             </div>
                         </div>
