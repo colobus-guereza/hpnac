@@ -681,7 +681,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="images/certi.webp" alt="자격증" class="certification-image" loading="eager" width="320" height="464">
+                        <img src="images/certi.webp?v=20240601" alt="자격증" class="certification-image" loading="eager">
                     </div>
                 </div>
                 <div class="slider-controls">

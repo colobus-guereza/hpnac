@@ -1,5 +1,5 @@
 // 캐시 이름 설정
-const CACHE_NAME = 'handpan-academy-cache-v7';
+const CACHE_NAME = 'handpan-academy-cache-v8';
 
 // 미리 캐싱할 핵심 리소스 목록
 const PRECACHE_ASSETS = [
