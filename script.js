@@ -1054,7 +1054,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let showButton = location === '홍대'; // 홍대 지점만 버튼을 표시
 
         if (location === '홍대') {
-            buttonText = '4/20(일) 오후2시 그룹레슨 신청';
+            buttonText = '5/4, 5/18(일) 2pm 수업신청';
             buttonClass = 'main-button hongdae-lesson-btn';
             buttonFontSize = ''; // CSS 파일에서 설정된 크기를 사용
         }
@@ -1109,7 +1109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 ${showButton ? `
                 <div class="button-container" style="margin-top: 20px;">
-                    <button class="${buttonClass}" style="${buttonFontSize}" onclick="window.open('https://forms.gle/4Fcb5S3KtwKYYejA9', '_blank')">
+                    <button class="${buttonClass}" style="${buttonFontSize}" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfyxWlDMu5daxPxZ4Nghw1UDX7mI6ZjEs-RVlgGSYf-DsSlig/viewform', '_blank')">
                         ${buttonText}
                     </button>
                 </div>
