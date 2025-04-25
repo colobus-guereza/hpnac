@@ -847,7 +847,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <li>6박자 기본리듬</li>
                                     <li>리듬 쪼개기</li>
                                     <li>하이햇으로 그루브 만들기</li>
-                                    <li>Odd Meter 확장</li>
+                                    <li>5, 7, 9박 확장</li>
                                     <li>나만의 리듬 만들기</li>
                                 </ul>
                             </div>
