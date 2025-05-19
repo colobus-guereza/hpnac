@@ -847,7 +847,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <li>6박자 기본리듬</li>
                                     <li>리듬 쪼개기</li>
                                     <li>하이햇으로 그루브 만들기</li>
-                                    <li>5, 7, 9박 확장</li>
+                                    <li>5, 7, 9박(Odd meter) 확장</li>
                                     <li>나만의 리듬 만들기</li>
                                 </ul>
                             </div>
@@ -1054,7 +1054,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let showButton = location === '홍대'; // 홍대 지점만 버튼을 표시
 
         if (location === '홍대') {
-            buttonText = '5/4, 5/18(일) 2pm 수업신청';
+            buttonText = '6/1, 6/15(일) 2pm 수업 예정';
             buttonClass = 'main-button hongdae-lesson-btn';
             buttonFontSize = ''; // CSS 파일에서 설정된 크기를 사용
         }
@@ -1109,7 +1109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 ${showButton ? `
                 <div class="button-container" style="margin-top: 20px;">
-                    <button class="${buttonClass}" style="${buttonFontSize}" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfyxWlDMu5daxPxZ4Nghw1UDX7mI6ZjEs-RVlgGSYf-DsSlig/viewform', '_blank')">
+                    <button class="${buttonClass}" style="${buttonFontSize}">
                         ${buttonText}
                     </button>
                 </div>
