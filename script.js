@@ -1054,7 +1054,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let showButton = location === '홍대'; // 홍대 지점만 버튼을 표시
 
         if (location === '홍대') {
-            buttonText = '6/1, 6/15(일) 2pm 수업 예정';
+            buttonText = '6/1, 6/15(일) 2pm 수업신청';
             buttonClass = 'main-button hongdae-lesson-btn';
             buttonFontSize = ''; // CSS 파일에서 설정된 크기를 사용
         }
@@ -1095,7 +1095,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h3 class="profile-section-title">문의 & 섭외</h3>
                     </div>
                     <div class="profile-actions">
-                        <button class="profile-action instagram" onclick="window.open('${teacherInfo.social}')">
+                        <button class="profile-action instagram" onclick="window.open('${teacherInfo.social}', '_blank')">
                             <i class="fab fa-instagram"></i>
                         </button>
                         <button class="profile-action phone" onclick="window.location.href='tel:${teacherInfo.phone}'">
@@ -1109,9 +1109,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 ${showButton ? `
                 <div class="button-container" style="margin-top: 20px;">
-                    <button class="${buttonClass}" style="${buttonFontSize}">
-                        ${buttonText}
-                    </button>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfyxWlDMu5daxPxZ4Nghw1UDX7mI6ZjEs-RVlgGSYf-DsSlig/viewform?usp=send_form" target="_blank" rel="noopener noreferrer" style="display:block;width:100%;max-width:100%;">
+                        <button class="${buttonClass}" style="width:100%;max-width:100%;${buttonFontSize}">
+                            ${buttonText}
+                        </button>
+                    </a>
                 </div>
                 ` : ''}
             </main>
